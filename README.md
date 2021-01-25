@@ -15,10 +15,12 @@ multiple tasks. Task lists can represent larger tasks that have subtasks within 
 Users can display, edit, and delete tasks and task lists. Users should also be able to
 undo these operations.
  > * Design Patterns Patterns to use
- > * * asdf
- >   * Composite, Strategy, Abstract Factory, Visitor, or Decorator
- > * All design patterns need to be linked together (it can't be two distinct projects)
- > * Your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
+ >   * asdf
+ >   * SAMPLE Composite, Strategy, Abstract Factory, Visitor, or Decorator
+ >   * All design patterns need to be linked together (it can't be two distinct projects)
+ > * Programming Languages in use
+ >   * C++
+ >   * GUI TBD
  > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group.
