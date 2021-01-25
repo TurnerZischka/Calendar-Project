@@ -15,7 +15,7 @@
  > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group.
-In this application, a user can create tasks including a title, description,
+> * In this application, a user can create tasks including a title, description,
 classification (e.g. personal, work, study) priority, duration and due date. Some of these
 features can also be optional. Users can also create task lists where each list includes
 multiple tasks. Task lists can represent larger tasks that have subtasks within them.
