@@ -25,7 +25,14 @@ undo these operations.
  > * Programming Languages in use
  >   * C++
  >   * GUI TBD
- > * 
+ > * Inputs
+ >   * User data, 
+ > * Outputs
+ >   * Save file data, in order to save user data and dates across boots
+ >   * Graphical Display
+ >    * includes buttons and GUI
+ >    * and the output of the calendar and other forms of user info display
+ >
  > Your project description should summarize the project you are proposing. Be sure to include
  > * Why is it important or interesting to you?
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
