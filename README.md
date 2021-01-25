@@ -26,18 +26,17 @@ undo these operations.
  >   * C++
  >   * GUI TBD
  > * Inputs
- >   * User data, 
+ >   * User data
+ >   * GUI interactions
  > * Outputs
  >   * Save file data, in order to save user data and dates across boots
  >   * Graphical Display
- >    * includes buttons and GUI
- >    * and the output of the calendar and other forms of user info display
+ >      * includes buttons and GUI
+ >      * and the output of the calendar and other forms of user info display
  >
  > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
  > * What are the two design patterns you will be using? For each design pattern you must explain in 4-5 sentences:
  >   * Why you picked this pattern and what feature you will implement with it
  >   * What problem you anticipate encountering when implementing your project that you will solve using the design pattern
