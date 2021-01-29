@@ -29,8 +29,8 @@ undo these operations.
  > * Programming Languages in use
  >   * C++
  > * Tools in Use
- >   * GTest
- >   * Valgrind
+ >   * [GTest](https://github.com/google/googletest) - used to test functionality of our program before full completion of our program. Useful also for testing first programming. 
+ >   * [Valgrind](https://www.valgrind.org/) - Primarliy the Memcheck tool to indentify any possible programming errors and memory mismanagements
  > * Inputs
  >   * User data - from menu
  >   * User data - from textual inputs
