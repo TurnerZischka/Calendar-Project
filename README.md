@@ -22,11 +22,12 @@ undo these operations.
  >   * Memento
  >   * Composite
  >   * Facade
+ >   * Decorator
  > * Programming Languages in use
  >   * C++
  > * Inputs
  >   * User data - from menu
- >   * GUI interactions
+ >   * User data - from textual inputs
  > * Outputs
  >   * Save file data, in order to save user data and dates across boots (using input/output file streams to/from txt files).
  >   * Graphical Display
