@@ -5,9 +5,8 @@
  
  > Authors:   \<[Turner Zischka](https://github.com/TurnerZischka)\>  \<[Austin Lee](https://github.com/austinslee)\> \<[Aly Refaat](https://github.com/Sebesky)\>
  
- > You will be forming a group of **THREE** students and working on an interesting project. A list of proposed project ideas that have been successful in previous quarters is given in the project specifications link on iLearn. You can select an idea from the list and decide which design patterns you will use to implement it. If you want to propose your own original idea, you will have to contact an instructor to discuss the project and obtain written permission before you submit your project proposal. Your project needs to implement two design patterns.The project work should be divided almost equally among team members and each member is expected to work on at least one design pattern (more than one partner may work on a pattern) and some of its test cases. You can of course help each other, but it needs to be clear who will be responsible for which patterns and for which features.
- 
 
+ 
 ## Project Description
  > ## Phase I
  > Our project is intended to be a task scheduler with GUI. Our hope is to create a tool that each one of use would want to use in our daily life. Obviously we want to get stuff done, this tool shoudl help with that. Important too is the fact that this is a useful project, while the other suggested projects are games. Games are a popular stable for CS projects, but only a portion of the possible jobs for CS are game devs, in fact some of the worst jobs are game dev jobs. This is meant to be a more helpful tool that allows us to have a stronger resume/portfolio for non-gamedev jobs. 
