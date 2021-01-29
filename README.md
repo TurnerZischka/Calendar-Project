@@ -19,8 +19,9 @@ Users can display, edit, and delete tasks and task lists. Users should also be a
 undo these operations.
  
  > * Design Patterns Patterns to use
- >   * SAMPLE Composite, Strategy, Abstract Factory, Visitor, or Decorator
- >   * All design patterns need to be linked together (it can't be two distinct projects)
+ >   * Memento
+ >   * Composite
+ >   * Facade
  > * Programming Languages in use
  >   * C++
  > * Inputs
