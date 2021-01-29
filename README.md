@@ -20,11 +20,15 @@ undo these operations.
  
  > * Design Patterns Patterns to use
  >   * Memento
+ >      *We hope to use this pattern in order for a user to save their calendar, and use it the next time they load the program. The momento parttern will be used to save the state of classes representing the user schedules events. We picked this pattern so that we can get all data form the classes storing information, and then store that in a sperate file -- txt mostly likely -- so that the next time the program is loaded, classes can be created and loaded with momento information, effectivly a save calendar feature. This is a good solution because there is no way to store an object in long term memory, this will save the essence of an object for later. 
  >   * Composite
  >   * Facade
  >   * Decorator
  > * Programming Languages in use
  >   * C++
+ > * Tools in Use
+ >   * GTest
+ >   * Valgrind
  > * Inputs
  >   * User data - from menu
  >   * User data - from textual inputs
