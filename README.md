@@ -20,11 +20,11 @@ undo these operations.
  
  > * Design Patterns Patterns to use
  >   * Memento
- >      *We hope to use this pattern in order for a user to save their calendar, and use it the next time they load the program. The momento parttern will be used to save the state of classes representing the user schedules events. We picked this pattern so that we can get all data form the classes storing information, and then store that in a sperate file -- txt mostly likely -- so that the next time the program is loaded, classes can be created and loaded with momento information, effectivly a save calendar feature. This is a good solution because there is no way to store an object in long term memory, this will save the essence of an object for later. 
+ >      * We hope to use this pattern in order for a user to save their calendar, and use it the next time they load the program. The momento parttern will be used to save the state of classes representing the user schedules events. We picked this pattern so that we can get all data form the classes storing information, and then store that in a sperate file -- txt mostly likely -- so that the next time the program is loaded, classes can be created and loaded with momento information, effectivly a save calendar feature. This is a good solution because there is no way to store an object in long term memory, this will save the essence of an object for later. 
  >   * Composite
  >      * We want to implement a list output of all events a user has entered into their schedule. The user can add events to days, or to weeks, and should be able to output all of them. This pattern is usefully because it allows us to nests tasks within tasks, and have them displayed under one command of an interface. Also, this would allow us to create subtasks to tasks, a representation of tasks within a goal. This is a good choice for exactly that nesting puropse. Objects of the same type can be contained with one another, and treated uniformly by an interface. 
  >   * Facade
- >      *In our sceduler, there will be multiple way to display events and things to be done. Each of these will utalize different classes and ways to display data. As such, there will be different ways to access data. Of course each display will work from a common set of classes representing a users scheduled events. The use of a facade will help create a uniform way for the display classes to interact with the event classes. In fact, it will be the only proper way to interact with them. This is good because then we don't have to directly have each diplay class with the knowledge and abilty to manipulate every single event class, instead have a uniform and specificed way for each to interact with the "subsystem" of even classes. 
+ >      * In our sceduler, there will be multiple way to display events and things to be done. Each of these will utalize different classes and ways to display data. As such, there will be different ways to access data. Of course each display will work from a common set of classes representing a users scheduled events. The use of a facade will help create a uniform way for the display classes to interact with the event classes. In fact, it will be the only proper way to interact with them. This is good because then we don't have to directly have each diplay class with the knowledge and abilty to manipulate every single event class, instead have a uniform and specificed way for each to interact with the "subsystem" of even classes. 
  >   * Decorator
  > * Programming Languages in use
  >   * C++
@@ -39,14 +39,7 @@ undo these operations.
  >   * Graphical Display
  >      * Can be changed with menu options which affect terminal display
  >
- > Your project description should summarize the project you are proposing. Be sure to include
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What are the two design patterns you will be using? For each design pattern you must explain in 4-5 sentences:
- >   * Why you picked this pattern and what feature you will implement with it
- >   * What problem you anticipate encountering when implementing your project that you will solve using the design pattern
- >   * Why the chosen design pattern will lead to a good solution to that problem
- > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
