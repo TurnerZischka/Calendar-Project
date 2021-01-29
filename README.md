@@ -25,7 +25,6 @@ undo these operations.
  >      * We want to implement a list output of all events a user has entered into their schedule. The user can add events to days, or to weeks, and should be able to output all of them. This pattern is usefully because it allows us to nests tasks within tasks, and have them displayed under one command of an interface. Also, this would allow us to create subtasks to tasks, a representation of tasks within a goal. This is a good choice for exactly that nesting puropse. Objects of the same type can be contained with one another, and treated uniformly by an interface. 
  >   * Facade
  >      * In our sceduler, there will be multiple way to display events and things to be done. Each of these will utalize different classes and ways to display data. As such, there will be different ways to access data. Of course each display will work from a common set of classes representing a users scheduled events. The use of a facade will help create a uniform way for the display classes to interact with the event classes. In fact, it will be the only proper way to interact with them. This is good because then we don't have to directly have each diplay class with the knowledge and abilty to manipulate every single event class, instead have a uniform and specificed way for each to interact with the "subsystem" of even classes. 
- >   * Decorator
  > * Programming Languages in use
  >   * C++
  > * Tools in Use
