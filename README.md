@@ -1,7 +1,7 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\>"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \Scheduler for da Cool Kids\
+# Scheduler for da Cool Kids
  
  > Authors:   \<[Turner Zischka](https://github.com/TurnerZischka)\>  \<[Austin Lee](https://github.com/austinslee)\> \<[Aly Refaat](https://github.com/Sebesky)\>
  
@@ -19,20 +19,17 @@ Users can display, edit, and delete tasks and task lists. Users should also be a
 undo these operations.
  
  > * Design Patterns Patterns to use
- >   * asdf
  >   * SAMPLE Composite, Strategy, Abstract Factory, Visitor, or Decorator
  >   * All design patterns need to be linked together (it can't be two distinct projects)
  > * Programming Languages in use
  >   * C++
- >   * GUI TBD
  > * Inputs
- >   * User data
+ >   * User data - from menu
  >   * GUI interactions
  > * Outputs
- >   * Save file data, in order to save user data and dates across boots
+ >   * Save file data, in order to save user data and dates across boots (using input/output file streams to/from txt files).
  >   * Graphical Display
- >      * includes buttons and GUI
- >      * and the output of the calendar and other forms of user info display
+ >      * Can be changed with menu options which affect terminal display
  >
  > Your project description should summarize the project you are proposing. Be sure to include
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
