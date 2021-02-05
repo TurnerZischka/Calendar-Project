@@ -1,42 +1,42 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
+  As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
+  Prompt text is any lines beginning with "\>"
+  Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Scheduler for da Cool Kids
  
- > Authors:   \<[Turner Zischka](https://github.com/TurnerZischka)\>  \<[Austin Lee](https://github.com/austinslee)\> \<[Aly Refaat](https://github.com/Sebesky)\>
+  Authors:   \[Turner Zischka](https://github.com/TurnerZischka)\  \[Austin Lee](https://github.com/austinslee)\ \[Aly Refaat](https://github.com/Sebesky)\
  
 
  
 ## Project Description
- > ## Phase I
- > Our project is intended to be a task scheduler with GUI. Our hope is to create a tool that each one of use would want to use in our daily life. Obviously we want to get stuff done, this tool should help with that. Important too is the fact that this is a useful project, while the other suggested projects are games. Games are a popular stable for CS projects, but only a portion of the possible jobs for CS are game devs, in fact some of the worst jobs are game dev jobs. This is meant to be a more helpful tool that allows us to have a stronger resume/portfolio for non-gamedev jobs. 
-  > * In this application, a user can create tasks including a title, description,
+  ## Phase I
+  Our project is intended to be a task scheduler with GUI. Our hope is to create a tool that each one of use would want to use in our daily life. Obviously we want to get stuff done, this tool should help with that. Important too is the fact that this is a useful project, while the other suggested projects are games. Games are a popular stable for CS projects, but only a portion of the possible jobs for CS are game devs, in fact some of the worst jobs are game dev jobs. This is meant to be a more helpful tool that allows us to have a stronger resume/portfolio for non-gamedev jobs. 
+   * In this application, a user can create tasks including a title, description,
 classification (e.g. personal, work, study) priority, duration and due date. Some of these
 features can also be optional. Users can also create task lists where each list includes
 multiple tasks. Task lists can represent larger tasks that have subtasks within them.
 Users can display, edit, and delete tasks and task lists. Users should also be able to
 undo these operations.
  
- > * Design Patterns Patterns to use
- >   * Memento
- >      * We hope to use this pattern in order for a user to save their calendar, and use it the next time they load the program. The memento parttern will be used to save the state of classes representing the user schedules events. We picked this pattern so that we can get all data form the classes storing information, and then store that in a sperate file -- txt mostly likely -- so that the next time the program is loaded, classes can be created and loaded with memento information, effectively a save calendar feature. This is a good solution because there is no way to store an object in long term memory, this will save the essence of an object for later. 
- >   * Composite
- >      * We want to implement a list output of all events a user has entered into their schedule. The user can add events to days, or to weeks, and should be able to output all of them. This pattern is useful because it allows us to nests tasks within tasks, and have them displayed under one command of an interface. Also, this would allow us to create subtasks to tasks, a representation of tasks within a goal. This is a good choice for exactly that nesting puropse. Objects of the same type can be contained with one another, and treated uniformly by an interface. 
- >   * Facade
- >      * In our scheduler, there will be multiple ways to display events and things to be done. Each of these will utilize different classes and ways to display data. As such, there will be different ways to access data. Of course each display will work from a common set of classes representing a users scheduled events. The use of a facade will help create a uniform way for the display classes to interact with the event classes. In fact, it will be the only proper way to interact with them. This is good because then we don't have to directly have each diplay class with the knowledge and ability to manipulate every single event class, instead have a uniform and specificed way for each to interact with the "subsystem" of even classes. 
- > * Programming Languages in use
- >   * C++
- > * Tools in Use
- >   * [GTest](https://github.com/google/googletest) - used to test functionality of our program before full completion of our program. Useful also for testing first programming. 
- >   * [Valgrind](https://www.valgrind.org/) - Primarily the Memcheck tool to identify any possible programming errors and memory mismanagements
- > * Inputs
- >   * User data - from menu
- >   * User data - from textual inputs
- > * Outputs
- >   * Save file data, in order to save user data and dates across boots (using input/output file streams to/from txt files).
- >   * Graphical Display
- >      * Can be changed with menu options which affect terminal display
- >
+  * Design Patterns Patterns to use
+    * Memento
+       * We hope to use this pattern in order for a user to save their calendar, and use it the next time they load the program. The memento parttern will be used to save the state of classes representing the user schedules events. We picked this pattern so that we can get all data form the classes storing information, and then store that in a sperate file -- txt mostly likely -- so that the next time the program is loaded, classes can be created and loaded with memento information, effectively a save calendar feature. This is a good solution because there is no way to store an object in long term memory, this will save the essence of an object for later. 
+    * Composite
+       * We want to implement a list output of all events a user has entered into their schedule. The user can add events to days, or to weeks, and should be able to output all of them. This pattern is useful because it allows us to nests tasks within tasks, and have them displayed under one command of an interface. Also, this would allow us to create subtasks to tasks, a representation of tasks within a goal. This is a good choice for exactly that nesting puropse. Objects of the same type can be contained with one another, and treated uniformly by an interface. 
+    * Facade
+       * In our scheduler, there will be multiple ways to display events and things to be done. Each of these will utilize different classes and ways to display data. As such, there will be different ways to access data. Of course each display will work from a common set of classes representing a users scheduled events. The use of a facade will help create a uniform way for the display classes to interact with the event classes. In fact, it will be the only proper way to interact with them. This is good because then we don't have to directly have each diplay class with the knowledge and ability to manipulate every single event class, instead have a uniform and specificed way for each to interact with the "subsystem" of even classes. 
+  * Programming Languages in use
+    * C++
+  * Tools in Use
+    * [GTest](https://github.com/google/googletest) - used to test functionality of our program before full completion of our program. Useful also for testing first programming. 
+    * [Valgrind](https://www.valgrind.org/) - Primarily the Memcheck tool to identify any possible programming errors and memory mismanagements
+  * Inputs
+    * User data - from menu
+    * User data - from textual inputs
+  * Outputs
+    * Save file data, in order to save user data and dates across boots (using input/output file streams to/from txt files).
+    * Graphical Display
+       * Can be changed with menu options which affect terminal display
+ 
 
 
  > ## Phase II
