@@ -3,7 +3,7 @@
   Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Scheduler for da Cool Kids
  
-  Authors:   \[Turner Zischka](https://github.com/TurnerZischka)\  \[Austin Lee](https://github.com/austinslee)\ \[Aly Refaat](https://github.com/Sebesky)\
+  Authors:   <\[Turner Zischka](https://github.com/TurnerZischka)\>  <\[Austin Lee](https://github.com/austinslee)\> <\[Aly Refaat](https://github.com/Sebesky)\>
  
 
  
