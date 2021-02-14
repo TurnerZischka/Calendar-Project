@@ -53,6 +53,8 @@ undo these operations.
 ## Class Diagram
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
  
+  ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram%20(1).png)
+ 
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
  > * Before the meeting you should perform a sprint plan like you did in Phase II
@@ -62,7 +64,7 @@ undo these operations.
  >   - Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
  >   - What tasks you are planning for this next sprint.
  
- ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram.png)
+
 
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
