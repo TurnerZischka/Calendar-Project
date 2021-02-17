@@ -13,7 +13,7 @@ class Moment {
 	string description;
 	string title;
 	string classification;
-
+	int priority;
 
 
 
