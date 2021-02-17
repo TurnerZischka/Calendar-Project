@@ -5,15 +5,26 @@
 
 class Moment {
    private:
+	string title;
+	string description;
+	string classification;
    	double startTime;
 	double endTime;
 	double totalTime;
-
-   public:
-	string description;
-	string title;
-	string classification;
 	int priority;
+   public:
+	Moment(){} // default constructor
+	
+	// the most common constructor
+	Moment(string titIn, string descIn, string catIn, double startIn, double endIn, double totIn, int priIn) {
+	title = titIn;
+	description = descIn;
+	classification = catIn;
+	startTime = startIn;
+	endTime = endIn;
+	totalTime = totIn;
+	priority = priIn;
+	}
 
 
 
