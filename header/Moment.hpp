@@ -27,7 +27,21 @@ class Moment {
 	}
 
 
+	string getTitle(){ return title; }
+	string getDescription(){ return description;}
+	string getClass(){ return classification; }
+	double getStart(){ return startTime; }
+	double getEnd() { return endTime; }
+	double getTotal() {return totalTime;}
+	int getPriority() { return priority; }
 
+	void setTitle(string newTit) { title = newTit; }
+	void setDescription(string newTit) { description = newTit; }
+	void setClass(string newTit) { classification = newTit; }
+	void setStart(double newTit) { startTime = newTit; }
+	void setEnd(double newTit) { endTime = newTit; }
+	void setTotal(double newTit) { totalTime = newTit; }
+	void setPriority(int newTit) { priority = newTit; }
 };
 
 
