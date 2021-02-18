@@ -11,7 +11,9 @@ class Task: public Moment {
 	vector<Subtask> sub_tasks;
    public:
 	Task(string titIn, string descIn, string catIn, double startIn, double endIn, double totIn, int priIn ):Moment(titIn,descIn, catIn, startIn, endIn, totIn, priIn ){
-
+	//do we need to initilize the sub_tasks vector?
+	
+	}
 	void AddSubtask();
 
 

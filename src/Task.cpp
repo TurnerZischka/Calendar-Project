@@ -3,9 +3,9 @@
 #include "../header/Task.hpp"
 #include "../header/Subtask.hpp"
 
-void AddSubtask(//add the indivudual thigns)}{
+void AddSubtask(string titIn, string descIn, string catIn, double startIn, double endIn, double totIn, int priIn)}{
 
-	subtasks.emplace(titIn,descIn, catIn, starIn, endIn, totIn, priIn );
+	sub_tasks.emplace(titIn,descIn, catIn, startIn, endIn, totIn, priIn );
 
 
 
