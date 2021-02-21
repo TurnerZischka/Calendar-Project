@@ -21,10 +21,9 @@ void Control::removeTask(int taskID) {
             this->taskList.erase(iter);
         }
     }
-    
 }
 
-void Control::saveCalendar(std::list<Task*> taskList) {
+void Control::saveCalendar() {
     std::ofstream outFS;
     outFS.open("savedCalendar.txt");
     std::list<Task*>::iterator iter;
@@ -34,6 +33,8 @@ void Control::saveCalendar(std::list<Task*> taskList) {
         outFS << (*iter)->taskID << std::endl;
         outFS << std::endl;
     }
+
+    outFS.close();
 }
 
 void Control::loadCalendar(std::string fileName) {
