@@ -40,20 +40,19 @@ undo these operations.
  
 
 
- > ## Phase II
- > In addition to completing the "Class Diagram" section below, you will need to 
- > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
- >   * Backlog, TODO, In progress, In testing, Done
- >   * You can change these or add more if you'd like, but we should be able to identify at least these.
- > * There is no requirement for automation in the project board but feel free to explore those options.
- > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Create smaller development tasks as issues and assign them to team members. Place these in the `Backlog` column.
- >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
+  ## Phase II
 ## Class Diagram
- > Include a class diagram(s) for each design pattern and a description of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
- 
   ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram%20(1).png)
+  ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram%20-%20Composite%20(1).png)
+   The diagram above shows how we will be utilizing the composite design pattern to implement the calendar tasks hierarchy. For our program, the Calendar/Timed Moment Hierarchy class would have the properties startTime, EndTime, TotalTime, description, title, and classification to represent the properties in a task and would serve as the base class for the Task and Subtask class. The Calendar/Timed Moment Hierarchy class would also act as the component. The Task class would act as the composite and would store subtasks and have the ability to add and remove subtasks. The subtasks would act as the leaf. The Control class will act as the client and will be able to use the composite design pattern to add and remove tasks.
+  ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram%20-%20Command%20(1).png)
+   The command pattern is utilized in our project to implement the menu interface in the calendar. Users will be able to select cells in  the calendar which have tasks assigned to them. This will open a menu which allows them to edit the different aspects of the task such as the date, time, title, and classification. The pattern is implemented through the cell object, which contains a vector of menu items. While this will initially be empty, if a menu item is selected, a new menu item object will be appended to a menu items vector. When a menu item object is created, it will be constructed with an object which inherits from the command abstract base class. These concrete commands will execute the functions contained in the task composite hierarchy.
+
+  ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram%20-%20Strategy%20(1).png)
+  The base of this pattern is the Control. The control class will be used for many other purposes. Specific to the strategy pattern is reference to a Display class. Since week special is the only implementation of the Abstract Display, control will have reference to a Week Spatial. Control will be able to call the Display redraw function, which will then decide how to print the events insight of a list of composite classes, and then utilize the strategy itself to ensure that there will be proper printing of the cells as the calendar is printed to the screen. To better understand our use of Cell, imagine a typical weekly calendar. The days are represented as separate rows, and different events occur down each row. A cell will represent a 30 minute interval within a day. There will be 48 total cells for a day and 336 cells for a week. Each cell will be accounted for within the display class. To accommodate the different ways a cell will be one of the different implementations which will have all cells printed with a different look. This is the basis of the strategy pattern. When the redraw function is called. The fixed number of cells will be all assigned a cell type, and some information, and then as it is printed, will be printed according to its own print function drawCell().
+
+ 
+
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
