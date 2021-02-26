@@ -1,0 +1,38 @@
+#include <iostream>
+#include "./Moment.hpp"
+#include "./Subtask.hpp"
+#include "./Task.hpp"
+#include "./diskpay.hpp"
+#include "./cell.hpp"
+#include "./empty_cell.hpp"
+#include "./end_cell.hpp"
+#include "./middle_cell.hpp"
+#include "./single_cell.hpp"
+#include "./start_cell.hpp"
+
+using namespace std;
+
+void WeekSpatial::redraw(){
+    for(int i = 0; i< 7; i++){
+	for(int j = 0; j< 48;j++){
+	    cells[i][j]->drawTopCell();
+	}
+	cout << endl;
+	for(int j = 0; j< 48;j++){
+	    cells[i][j]->drawMiddleCell();
+	}
+	cout << endl;
+	for(int j = 0; j<48;j++){
+	    cells[i][j]->drawBottomCell();
+	}
+	cout << endl;
+
+
+    }
+
+
+}
+
+
+
+
