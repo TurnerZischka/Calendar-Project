@@ -20,6 +20,8 @@ class Week_Spatial: public display {
     private:
 	double currTime;
 	Cell*[7][48] cells;
+	int selectedDay;
+	int selectedTime;
 
     public:
 	virtual void redraw();
