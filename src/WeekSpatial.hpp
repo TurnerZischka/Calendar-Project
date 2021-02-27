@@ -35,9 +35,11 @@ void WeekSpatial::redraw(){
 
 void WeekSpatial::drawSubMenu(){
     vector<menuitems> menuToPrint = cell[selectedDay][selectedTime]->menuOptions
+    int i = 1;
     for( std::vector<int>::iterator it = menuToPrint.begin(); it != menuToPrint.end(); it++){
+	cout << "please choose one" << endl;
+	cout << i++ <<  it.name() << endl;	
 	
-
     }
 
 
