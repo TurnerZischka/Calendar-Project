@@ -1,12 +1,9 @@
-
-#include " ../header/Moment.hpp"
+#include "../header/Moment.hpp"
 #include "../header/Task.hpp"
 #include "../header/Subtask.hpp"
 
-void AddSubtask(string titIn, string descIn, string catIn, double startIn, double endIn, double totIn, int priIn)}{
+void Task::AddSubtask(std::string titIn, std::string descIn, std::string catIn, double startIn, double endIn, double totIn, int priIn) {
 
-	sub_tasks.emplace(titIn,descIn, catIn, startIn, endIn, totIn, priIn );
-
-
-
+	Subtask* mySubTask = new Subtask(titIn,descIn, catIn, startIn, endIn, totIn, priIn);
+	this->sub_tasks.push_back(mySubTask);
 }

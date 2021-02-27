@@ -1,5 +1,5 @@
-#ifndef __Task_HPP__
-#define __Task_HPP__
+#ifndef __SUBTASK_HPP__
+#define __SUBTASK_HPP__
 
 #include <string>
 #include <vector>
@@ -14,7 +14,7 @@ class Subtask: public Moment {
 	
 	}
 
-	Subtask(string titIn, string descIn, string catIn, double startIn, double endIn, double totIn, int priIn ):Moment(titIn,descIn, catIn, startIn, endIn, totIn, priIn ){
+	Subtask(std::string titIn, std::string descIn, std::string catIn, double startIn, double endIn, double totIn, int priIn ):Moment(titIn,descIn, catIn, startIn, endIn, totIn, priIn ){
 
 
 	}
@@ -25,4 +25,4 @@ class Subtask: public Moment {
 
 
 
-#endif
+#endif // __SUBTASK_HPP__

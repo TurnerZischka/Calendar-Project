@@ -11,9 +11,9 @@ class Control {
     private:
         std::list<Task*> taskList;
         Display* myDisplay;
-        std::string calendarName;
         
     public:
+        std::string calendarName;
         Control(std::list<Task*>, Display*);
         ~Control();
         void AddTask();
