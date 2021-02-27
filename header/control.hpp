@@ -9,10 +9,10 @@
 
 class Control {
     private:
-        std::list<Task*> taskList;
         Display* myDisplay;
         
     public:
+        std::list<Task*> taskList;
         std::string calendarName;
         Control(std::list<Task*>, Display*);
         ~Control();
@@ -21,6 +21,7 @@ class Control {
         void saveCalendar();
         void loadCalendar(std::string);
         void eventLoop();
+        int getSelected();
 };
 
 

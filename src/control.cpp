@@ -29,7 +29,7 @@ void Control::saveCalendar() {
     std::ofstream outFS;
     outFS.open(this->calendarName);
     std::list<Task*>::iterator iter;
-
+;
     for (iter = this->taskList.begin(); iter != this->taskList.end(); ++iter) {
         outFS << (*iter)->getTitle() << std::endl;
         outFS << (*iter)->getID() << std::endl;
@@ -64,10 +64,15 @@ void Control::eventLoop() {
 
             case 'c': printw("Enter name for new calendar.\n");
             std::cin >> this->calendarName;
+
             break;
 
             case 'l': printw("Enter name of calendar to load\n");
             std::cin >> this->calendarName;
+            loadCalendar(this->calendarName);
+
+            case 'a': AddTask();
+
             case KEY_UP: 
             break;
 
@@ -80,11 +85,14 @@ void Control::eventLoop() {
             case KEY_RIGHT: printw("\nRight");
             break;
 
+            case KEY_ENTER:
+
             default: printw("%c", ch);
         }
     }
-
-
+    refresh();
+    getch();
+    endwin();
 
 }
 
