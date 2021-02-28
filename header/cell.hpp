@@ -6,11 +6,10 @@
 #include"../header/menuitem.hpp"
 
 class Cell {
-	private:
+	public:
 		std::vector<MenuItem*> menuItemVect;
-		int taskID;
-	public:	
-		void createMenuItem(item*) { MenuItemVect.push_back(item*); }
+		int taskID;	
+		void createMenuItem(MenuItem* item) { MenuItemVect.push_back(item); }
 		int getAssociatedID() { returns taskID; }
 		int sizeOfMenu() { return menuItemVect.size(); }
 		void printMenuItem(int x) {
