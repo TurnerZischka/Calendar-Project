@@ -22,11 +22,12 @@ class Week_Spatial: public display {
 	Cell*[7][48] cells;
 	int selectedDay;
 	int selectedTime;
-
+	int mode;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed
     public:
 	virtual void redraw();
 	void drawSubMenu();
-
+	int getSelected();
+	void recieveInput(int);
 
 
 
