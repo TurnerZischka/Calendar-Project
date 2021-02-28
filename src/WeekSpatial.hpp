@@ -63,8 +63,8 @@ void WeekSpatial::drawSubMenu(){
     cout << "Please choose one" << endl;
     int i = 1;
     for( std::vector<int>::iterator it = menuToPrint.begin(); it != menuToPrint.end(); it++){
-	if ( i == selectedMenuItem+1) { cout << " > ";
-	cout << i++ <<  it.name() << endl;		
+	if ( i == selectedMenuItem+1) { cout << " > ";}
+	cout << i++ <<  it.printMenuItem() << endl;		
     }
 }
 
