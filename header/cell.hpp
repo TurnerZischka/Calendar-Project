@@ -10,10 +10,10 @@ class Cell {
 		std::vector<MenuItem*> menuItemVect;
 		int taskID;	
 		void createMenuItem(MenuItem* item) { MenuItemVect.push_back(item); }
-		int getAssociatedID() { returns taskID; }
+		int getAssociatedID() { return taskID; }
 		int sizeOfMenu() { return menuItemVect.size(); }
-		void printMenuItem(int x) {
-			std::cout << menuItemVect[x]->itemName;
+		string printMenuItem(int x) {
+			return menuItemVect[x]->itemName;
 		}
 		void actMenu(int x) {
 			menuItemVect[x]->selected();
