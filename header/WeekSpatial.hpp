@@ -2,6 +2,8 @@
 #define __WEEKSPATIAL_HPP__
 
 #include <iostream>
+#include <list>
+
 #include "./Moment.hpp"
 #include "./Subtask.hpp"
 #include "./Task.hpp"
@@ -23,8 +25,10 @@ class Week_Spatial: public display {
 	int selectedDay;
 	int selectedTime;
 	int mode;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed
+	int selectedMenuItem
     public:
-	virtual void redraw();
+	virtual void redraw(list<task*>);
+	void drawVisual(list<task*>);
 	void drawSubMenu();
 	int getSelected();
 	void recieveInput(int);
