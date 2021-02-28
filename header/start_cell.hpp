@@ -6,9 +6,7 @@
 class StartCell : public Cell {
 	private:
 	public:
-		StartCell() { 
-			taskID = ID;
-		}
+
 		void drawTopCell() { std::cout << "+----"; }
 		void drawMiddleCell() { std::cout << "|    "; }
 		void drawBottomCell() { std::cout << "+----"; }

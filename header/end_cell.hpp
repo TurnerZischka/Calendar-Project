@@ -6,9 +6,7 @@
 class EndCell : public Cell {
 	private:
 	public:
-		EndCell(int ID) { 
-			taskID = ID;
-		}
+
 		void drawTopCell() { std::cout << "----+"; }
 		void drawMiddleCell() { std::cout << "    |"; }
 		void drawBottomCell() { std::cout << "----+"; }

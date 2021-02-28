@@ -6,9 +6,7 @@
 class MiddleCell : public Cell {
 	private:
 	public:
-		MiddleCell() {
-			taskID = ID;
-		}
+
 		void drawTopCell() { std::cout << "-----"; }
 		void drawMiddleCell() { std::cout << "     "; }
 		void drawBottomCell() { std::cout << "-----"; }
