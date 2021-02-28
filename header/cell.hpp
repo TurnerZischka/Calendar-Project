@@ -15,7 +15,7 @@ class Cell {
 		void printMenuItem(int x) {
 			std::cout << menuItemVect[x]->itemName;
 		}
-		void actMenuItem(int x) {
+		void actMenu(int x) {
 			menuItemVect[x]->selected();
 		}
 			
