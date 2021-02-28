@@ -16,7 +16,7 @@ class Cell {
 			std::cout << menuItemVect[x]->itemName;
 		}
 		void actMenuItem(int x) {
-			std::menuItemVect[x]->selected();
+			menuItemVect[x]->selected();
 		}
 			
 		virtual void drawTopCell() = 0;
