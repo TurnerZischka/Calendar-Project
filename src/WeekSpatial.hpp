@@ -92,6 +92,7 @@ void recieveInput(int inputSelection){
 	    if(selectedTime< 0) {selectedTime = 0;}
 	} else if (inputSelection == 5) {
 	    mode = 2;  //will switch modes, the drawing will be done once the event loop in control calls redraw
+	    selectedMenuitem = 0;
 	}
     }
     else if (mode == 2){
@@ -102,9 +103,12 @@ void recieveInput(int inputSelection){
 
 
 	} else if (inputSelection == 5){
+	    mode = 1;
+	    selectedMenuItem = 0;
 	    cells[selectedDay][selectedTime]->actMenu(selectedMenuItem)
 	} else if (inputSelection == 6) {
 	    mode = 1;
+	    selectedMenuItem = 0;
 	}
 
     }
