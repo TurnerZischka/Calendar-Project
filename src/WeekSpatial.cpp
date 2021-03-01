@@ -5,6 +5,7 @@
 #include "../header/Subtask.hpp"
 #include "../header/Task.hpp"
 #include "../header/display.hpp"
+#include "../header/WeekSpatial.hpp"
 //#include "../header/cell.hpp"
 //#include "../header/empty_cell.hpp"
 //#include "../header/end_cell.hpp"
@@ -21,7 +22,7 @@ using namespace std;
 
 
 
-void WeekSpatial::redraw(list<task*> passingList){
+void WeekSpatial::redraw(list<Task*> passingList){
     if(mode == 1) { //if mose is set to visual (1), then call respective function
 	drawVisual(passingList);
     } else if ( mode == 2){
@@ -35,7 +36,7 @@ void WeekSpatial::redraw(list<task*> passingList){
 
 }
 
-void WeekSpatial::drawVisual(list<task*> taskList){
+void WeekSpatial::drawVisual(list<Task*> taskList){
 
 //delete all old cells
 //to assign each spot in cells the apprioate cell
@@ -81,7 +82,7 @@ void WeekSpatial::recieveInput(int inputSelection){
     if(mode == 1){
 	if(inputSelection == 1){ //goes up
 	    selectedDay--;
-	    if( selecedDay < 0){ selectedDay = 0;} //out of boudn corrector
+	    if( selectedDay < 0){ selectedDay = 0;} //out of boudn corrector
 	} else if (inputSelection == 2){ //goes right
 	    selectedTime++;
 	    if(selectedTime > 47) {selectedTime = 47;}
@@ -95,7 +96,7 @@ void WeekSpatial::recieveInput(int inputSelection){
 	    if(selectedTime< 0) {selectedTime = 0;}
 	} else if (inputSelection == 5) {
 	    mode = 2;  //will switch modes, the drawing will be done once the event loop in control calls redraw
-	    selectedMenuitem = 0;
+	    selectedMenuItem = 0;
 	}
     }
     else if (mode == 2){
