@@ -107,12 +107,13 @@ void recieveInput(int inputSelection){
 
 	} else if (inputSelection == 3) {
 	    selectedMenuItem++;
-	    if(selectedMenuItem >= cells[selectedDay][selectedTime]->sizeofMenu()) { selectedMenuItem = cells[selectedDay][selectedTime]->sizeofMenu()-1;}
+	    if(selectedMenuItem >= cells[selectedDay][selectedTime]->sizeofMenu()) { selectedMenuItem = cells[selectedDay][selectedTime]->sizeOfMenu()-1;}
 	
 	} else if (inputSelection == 5){
 	    mode = 1;
+	    int temp = selectedMenuItem;
 	    selectedMenuItem = 0;
-	    cells[selectedDay][selectedTime]->actMenu(selectedMenuItem)
+	    cells[selectedDay][selectedTime]->actMenu(temp);
 	} else if (inputSelection == 6) {
 	    mode = 1;
 	    selectedMenuItem = 0;
