@@ -8,16 +8,16 @@ class Moment {
 	std::string title;
 	std::string description;
 	std::string classification;
-   	double startTime;
-	double endTime;
-	double totalTime;
+   	int startTime;
+	int endTime;
+	int totalTime;
 	int priority;
 	int ID;
    public:
 	Moment(){} // default constructor
 	
 	// the most common constructor
-	Moment(std::string titIn, std::string descIn, std::string catIn, double startIn, double endIn, double totIn, int priIn) {
+	Moment(std::string titIn, std::string descIn, std::string catIn, int startIn, int endIn, int totIn, int priIn) {
 	title = titIn;
 	description = descIn;
 	classification = catIn;
@@ -31,9 +31,9 @@ class Moment {
 	std::string getTitle(){ return title; }
 	std::string getDescription(){ return description;}
 	std::string getClass(){ return classification; }
-	double getStart(){ return startTime; }
-	double getEnd() { return endTime; }
-	double getTotal() {return totalTime;}
+	int getStart(){ return startTime; }
+	int getEnd() { return endTime; }
+	int getTotal() {return totalTime;}
 	int getID() {return ID;}
 	int getPriority() { return priority; }
 

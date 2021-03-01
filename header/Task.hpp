@@ -18,7 +18,7 @@ class Task: public Moment {
 	//do we need to initilize the sub_tasks vector?
 	ID = inID;
 	}
-	void AddSubtask(std::string titIn, std::string descIn, std::string catIn, double startIn, double endIn, double totIn, int priIn);
+	void AddSubtask(std::string titIn, std::string descIn, std::string catIn, int startIn, int endIn, int totIn, int priIn);
 
 
 

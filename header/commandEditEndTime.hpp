@@ -3,7 +3,6 @@
 
 #include "command.hpp"
 
-
 class CommandEditEndTime: public Command {
 
     public:
