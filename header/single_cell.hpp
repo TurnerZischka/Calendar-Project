@@ -10,8 +10,8 @@
 class SingleCell : public Cell {
 	private:
 	public:
-		SingleCell(int ID) { 
-			taskID = ID;
+		SingleCell(Task* ftask) { 
+			task = ftask;
 			createMenuItem(new MenuItem("Edit Title",new CommandEditTitle));
 			createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
 			createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
@@ -21,20 +21,20 @@ class SingleCell : public Cell {
 
 		void drawTopCell() { std::cout << "+---+"; }
 		void drawMiddleCell() { std::cout << "|   |"; }
-		/* void drawMilddleCell() { 
-			//How do we get task title? Going to implement assuming string taskTitle hold task title.
-			string taskTitle;
-			cout << "|";
+		void drawMilddleCellTitle() { 
+			string taskTitle = task->getTitle();
+			std::cout << "|";
 			for(unsigned i = 0; i < 3; ++i) {
 				if(i < taskTitle.size()) {
-					cout << taskTitle.at(i);
+					std::cout << taskTitle.at(i);
 				}
 				if(i >= x.size()) {
-					cout << " ";
+					std::cout << " ";
 				}
 			}
-			cout << "|";
-		}*/
+			std::cout << "|";
+		}
+		
 		void drawBottomCell() { std::cout << "+---+"; }
 };
 
