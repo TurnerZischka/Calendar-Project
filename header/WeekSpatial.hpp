@@ -4,28 +4,28 @@
 #include <iostream>
 #include <list>
 
-#include "./Moment.hpp"
-#include "./Subtask.hpp"
-#include "./Task.hpp"
-#include "./diskpay.hpp"
-#include "./cell.hpp"
-#include "./empty_cell.hpp"
-#include "./end_cell.hpp"
-#include "./middle_cell.hpp"
-#include "./single_cell.hpp"
-#include "./start_cell.hpp"
+#include "../header/Moment.hpp"
+#include "../header/Subtask.hpp"
+#include "../header/Task.hpp"
+#include "../header/display.hpp"
+//#include "../header/cell.hpp"
+//#include "../header/empty_cell.hpp"
+//#include "../header/end_cell.hpp"
+//#include "../header/middle_cell.hpp"
+//#include "../header/single_cell.hpp"
+//#include "../header/start_cell.hpp"
 
 
 using namespace std;
 
-class Week_Spatial: public display {
+class Week_Spatial: public Display {
     private:
 	double currTime;
 	Cell*[7][48] cells;
 	int selectedDay;
 	int selectedTime;
 	int mode;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed
-	int selectedMenuItem
+	int selectedMenuItem;
     public:
 	virtual void redraw(list<task*>);
 	void drawVisual(list<task*>);

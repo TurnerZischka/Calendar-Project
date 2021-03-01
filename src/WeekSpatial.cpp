@@ -1,20 +1,19 @@
 #include <iostream>
 #include <list>
-#include "./Moment.hpp"
-#include "./Subtask.hpp"
-#include "./Task.hpp"
-#include "./diskpay.hpp"
-#include "./cell.hpp"
-#include "./empty_cell.hpp"
-#include "./end_cell.hpp"
-#include "./middle_cell.hpp"
-#include "./single_cell.hpp"
-#include "./start_cell.hpp"
+#include "../header/Moment.hpp"
+#include "../header/Subtask.hpp"
+#include "../header/Task.hpp"
+#include "../header/display.hpp"
+//#include "../header/cell.hpp"
+//#include "../header/empty_cell.hpp"
+//#include "../header/end_cell.hpp"
+//#include "../header/middle_cell.hpp"
+//#include "../header/single_cell.hpp"
+//#include "../header/start_cell.hpp"
 
 using namespace std;
 
 
-}
 
 
 void WeekSpatial::redraw(list<task*> passingList){
@@ -74,7 +73,7 @@ int WeekSpatial::getSelected(){
    return cells[selectedDay][selectedTime]->getAssociatedID();
 }
 
-void recieveInput(int inputSelection){
+void WeekSpatial::recieveInput(int inputSelection){
     if(mode == 1){
 	if(inputSelection == 1){ //goes up
 	    selectedDay--;
