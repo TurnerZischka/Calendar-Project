@@ -1,20 +1,22 @@
 #include <iostream>
 #include <list>
-#include "./Moment.hpp"
-#include "./Subtask.hpp"
-#include "./Task.hpp"
-#include "./diskpay.hpp"
-#include "./cell.hpp"
-#include "./empty_cell.hpp"
-#include "./end_cell.hpp"
-#include "./middle_cell.hpp"
-#include "./single_cell.hpp"
-#include "./start_cell.hpp"
+#include <vector>
+
+#include "../header/Moment.hpp"
+#include "../header/Subtask.hpp"
+#include "../header/Task.hpp"
+#include "../header/diskpay.hpp"
+#include "../header/cell.hpp"
+#include "../header/empty_cell.hpp"
+#include "../header/end_cell.hpp"
+#include "../header/middle_cell.hpp"
+#include "../header/single_cell.hpp"
+#include "../header/start_cell.hpp"
+#include "../header/menuitem.hpp
 
 using namespace std;
 
 
-}
 
 
 void WeekSpatial::redraw(list<task*> passingList){
@@ -59,12 +61,11 @@ void WeekSpatial::drawVisual(list<task*> taskList){
 }
 
 void WeekSpatial::drawSubMenu(){
-    vector<menuitems> menuToPrint = cell[selectedDay][selectedTime]->menuOptions
+    int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu()
     cout << "Please choose one" << endl;
-    int i = 1;
-    for( std::vector<int>::iterator it = menuToPrint.begin(); it != menuToPrint.end(); it++){
-	if ( i == selectedMenuItem+1) { cout << " > ";}
-	cout << i++ <<  it.printMenuItem() << endl;		
+    for( int i = 0; i < menuSize; i++){
+	if ( i == selectedMenuItem) { cout << " > ";}
+	cout << i+1 <<  cells[selectedDay][selectedTime]->printMenuItem(i) << endl;		
     }
 }
 
