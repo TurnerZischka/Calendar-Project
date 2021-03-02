@@ -64,7 +64,7 @@ void WeekSpatial::drawVisual(list<Task*> taskList){
 }
 
 void WeekSpatial::drawSubMenu(){
-    int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu()
+    int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
     cout << "Please choose one" << endl;
     for( int i = 0; i < menuSize; i++){
 	if ( i == selectedMenuItem) { cout << " > ";}
@@ -110,7 +110,7 @@ void WeekSpatial::recieveInput(int inputSelection){
 
 	} else if (inputSelection == 3) {
 	    selectedMenuItem++;
-	    if(selectedMenuItem >= cells[selectedDay][selectedTime]->sizeofMenu()) { selectedMenuItem = cells[selectedDay][selectedTime]->sizeOfMenu()-1;}
+	    if(selectedMenuItem >= cells[selectedDay][selectedTime]->sizeOfMenu()) { selectedMenuItem = cells[selectedDay][selectedTime]->sizeOfMenu()-1;}
 	
 	} else if (inputSelection == 5){
 	    mode = 1;
