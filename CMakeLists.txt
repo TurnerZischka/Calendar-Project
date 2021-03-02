@@ -6,7 +6,7 @@ SET(CMAKE_CXX_STANDARD 11)
 ADD_SUBDIRECTORY(googletest)
 
 
-ADD_EXECUTABLE(calendar src/main.cpp src/main.cpp src/Task.cpp src/WeekSpatial.cpp)
+ADD_EXECUTABLE(calendar src/main.cpp  src/Task.cpp src/WeekSpatial.cpp src/control.cpp)
 ADD_EXECUTABLE(test test/tests.cpp )
 
 

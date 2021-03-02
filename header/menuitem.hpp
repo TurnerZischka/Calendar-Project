@@ -8,7 +8,6 @@ class MenuItem {
     public:
         Command* specificCommand;
         ~MenuItem() {delete this;}
-        void selected();
         std::string itemName;
 
         MenuItem(std::string name, Command* myCommand) {

@@ -3,6 +3,7 @@
 
 #include "Task.hpp"
 #include "display.hpp"
+#include "WeekSpatial.hpp"
 #include <string>
 #include <list>
 

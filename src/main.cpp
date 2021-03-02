@@ -10,6 +10,12 @@
 #include "../header/middle_cell.hpp"
 #include "../header/single_cell.hpp"
 #include "../header/start_cell.hpp"
+#include "../header/menuitem.hpp"
+#include "../header/commandEditClassification.hpp"
+#include "../header/commandEditDescription.hpp"
+#include "../header/commandEditEndTime.hpp"
+#include "../header/commandEditStartTime.hpp"
+#include "../header/commandEditTitle.hpp"
 
 
 

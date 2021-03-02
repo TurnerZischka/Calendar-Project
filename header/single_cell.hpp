@@ -5,6 +5,12 @@
 #include<cstring>
 
 #include "../header/cell.hpp"
+#include "../header/commandEditClassification.hpp"
+#include "../header/commandEditDescription.hpp"
+#include "../header/commandEditEndTime.hpp"
+#include "../header/commandEditStartTime.hpp"
+#include "../header/commandEditTitle.hpp"
+
 
 
 class SingleCell : public Cell {
