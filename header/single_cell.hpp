@@ -21,6 +21,7 @@ class SingleCell : public Cell {
 
 		void drawTopCell() { std::cout << "+---+"; }
 		void drawMiddleCell() { std::cout << "|   |"; }
+
 		void drawMilddleCellTitle() { 
 			string taskTitle = task->getTitle();
 			std::cout << "|";
@@ -35,6 +36,21 @@ class SingleCell : public Cell {
 			std::cout << "|";
 		}
 		
+               /* void drawMilddleCellStartTime() {
+                        double taskTime = task->getStart();
+                        std::cout << "|";
+                        for(unsigned i = 0; i < 3; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= x.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                        std::cout << "|";
+                }*/
+		
+	
 		void drawBottomCell() { std::cout << "+---+"; }
 };
 

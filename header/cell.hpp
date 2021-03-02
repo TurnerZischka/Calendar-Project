@@ -12,7 +12,6 @@ class Cell {
 		int taskID;	
 		Task* task;
 
-
 		void createMenuItem(MenuItem* item) { MenuItemVect.push_back(item); }
 		int getAssociatedID() { return taskID; }
 		int sizeOfMenu() { return menuItemVect.size(); }
@@ -22,8 +21,6 @@ class Cell {
 		void actMenu(int x) {
 			menuItemVect[x]->selected();
 		}
-
-
 			
 		virtual void drawTopCell() = 0;
 		virtual void drawMiddleCell() = 0;
