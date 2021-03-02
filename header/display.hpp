@@ -1,7 +1,9 @@
 #ifndef __DISPLAY_HPP__
 #define __DISPLAY_HPP__
 
+
 #include <iostream>
+#include <list>
 #include "./Moment.hpp"
 #include "./Subtask.hpp"
 #include "./Task.hpp"
@@ -14,12 +16,7 @@ class Display{
 
 
     public:
-	virtual void redraw()= 0;
-
-
-
-
-
+	virtual void redraw(list<Task*>)= 0;
 
 };
 
@@ -28,3 +25,4 @@ class Display{
 
 
 #endif
+
