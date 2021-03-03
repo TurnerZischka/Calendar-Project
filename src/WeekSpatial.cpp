@@ -9,7 +9,8 @@
 #include "../header/Task.hpp"
 #include "../header/display.hpp"
 #include "../header/WeekSpatial.hpp"
-#include "../header/cell.hpp"
+
+
 #include "../header/empty_cell.hpp"
 #include "../header/end_cell.hpp"
 #include "../header/middle_cell.hpp"
@@ -20,9 +21,9 @@
 using namespace std;
 
 
-void WeekSpatial::redraw(list<Task *> passingList) {
+void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
     if (mode == 1) { //if mose is set to visual (1), then call respective function
-        drawVisual(passingList);
+        drawVisual(passingList, theControl);
     } else if (mode == 2) {
         drawSubMenu();
     } else {
@@ -32,13 +33,14 @@ void WeekSpatial::redraw(list<Task *> passingList) {
 
 }
 
-void WeekSpatial::drawVisual(std::list<Task *> taskList) {
+void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
 
 
     if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 48; j++) {
                 Cell* temp = cells[i][j];
+                cells[i][j] = nullptr;
                 delete temp;
             }
 
@@ -72,14 +74,14 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList) {
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
         int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
         if (span > 1) {
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it);
+            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it, theControl);
 
             for( int i = 1; i < span-1; i++){
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it);
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it, theControl);
             }
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it);
+            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it, theControl);
         } else {
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it);
+            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it, theControl);
         }
     }
 

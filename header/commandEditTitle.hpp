@@ -1,12 +1,15 @@
-#ifndef __COMMAND_EDIT_TITLE_HPP__
-#define __COMMAND_EDIT_TITLE_HPP__
+#ifndef __COMMANDEDITTITLE_HPP__
+#define __COMMANDEDITTITLE_HPP__
 
 #include "command.hpp"
+#include "../header/control.hpp"
 
 
 class CommandEditTitle: public Command {
 
+
     public:
+        CommandEditTitle(Control* theControl):Command(theControl){ }
         virtual void execute() {
 
             std::string newTitle;

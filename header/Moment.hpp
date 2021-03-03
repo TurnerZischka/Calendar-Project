@@ -2,13 +2,12 @@
 #define __MOMENT_HPP__
 
 #include <string>
-#include <cstring>
+
 
 
 class Moment {
    private:
 	std::string title;
-
 	std::string description;
 	std::string classification;
 	int month;
@@ -47,8 +46,8 @@ class Moment {
 	void setTitle(std::string newTit) { title = newTit; }
 	void setDescription(std::string newTit) { description = newTit; }
 	void setClass(std::string newTit) { classification = newTit; }
-	void setStart(double newTit) { startTime = newTit; }
-	void setEnd(double newTit) { endTime = newTit; }
+	void setStart(int newTit) { startTime = newTit; }
+	void setEnd(int newTit) { endTime = newTit; }
 	void setPriority(int newTit) { priority = newTit; }
 };
 

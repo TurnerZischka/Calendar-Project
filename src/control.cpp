@@ -3,7 +3,9 @@
 #include <iostream>
 #include <climits>
 #include <ctime>
-#include "../header/conio.h"
+#include <list>
+//#include "../header/conio.h"
+#include <conio.h>
 
 Control::Control(std::list<Task*> task_list, Display* my_display) {
     this->taskList = task_list;
@@ -138,25 +140,25 @@ void Control::eventLoop() {
                 case 'A':
                 std::cout << "UpArrow\n";
                 this->myDisplay->recieveInput(1);
-                this->myDisplay->redraw(this->taskList);
+                this->myDisplay->redraw(this->taskList, this);
                 break;
 
                 case 'B':
                 std::cout << "DownArrow\n";
                 this->myDisplay->recieveInput(3);
-                this->myDisplay->redraw(this->taskList);
+                this->myDisplay->redraw(this->taskList, this);
                 break;
 
                 case 'C':
                 std::cout << "RightArrow\n";
                 this->myDisplay->recieveInput(2);
-                this->myDisplay->redraw(this->taskList);
+                this->myDisplay->redraw(this->taskList, this);
                 break;
 
                 case 'D':
                 std::cout << "LeftArrow\n";
                 this->myDisplay->recieveInput(4);
-                this->myDisplay->redraw(this->taskList);
+                this->myDisplay->redraw(this->taskList, this);
                 break;
 
             break;
@@ -169,6 +171,10 @@ void Control::eventLoop() {
 
         }
     }
+}
+
+int Control::getSelected() {
+    return myDisplay->getSelected();
 }
 
 

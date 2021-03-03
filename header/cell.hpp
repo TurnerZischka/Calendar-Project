@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include <vector>
-#include"../header/menuitem.hpp"
-#include "../header/task.hpp"
+#include <string>
+
+#include "../header/menuitem.hpp"
+#include "../header/Task.hpp"
 
 #include "../header/commandEditClassification.hpp"
 #include "../header/commandEditDescription.hpp"
@@ -22,11 +24,12 @@ class Cell {
 		Task* task;
 
 
+
 		void createMenuItem(MenuItem* item) { menuItemVect.push_back(item); }
 
 		int getAssociatedID() { return taskID; }
 		int sizeOfMenu() { return menuItemVect.size(); }
-		string printMenuItem(int x) {
+		std::string printMenuItem(int x) {
 			return menuItemVect.at(x)->itemName;
 		}
 		void actMenu(int x) {

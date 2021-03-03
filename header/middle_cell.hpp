@@ -6,17 +6,17 @@
 class MiddleCell : public Cell {
 private:
 public:
-    MiddleCell(Task *ftask) {
+    MiddleCell(Task *ftask, Control* theControl) {
         task = ftask;
-        createMenuItem(new MenuItem("Edit Title", new CommandEditTitle));
-        createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
-        createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
-        createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime));
-        createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
+        createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
+        createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
+        createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));
+        createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime(theControl)));
+        createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime(theControl)));
     }
 
     void drawMiddleCellTitle() {
-        string taskTitle = task->getTitle();
+        std::string taskTitle = task->getTitle();
         std::cout << "|";
         for (unsigned i = 5; i < 11; ++i) {
             if (i < taskTitle.size()) {
@@ -41,7 +41,7 @@ public:
     void highlightBottomCell() { std::cout << "******"; }
 
     void highlightMiddleCellTitle() {
-        string taskTitle = task->getTitle();
+        std::string taskTitle = task->getTitle();
         std::cout << "*";
         for (unsigned i = 5; i < 11; ++i) {
             if (i < taskTitle.size()) {

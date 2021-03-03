@@ -1,12 +1,14 @@
-#ifndef __COMMAND_EDIT_START_TIME_HPP__
-#define __COMMAND_EDIT_START_TIME_HPP__
+#ifndef __COMMANDEDITSTARTTIME_HPP__
+#define __COMMANDEDITSTARTTIME_HPP__
 
 #include "command.hpp"
+#include "../header/control.hpp"
 
 
 class CommandEditStartTime: public Command {
 
     public:
+        CommandEditStartTime(Control* theControl):Command(theControl){}
         virtual void execute() {
 
             double newStartTime;

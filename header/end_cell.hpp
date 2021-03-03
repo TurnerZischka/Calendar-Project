@@ -6,17 +6,17 @@
 class EndCell : public Cell {
 private:
 public:
-    EndCell(Task *ftask) {
+    EndCell(Task *ftask, Control *theControl) {
         task = ftask;
-        createMenuItem(new MenuItem("Edit Title", new CommandEditTitle));
-        createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
-        createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
-        createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime));
-        createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
+        createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
+        createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
+        createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));
+        createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime(theControl)));
+        createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime(theControl)));
     }
 
     void drawMiddleCellTitle() {
-        string taskTitle = task->getTitle();
+        std::string taskTitle = task->getTitle();
         for (unsigned i = 11; i < 17; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
@@ -42,7 +42,7 @@ public:
     void highlightBottomCell() { std::cout << "******"; }
 
     void highlightMiddleCellTitle() {
-        string taskTitle = task->getTitle();
+        std::string taskTitle = task->getTitle();
         for (unsigned i = 11; i < 17; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
