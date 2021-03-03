@@ -16,7 +16,6 @@
 #include "../header/start_cell.hpp"
 
 
-//delete these (class Cell; ....) once this file has been integrated with the project and cell.hpp is avaliable
 
 
 

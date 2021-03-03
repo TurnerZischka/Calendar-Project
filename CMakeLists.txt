@@ -7,11 +7,8 @@ ADD_SUBDIRECTORY(googletest)
 
 
 ADD_EXECUTABLE(calendar src/main.cpp  src/Task.cpp src/WeekSpatial.cpp src/control.cpp)
-ADD_EXECUTABLE(test test/tests.cpp )
 
 
 
 
 
-TARGET_LINK_LIBRARIES(test gtest)
-TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
