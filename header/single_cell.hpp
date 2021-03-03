@@ -17,7 +17,11 @@
 class SingleCell : public Cell {
 	private:
 	public:
-		SingleCell(Task* task) {
+
+		SingleCell(Task* ftask) { 
+			task = ftask;
+
+
 			createMenuItem(new MenuItem("Edit Title",new CommandEditTitle));
 			createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
 			createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
@@ -25,23 +29,63 @@ class SingleCell : public Cell {
 			createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
 		}
 
-		void drawTopCell() { std::cout << "+---+"; }
-		void drawMiddleCell() { std::cout << "|   |"; }
-		/* void drawMilddleCell() { 
-			//How do we get task title? Going to implement assuming string taskTitle hold task title.
-			string taskTitle;
-			cout << "|";
-			for(unsigned i = 0; i < 3; ++i) {
+		void drawTopCell() { std::cout << "+----+"; }
+		void drawMiddleCell() { std::cout << "|    |"; }
+
+		void drawMilddleCellTitle() { 
+			string taskTitle = task->getTitle();
+			std::cout << "|";
+			for(unsigned i = 0; i < 4; ++i) {
 				if(i < taskTitle.size()) {
-					cout << taskTitle.at(i);
+					std::cout << taskTitle.at(i);
 				}
 				if(i >= x.size()) {
-					cout << " ";
+					std::cout << " ";
 				}
 			}
-			cout << "|";
-		}*/
-		void drawBottomCell() { std::cout << "+---+"; }
+			std::cout << "|";
+		}
+		
+
+
+
+                /*void drawMilddleCellStartTime() {
+                        int taskTime = task->getStart();
+                        std::cout << "|";
+                        for(unsigned i = 0; i < 4; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= x.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                        std::cout << "|";
+                }*/
+
+
+		
+	
+		void drawBottomCell() { std::cout << "+----+"; }
+
+		void highlightTopCell() { std::cout << "******"; }
+		void highlightMiddleCell() { std::cout << "*    *"; }
+		void highlightBottomCell() { std::cout << "******"; }
+
+                void highlightMilddleCellTitle() {
+                        string taskTitle = task->getTitle();
+                        std::cout << "*";
+                        for(unsigned i = 0; i < 4; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= x.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                        std::cout << "*";
+                }
+
 };
 
 #endif //__SINGLE_CELL_HPP__
