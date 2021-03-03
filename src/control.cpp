@@ -15,40 +15,69 @@ void Control::AddTask() {
     std::string title;
     std::string classification;
     std::string description;
-    int startTime;
-    int endTime;
+    int month = -1;  //these 4 ints are initalized to trigger the respective for loops undderneath
+    int date = 0;
+    int startTime = -1;
+    int endTime = -1;
     int taskID = this->taskList.size();
 
     std::cout << "Enter a title for your task." << std::endl;
-    getline(std::cin,title);
+    getline(std::cin, title);
+
     std::cout << "Enter a classification (School, Work, etc.)" << std::endl;
+    getline(std::cin, classification);
 
-    getline(std::cin,classification);
     std::cout << "Enter a brief description for your task." << std::endl;
-    std::cin >> description;
     getline(std::cin, description);
-    std::cin.clear();
-    std::cout << "Enter a start time as a double (0000 - 2359)" << std::endl;
-    std::cin >> startTime;
-    std::cin.clear();
 
-    if(startTime < 0 || startTime > 2359) {
+    while (month < 0 || month > 11) {
+        std::cout << "Enter Month in a numbers, Jan = 1, Dec = 12" << std::endl;
+        std::cin >> month;
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+        month--;  //month needs to be months since january, possible values of 0 -11
+        if (month < 0 || month > 11) { std::cout << "INVALID INPUT" << std::endl;}
+    }
+
+    while (date < 1 || date > 31) {
+        std::cout << "Enter the day of the month, 1 -31" << std::endl;
+        std::cin >> date;
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+        if ( date < 1 || date > 31) { std::cout << "INVALID INPUT" << std::endl;}
+    }
+
+    while( startTime < 0 || startTime > 2359) {
+        std::cout << "Enter a start time as a double (0000 - 2359)" << std::endl;
+        std::cin >> startTime;
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+        if ( startTime < 0 || startTime > 2359) { std::cout << "INVALID INPUT" << std::endl;}
+    }
+
+    //old implmentation of error checking
+    /*if(startTime < 0 || startTime > 2359) {
         std::cout << "Invalid start time\n";
         return;
+    }*/
+
+    while( endTime < 0 || endTime > 2359) {
+        std::cout << "Enter an end time as a double (0 - 2359)" << std::endl;
+        std::cin >> endTime;
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+        if ( endTime < 0 || endTime > 2359) { std::cout << "INVALID INPUT" << std::endl;}
     }
 
-    std::cout << "Enter an end time as a double (0 - 2359)" << std::endl;
-    std::cin >> endTime;
-    std::cin.clear(); std::cin.ignore(INT_MAX,'\n');
 
-    if(endTime < 0 || endTime > 2359 || endTime < startTime) {
+    //old implimentation of error checking
+    /*if(endTime < 0 || endTime > 2359 || endTime < startTime) {
         std::cout << "Invalid end time" << std::endl;
         return;
-    }
+    }*/
 
-    int totalTime = endTime - startTime;
 
-    Task* myTask = new Task(title,description,classification,startTime, endTime, totalTime, 0, taskID);
+    Task* myTask = new Task(title,description,classification, month, date, startTime, endTime, 0, taskID);
     this->taskList.push_back(myTask);
     std::cout << "Task successfully added.\n";
 }
