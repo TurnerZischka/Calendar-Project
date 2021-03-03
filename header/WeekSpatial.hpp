@@ -8,12 +8,18 @@
 #include "../header/Subtask.hpp"
 #include "../header/Task.hpp"
 #include "../header/display.hpp"
+
+/*
 #include "../header/cell.hpp"
 #include "../header/empty_cell.hpp"
 #include "../header/end_cell.hpp"
 #include "../header/middle_cell.hpp"
 #include "../header/single_cell.hpp"
 #include "../header/start_cell.hpp"
+*/
+
+
+class Cell;
 
 
 
