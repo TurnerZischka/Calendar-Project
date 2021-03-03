@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <ctime>
 #include "../header/Moment.hpp"
 #include "../header/Subtask.hpp"
 #include "../header/Task.hpp"
@@ -33,6 +34,9 @@ void WeekSpatial::drawVisual(list<Task *> taskList) {
 
 //delete all old cells
 //to assign each spot in cells the apprioate cell
+
+
+
 
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 48; j++) {
