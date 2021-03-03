@@ -2,6 +2,7 @@
 #include <list>
 #include <vector>
 #include <ctime>
+#include <stdio.h>
 #include "../header/Moment.hpp"
 #include "../header/Subtask.hpp"
 #include "../header/Task.hpp"
@@ -34,6 +35,24 @@ void WeekSpatial::drawVisual(list<Task *> taskList) {
 
 //delete all old cells
 //to assign each spot in cells the apprioate cell
+
+    time_t currTime = time(0);
+    std:tm *timeStruct = localtime(&currTime);
+    int currDayWeek = timeStruct->tm_wday;
+    //date variables
+    //start of week variables
+    //end of week variables? do I need if I can just calcuate from start of week variables
+
+    //does this work? will earasing an element screw with for loop iterator?
+    //the point of this loop is to remove all events out of the list that do not fall within the range
+    for(std::list<task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
+        if(mktime(it->tmStruct) < mktime(weekStart) || mktime(it->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
+            it.erase();
+        }
+    }
+
+
+
 
 
 
