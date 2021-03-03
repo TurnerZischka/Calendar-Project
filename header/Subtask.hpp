@@ -15,7 +15,7 @@ class Subtask: public Moment {
 	Subtask():Moment(){ //default constructor, intializes a blank subtask
 	}
 
-	Subtask(std::string titIn, std::string descIn, std::string catIn, int startIn, int endIn, int totIn, int priIn ):Moment(titIn,descIn, catIn, startIn, endIn, totIn, priIn ){
+	Subtask(std::string titIn, std::string descIn, std::string catIn, int month, int date, int startIn, int endIn, int priIn ):Moment(titIn,descIn, catIn, month, date, startIn, endIn, priIn ){
     }
 
 
