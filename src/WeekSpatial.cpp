@@ -45,17 +45,28 @@ void WeekSpatial::drawVisual(list<Task *> taskList) {
 
     //does this work? will earasing an element screw with for loop iterator?
     //the point of this loop is to remove all events out of the list that do not fall within the range
-    for(std::list<task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
+    for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
         if(mktime(it->tmStruct) < mktime(weekStart) || mktime(it->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
             it.erase();
         }
     }
 
+    //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
+    for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
+        int span = (((it->endTime/100 - it->startTime/100)*60) + (it->endTime%100 - it->startTime%100) )/30;
+        if (span > 1) {
+            cells[it->tmStartStruct->tm_wday][it->tmStartStruct->tm_hour*2 + it->tmStartStruct->tm_min/30] = new StartCell(it);
+
+            for( int i = 1; i < span-1; i++){
+                cells[it->tmStartStruct->tm_wday][(it->tmStartStruct->tm_hour*2) + (it->tmStartStruct->tm_min/30) + (i)] = new MiddleCell(it);
+            }
+            cells[it->tmStartStruct->tm_wday][(it->tmStartStruct->tm_hour*2) + (it->tmStartStruct->tm_min/30) + (span-1)] = new EndCell(it);
+        } else {
+            cells[it->tmStartStruct->tm_wday][it->tmStartStruct->tm_hour*2 + it->tmStartStruct->tm_min/30] = new SingleCell(it);
+        }
 
 
-
-
-
+    }
 
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 48; j++) {
