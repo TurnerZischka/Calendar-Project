@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <climits>
+#include <ctime>
 #include "../header/conio.h"
 
 Control::Control(std::list<Task*> task_list, Display* my_display) {

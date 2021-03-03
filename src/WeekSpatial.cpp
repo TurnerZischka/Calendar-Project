@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <stdio.h>
+
 #include "../header/Moment.hpp"
 #include "../header/Subtask.hpp"
 #include "../header/Task.hpp"
@@ -31,7 +32,7 @@ void WeekSpatial::redraw(list<Task *> passingList) {
 
 }
 
-void WeekSpatial::drawVisual(list<Task *> taskList) {
+void WeekSpatial::drawVisual(std::list<Task *> taskList) {
 
     //delete all old cells
 
@@ -46,7 +47,7 @@ void WeekSpatial::drawVisual(list<Task *> taskList) {
     //does this work? will earasing an element screw with for loop iterator?
     //the point of this loop is to remove all events out of the list that do not fall within the range
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(mktime(it->tmStruct) < mktime(weekStart) || mktime(it->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
+        if(mktime((*it).tmStruct) < mktime(weekStart) || mktime(it->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
             it.erase();
         }
     }
