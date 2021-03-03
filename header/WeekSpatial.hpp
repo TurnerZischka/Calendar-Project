@@ -29,7 +29,7 @@ class WeekSpatial: public Display {
         Cell* cells[7][48];
         int selectedDay;
         int selectedTime;
-        int mode;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed
+        int mode = 1;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed
         int selectedMenuItem;
     public:
         virtual void redraw(list<Task*>);
