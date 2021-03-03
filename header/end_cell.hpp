@@ -17,8 +17,7 @@ class EndCell : public Cell {
 
                 void drawMilddleCellTitle() {
                         string taskTitle = task->getTitle();
-                        std::cout << "|";
-                        for(unsigned i = 9; i < 13; ++i) {
+                        for(unsigned i = 11; i < 17; ++i) {
                                 if(i < taskTitle.size()) {
                                         std::cout << taskTitle.at(i);
                                 }
@@ -30,9 +29,27 @@ class EndCell : public Cell {
                 }
 
 
-		void drawTopCell() { std::cout << "----+"; }
-		void drawMiddleCell() { std::cout << "    |"; }
-		void drawBottomCell() { std::cout << "----+"; }
+		void drawTopCell() { std::cout << "-----+"; }
+		void drawMiddleCell() { std::cout << "     |"; }
+		void drawBottomCell() { std::cout << "-----+"; }
+
+		void highlightTopCell() { std::cout << "******"; }
+		void highlightMiddleCell() { std::cout << "     *"; }
+		void highlightBottomCell() { std::cout << "******"; }
+
+                void highlightMilddleCellTitle() {
+                        string taskTitle = task->getTitle();
+                        for(unsigned i = 11; i < 17; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= x.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                        std::cout << "*";
+                }
+
 };
 
 #endif //__END_CELL_HPP__

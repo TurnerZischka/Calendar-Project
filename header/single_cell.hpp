@@ -19,13 +19,13 @@ class SingleCell : public Cell {
 			createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
 		}
 
-		void drawTopCell() { std::cout << "+---+"; }
-		void drawMiddleCell() { std::cout << "|   |"; }
+		void drawTopCell() { std::cout << "+----+"; }
+		void drawMiddleCell() { std::cout << "|    |"; }
 
 		void drawMilddleCellTitle() { 
 			string taskTitle = task->getTitle();
 			std::cout << "|";
-			for(unsigned i = 0; i < 3; ++i) {
+			for(unsigned i = 0; i < 4; ++i) {
 				if(i < taskTitle.size()) {
 					std::cout << taskTitle.at(i);
 				}
@@ -36,10 +36,13 @@ class SingleCell : public Cell {
 			std::cout << "|";
 		}
 		
-               /* void drawMilddleCellStartTime() {
-                        double taskTime = task->getStart();
+
+
+
+                /*void drawMilddleCellStartTime() {
+                        int taskTime = task->getStart();
                         std::cout << "|";
-                        for(unsigned i = 0; i < 3; ++i) {
+                        for(unsigned i = 0; i < 4; ++i) {
                                 if(i < taskTitle.size()) {
                                         std::cout << taskTitle.at(i);
                                 }
@@ -49,9 +52,30 @@ class SingleCell : public Cell {
                         }
                         std::cout << "|";
                 }*/
+
+
 		
 	
-		void drawBottomCell() { std::cout << "+---+"; }
+		void drawBottomCell() { std::cout << "+----+"; }
+
+		void highlightTopCell() { std::cout << "******"; }
+		void highlightMiddleCell() { std::cout << "*    *"; }
+		void highlightBottomCell() { std::cout << "******"; }
+
+                void highlightMilddleCellTitle() {
+                        string taskTitle = task->getTitle();
+                        std::cout << "*";
+                        for(unsigned i = 0; i < 4; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= x.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                        std::cout << "*";
+                }
+
 };
 
 #endif //__SINGLE_CELL_HPP__

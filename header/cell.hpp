@@ -26,6 +26,11 @@ class Cell {
 		virtual void drawMiddleCell() = 0;
 		virtual void drawMiddleCellTitle() = 0;
 		virtual void drawBottomCell() = 0;
+
+		virtual void highlightTopCell() = 0;
+		virtual void highlightMiddleCell() = 0;
+		virtual void highlightMiddleCellTitle() = 0;
+		virtual void highlightBottomCell() = 0;
 };
 
 #endif //__CELL_HPP__
