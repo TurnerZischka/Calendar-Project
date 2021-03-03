@@ -6,11 +6,7 @@
 
 #include "../header/Task.hpp"
 #include "../header/cell.hpp"
-#include "../header/commandEditClassification.hpp"
-#include "../header/commandEditDescription.hpp"
-#include "../header/commandEditEndTime.hpp"
-#include "../header/commandEditStartTime.hpp"
-#include "../header/commandEditTitle.hpp"
+
 
 
 
@@ -39,7 +35,7 @@ class SingleCell : public Cell {
 				if(i < taskTitle.size()) {
 					std::cout << taskTitle.at(i);
 				}
-				if(i >= x.size()) {
+				if(i >= taskTitle.size()) {
 					std::cout << " ";
 				}
 			}
@@ -79,7 +75,7 @@ class SingleCell : public Cell {
                                 if(i < taskTitle.size()) {
                                         std::cout << taskTitle.at(i);
                                 }
-                                if(i >= x.size()) {
+                                if(i >= taskTitle.size()) {
                                         std::cout << " ";
                                 }
                         }

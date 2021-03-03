@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+
 class Command {
     public:
         Control* myControl;

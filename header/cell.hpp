@@ -6,6 +6,12 @@
 #include"../header/menuitem.hpp"
 #include "../header/task.hpp"
 
+#include "../header/commandEditClassification.hpp"
+#include "../header/commandEditDescription.hpp"
+#include "../header/commandEditEndTime.hpp"
+#include "../header/commandEditStartTime.hpp"
+#include "../header/commandEditTitle.hpp"
+
 
 
 
@@ -15,7 +21,6 @@ class Cell {
 		int taskID;	
 		Task* task;
 
-		void createMenuItem(MenuItem* item) { MenuItemVect.push_back(item); }
 
 		void createMenuItem(MenuItem* item) { menuItemVect.push_back(item); }
 

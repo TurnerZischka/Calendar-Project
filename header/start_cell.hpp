@@ -22,7 +22,7 @@ class StartCell : public Cell {
                                 if(i < taskTitle.size()) {
                                         std::cout << taskTitle.at(i);
                                 }
-                                if(i >= x.size()) {
+                                if(i >= taskTitle.size()) {
                                         std::cout << " ";
                                 }
                         }
@@ -44,7 +44,7 @@ class StartCell : public Cell {
                                 if(i < taskTitle.size()) {
                                         std::cout << taskTitle.at(i);
                                 }
-                                if(i >= x.size()) {
+                                if(i >= taskTitle.size()) {
                                         std::cout << " ";
                                 }
                         }
