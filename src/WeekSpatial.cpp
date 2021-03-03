@@ -33,8 +33,8 @@ void WeekSpatial::redraw(list<Task *> passingList) {
 
 void WeekSpatial::drawVisual(list<Task *> taskList) {
 
-//delete all old cells
-//to assign each spot in cells the apprioate cell
+    //delete all old cells
+
 
     time_t currTime = time(0);
     std:tm *timeStruct = localtime(&currTime);
@@ -64,9 +64,9 @@ void WeekSpatial::drawVisual(list<Task *> taskList) {
         } else {
             cells[it->tmStartStruct->tm_wday][it->tmStartStruct->tm_hour*2 + it->tmStartStruct->tm_min/30] = new SingleCell(it);
         }
-
-
     }
+
+    //fill empty cells
 
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 48; j++) {
