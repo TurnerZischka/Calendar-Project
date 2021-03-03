@@ -37,37 +37,51 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList) {
     //delete all old cells
 
 
+    // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
     time_t currTime = time(0);
-    std:tm *timeStruct = localtime(&currTime);
-    int currDayWeek = timeStruct->tm_wday;
-    //date variables
-    //start of week variables
-    //end of week variables? do I need if I can just calcuate from start of week variables
+    std::tm *currTimeStruct = localtime(&currTime);
+    currTimeStruct->tm_sec = 0;
+    currTimeStruct->tm_min = 0;
+    currTimeStruct->tm_hour = 0;
+
+    //86400 represents seconds in a day
+    //this conversion subtracts from the time_t of the very begginig of the day, the days from previous sunday. This means that intermediary is time of sunday at newday
+    time_t intermediary = mktime(currTimeStruct) - static_cast<time_t>( 86400* currTimeStruct->tm_wday); //this
+    std::tm *weekStart = localtime(&intermediary);
+
 
     //does this work? will earasing an element screw with for loop iterator?
     //the point of this loop is to remove all events out of the list that do not fall within the range
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(mktime((*it).tmStruct) < mktime(weekStart) || mktime(it->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
-            it.erase();
+        if(mktime(&(*it)->tmStruct) < mktime(weekStart) || mktime(&(*it)->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
+            taskList.erase(it);
         }
     }
 
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
+    //if the "span" is only one spot, it just allocates a single then
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        int span = (((it->endTime/100 - it->startTime/100)*60) + (it->endTime%100 - it->startTime%100) )/30;
+        int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
         if (span > 1) {
-            cells[it->tmStartStruct->tm_wday][it->tmStartStruct->tm_hour*2 + it->tmStartStruct->tm_min/30] = new StartCell(it);
+            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it);
 
             for( int i = 1; i < span-1; i++){
-                cells[it->tmStartStruct->tm_wday][(it->tmStartStruct->tm_hour*2) + (it->tmStartStruct->tm_min/30) + (i)] = new MiddleCell(it);
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it);
             }
-            cells[it->tmStartStruct->tm_wday][(it->tmStartStruct->tm_hour*2) + (it->tmStartStruct->tm_min/30) + (span-1)] = new EndCell(it);
+            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it);
         } else {
-            cells[it->tmStartStruct->tm_wday][it->tmStartStruct->tm_hour*2 + it->tmStartStruct->tm_min/30] = new SingleCell(it);
+            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it);
         }
     }
 
-    //fill empty cells
+
+    //fills null cells with empty_cell
+    for (int i = 0; i < 7; i++){
+        for (int j = 0; j < 48; j++){
+
+        }
+
+    }
 
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 48; j++) {

@@ -8,79 +8,78 @@
 #include "../header/cell.hpp"
 
 
-
-
 class SingleCell : public Cell {
-	private:
-	public:
+private:
+public:
 
-		SingleCell(Task* ftask) { 
-			task = ftask;
-
-
-			createMenuItem(new MenuItem("Edit Title",new CommandEditTitle));
-			createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
-			createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
-			createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime));
-			createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
-		}
-
-		void drawTopCell() { std::cout << "+----+"; }
-		void drawMiddleCell() { std::cout << "|    |"; }
-
-		void drawMilddleCellTitle() { 
-			string taskTitle = task->getTitle();
-			std::cout << "|";
-			for(unsigned i = 0; i < 4; ++i) {
-				if(i < taskTitle.size()) {
-					std::cout << taskTitle.at(i);
-				}
-				if(i >= taskTitle.size()) {
-					std::cout << " ";
-				}
-			}
-			std::cout << "|";
-		}
-		
+    SingleCell(Task *ftask) {
+        task = ftask;
 
 
+        createMenuItem(new MenuItem("Edit Title", new CommandEditTitle));
+        createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
+        createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
+        createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime));
+        createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
+    }
 
-                /*void drawMilddleCellStartTime() {
-                        int taskTime = task->getStart();
-                        std::cout << "|";
-                        for(unsigned i = 0; i < 4; ++i) {
-                                if(i < taskTitle.size()) {
-                                        std::cout << taskTitle.at(i);
-                                }
-                                if(i >= x.size()) {
-                                        std::cout << " ";
-                                }
-                        }
-                        std::cout << "|";
-                }*/
+    void drawTopCell() { std::cout << "+----+"; }
+
+    void drawMiddleCell() { std::cout << "|    |"; }
+
+    void drawMiddleCellTitle() {
+        string taskTitle = task->getTitle();
+        std::cout << "|";
+        for (unsigned i = 0; i < 4; ++i) {
+            if (i < taskTitle.size()) {
+                std::cout << taskTitle.at(i);
+            }
+            if (i >= taskTitle.size()) {
+                std::cout << " ";
+            }
+        }
+        std::cout << "|";
+    }
 
 
-		
-	
-		void drawBottomCell() { std::cout << "+----+"; }
+    /*void drawMilddleCellStartTime() {
+            int taskTime = task->getStart();
+            std::cout << "|";
+            for(unsigned i = 0; i < 4; ++i) {
+                    if(i < taskTitle.size()) {
+                            std::cout << taskTitle.at(i);
+                    }
+                    if(i >= x.size()) {
+                            std::cout << " ";
+                    }
+            }
+            std::cout << "|";
+    }*/
 
-		void highlightTopCell() { std::cout << "******"; }
-		void highlightMiddleCell() { std::cout << "*    *"; }
-		void highlightBottomCell() { std::cout << "******"; }
 
-                void highlightMilddleCellTitle() {
-                        string taskTitle = task->getTitle();
-                        std::cout << "*";
-                        for(unsigned i = 0; i < 4; ++i) {
-                                if(i < taskTitle.size()) {
-                                        std::cout << taskTitle.at(i);
-                                }
-                                if(i >= taskTitle.size()) {
-                                        std::cout << " ";
-                                }
-                        }
-                        std::cout << "*";
-                }
+
+
+    void drawBottomCell() { std::cout << "+----+"; }
+
+    void highlightTopCell() { std::cout << "******"; }
+
+    void highlightMiddleCell() { std::cout << "*    *"; }
+
+    void highlightBottomCell() { std::cout << "******"; }
+
+    void highlightMiddleCellTitle() {
+        string taskTitle = task->getTitle();
+        std::cout << "*";
+        for (unsigned i = 0; i < 4; ++i) {
+            if (i < taskTitle.size()) {
+                std::cout << taskTitle.at(i);
+            }
+            if (i >= taskTitle.size()) {
+                std::cout << " ";
+            }
+        }
+        std::cout << "*";
+    }
 
 };
 

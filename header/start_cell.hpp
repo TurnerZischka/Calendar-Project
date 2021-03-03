@@ -15,7 +15,7 @@ class StartCell : public Cell {
                         createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime));
                 }
 		
-                void drawMilddleCellTitle() {
+                void drawMiddleCellTitle() {
                         string taskTitle = task->getTitle();
                         std::cout << "|";
                         for(unsigned i = 0; i < 5; ++i) {
@@ -37,18 +37,18 @@ class StartCell : public Cell {
 		void highlightMiddleCell() { std::cout << "*     "; }
 		void highlightBottomCell() { std::cout << "******"; }
 
-                void highlightMilddleCellTitle() {
-                        string taskTitle = task->getTitle();
-                        std::cout << "*";
-                        for(unsigned i = 0; i < 5; ++i) {
-                                if(i < taskTitle.size()) {
-                                        std::cout << taskTitle.at(i);
-                                }
-                                if(i >= taskTitle.size()) {
-                                        std::cout << " ";
-                                }
-                        }
-                }
+		void highlightMiddleCellTitle() {
+	        string taskTitle = task->getTitle();
+	        std::cout << "*";
+	        for(unsigned i = 0; i < 5; ++i) {
+	            if(i < taskTitle.size()) {
+	                std::cout << taskTitle.at(i);
+	            }
+	            if(i >= taskTitle.size()) {
+	                std::cout << " ";
+	            }
+	        }
+	    }
 
 };
 
