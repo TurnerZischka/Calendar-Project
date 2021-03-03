@@ -34,7 +34,16 @@ void WeekSpatial::redraw(list<Task *> passingList) {
 
 void WeekSpatial::drawVisual(std::list<Task *> taskList) {
 
-    //delete all old cells
+
+    if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 48; j++) {
+                Cell* temp = cells[i][j];
+                delete temp;
+            }
+
+        }
+    }
 
 
     // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
@@ -78,7 +87,11 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList) {
     //fills null cells with empty_cell
     for (int i = 0; i < 7; i++){
         for (int j = 0; j < 48; j++){
-
+            if(cells[i][j] == nullptr){
+                cells[i][j] = new EmptyCell();
+            } else {
+                //do nothing
+            }
         }
 
     }
