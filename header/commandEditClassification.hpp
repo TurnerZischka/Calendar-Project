@@ -1,17 +1,19 @@
-#ifndef __COMMAND_EDIT_CLASSIFICATION_HPP__
-#define __COMMAND_EDIT_CLASSIFICATION_HPP__
+#ifndef __COMMANDEDITCLASSIFICATION_HPP__
+#define __COMMANDEDITCLASSIFICATION_HPP__
 
 #include "command.hpp"
+#include "../header/control.hpp"
 
 
 class CommandEditClassification: public Command {
 
     public:
+        CommandEditClassification(Control* theControl):Command(theControl){}
         virtual void execute() {
 
             std::string newClassification;
             std::cout << "Enter a new classification for the task:" << std::endl;
-            std::cin >> newClassification;
+            getline(std::cin, newClassification);
 
             std::list<Task*>::iterator iter;
             for(iter = myControl->taskList.begin(); iter != myControl->taskList.end(); ++iter) {

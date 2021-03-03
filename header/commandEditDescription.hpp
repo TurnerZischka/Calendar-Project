@@ -1,12 +1,13 @@
-#ifndef __COMMAND_EDIT_DESCRIPTION_HPP__
-#define __COMMAND_EDIT_DESCRIPTION_HPP__
+#ifndef __COMMANDEDITDESCRIPTION_HPP__
+#define __COMMANDEDITDESCRIPTION_HPP__
 
 #include "command.hpp"
-
+#include "../header/control.hpp"
 
 class CommandEditDescription: public Command {
 
     public:
+        CommandEditDescription(Control* theControl):Command(theControl){}
         virtual void execute() {
 
             std::string newDescription;

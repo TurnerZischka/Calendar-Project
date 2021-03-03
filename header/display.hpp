@@ -4,20 +4,23 @@
 
 #include <iostream>
 #include <list>
-#include "./Moment.hpp"
-#include "./Subtask.hpp"
-#include "./Task.hpp"
+#include "../header/Moment.hpp"
+#include "../header/Subtask.hpp"
+#include "../header/Task.hpp"
 
 
-using namespace std;
+class Control;
+
+
 
 class Display{
     private:
 
 
     public:
-	virtual void redraw(list<Task*>)= 0;
+	virtual void redraw(std::list<Task*>, Control* theControl)= 0;
     virtual void recieveInput(int) = 0;
+    virtual int getSelected() = 0;
 
 };
 
