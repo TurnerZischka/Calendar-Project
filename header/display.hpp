@@ -17,6 +17,7 @@ class Display{
 
     public:
 	virtual void redraw(list<Task*>)= 0;
+    virtual void recieveInput(int) = 0;
 
 };
 

@@ -20,8 +20,6 @@
 using namespace std;
 
 
-
-
 void WeekSpatial::redraw(list<Task*> passingList){
     if(mode == 1) { //if mose is set to visual (1), then call respective function
 	drawVisual(passingList);
