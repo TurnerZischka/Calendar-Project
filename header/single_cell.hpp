@@ -4,6 +4,7 @@
 #include<iostream>
 #include<cstring>
 
+#include "../header/Task.hpp"
 #include "../header/cell.hpp"
 #include "../header/commandEditClassification.hpp"
 #include "../header/commandEditDescription.hpp"
@@ -16,8 +17,7 @@
 class SingleCell : public Cell {
 	private:
 	public:
-		SingleCell(int ID) { 
-			taskID = ID;
+		SingleCell(Task* task) {
 			createMenuItem(new MenuItem("Edit Title",new CommandEditTitle));
 			createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
 			createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
