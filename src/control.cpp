@@ -2,8 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <climits>
-//#include "../header/conio.h"
-#include <conio.h>
+#include "../header/conio.h"
 
 Control::Control(std::list<Task*> task_list, Display* my_display) {
     this->taskList = task_list;
@@ -28,10 +27,10 @@ void Control::AddTask() {
     std::cout << "Enter a brief description for your task." << std::endl;
     std::cin >> description;
     getline(std::cin, description);
-    std::cin.clear(); std::cin.ignore(INT_MAX,'\n');
+    std::cin.clear();
     std::cout << "Enter a start time as a double (0000 - 2359)" << std::endl;
     std::cin >> startTime;
-    std::cin.clear();   std::cin.ignore(INT_MAX,'\n');
+    std::cin.clear();
 
     if(startTime < 0 || startTime > 2359) {
         std::cout << "Invalid start time\n";
@@ -108,21 +107,32 @@ void Control::eventLoop() {
             case '/033':                
                 case 'A':
                 std::cout << "UpArrow\n";
+                this->myDisplay->recieveInput(1);
+                this->myDisplay->redraw(this->taskList);
                 break;
 
                 case 'B':
                 std::cout << "DownArrow\n";
+                this->myDisplay->recieveInput(3);
+                this->myDisplay->redraw(this->taskList);
                 break;
 
                 case 'C':
                 std::cout << "RightArrow\n";
+                this->myDisplay->recieveInput(2);
+                this->myDisplay->redraw(this->taskList);
                 break;
 
                 case 'D':
                 std::cout << "LeftArrow\n";
+                this->myDisplay->recieveInput(4);
+                this->myDisplay->redraw(this->taskList);
                 break;
 
             break;
+
+            case '\n':
+                std::cout << "Enter" << std::endl;
 
             case 'a': AddTask();
             break;
