@@ -6,6 +6,9 @@
 #include"../header/menuitem.hpp"
 #include "../header/task.hpp"
 
+
+
+
 class Cell {
 	public:
 		std::vector<MenuItem*> menuItemVect;
@@ -13,13 +16,16 @@ class Cell {
 		Task* task;
 
 		void createMenuItem(MenuItem* item) { MenuItemVect.push_back(item); }
+
+		void createMenuItem(MenuItem* item) { menuItemVect.push_back(item); }
+
 		int getAssociatedID() { return taskID; }
 		int sizeOfMenu() { return menuItemVect.size(); }
 		string printMenuItem(int x) {
-			return menuItemVect[x]->itemName;
+			return menuItemVect.at(x)->itemName;
 		}
 		void actMenu(int x) {
-			menuItemVect[x]->selected();
+			menuItemVect.at(x)->selected();
 		}
 			
 		virtual void drawTopCell() = 0;

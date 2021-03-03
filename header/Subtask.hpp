@@ -1,28 +1,27 @@
-#ifndef __Task_HPP__
-#define __Task_HPP__
+#ifndef __SUBTASK_HPP__
+#define __SUBTASK_HPP__
 
 #include <string>
 #include <vector>
+
+#include "../header/Moment.hpp"
 
 
 class Subtask: public Moment {
    private:
 
    public:
+
 	Subtask():Moment(){ //default constructor, intializes a blank subtask
-	   
-	
 	}
 
-	Subtask(string titIn, string descIn, string catIn, double startIn, double endIn, double totIn, int priIn ):Moment(titIn,descIn, catIn, startIn, endIn, totIn, priIn ){
+	Subtask(std::string titIn, std::string descIn, std::string catIn, int month, int date, int startIn, int endIn, int priIn ):Moment(titIn,descIn, catIn, month, date, startIn, endIn, priIn ){
+    }
 
 
-	}
-
-	
 
 };
 
 
 
-#endif
+#endif // __SUBTASK_HPP__

@@ -4,14 +4,24 @@
 #include<iostream>
 #include<cstring>
 
+#include "../header/Task.hpp"
 #include "../header/cell.hpp"
+#include "../header/commandEditClassification.hpp"
+#include "../header/commandEditDescription.hpp"
+#include "../header/commandEditEndTime.hpp"
+#include "../header/commandEditStartTime.hpp"
+#include "../header/commandEditTitle.hpp"
+
 
 
 class SingleCell : public Cell {
 	private:
 	public:
+
 		SingleCell(Task* ftask) { 
 			task = ftask;
+
+
 			createMenuItem(new MenuItem("Edit Title",new CommandEditTitle));
 			createMenuItem(new MenuItem("Edit Description", new CommandEditDescription));
 			createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification));
