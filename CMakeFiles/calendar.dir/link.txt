@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/calendar.dir/src/main.cpp.o CMakeFiles/calendar.dir/src/Task.cpp.o CMakeFiles/calendar.dir/src/WeekSpatial.cpp.o CMakeFiles/calendar.dir/src/control.cpp.o  -o calendar 
