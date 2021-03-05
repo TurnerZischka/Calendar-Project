@@ -21,7 +21,7 @@ public:
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
         std::cout << "|";
-        for (unsigned i = 0; i < 5; ++i) {
+        for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
             }
@@ -32,22 +32,22 @@ public:
     }
 
 
-    void drawTopCell() { std::cout << "+-----"; }
+    void drawTopCell() { std::cout << "+------"; }
 
-    void drawMiddleCell() { std::cout << "|     "; }
+    void drawMiddleCell() { std::cout << "|      "; }
 
-    void drawBottomCell() { std::cout << "+-----"; }
+    void drawBottomCell() { std::cout << "+------"; }
 
-    void highlightTopCell() { std::cout << "******"; }
+    void highlightTopCell() { std::cout << "*******"; }
 
-    void highlightMiddleCell() { std::cout << "*     "; }
+    void highlightMiddleCell() { std::cout << "*      "; }
 
-    void highlightBottomCell() { std::cout << "******"; }
+    void highlightBottomCell() { std::cout << "*******"; }
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
         std::cout << "*";
-        for (unsigned i = 0; i < 5; ++i) {
+        for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
             }

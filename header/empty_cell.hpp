@@ -8,15 +8,15 @@ class EmptyCell : public Cell {
 	public:
 
 
-		void drawTopCell() { std::cout << "     "; }
-		void drawMiddleCell() { std::cout << "     "; }
-		void drawBottomCell() { std::cout << "     "; }
+	virtual void drawTopCell() { std::cout << "+-----+"; }
+	virtual void drawMiddleCell() { std::cout << "|     |"; }
+	virtual void drawBottomCell() { std::cout << "+-----+"; }
 
-        virtual void drawMiddleCellTitle(){ std::cout << "     " ; }
-        virtual void highlightTopCell(){ std::cout << "*****" ;}
-        virtual void highlightMiddleCell(){std::cout << "     " ;}
-        virtual void highlightMiddleCellTitle(){std::cout << "     " ;}
-        virtual void highlightBottomCell(){std::cout << "******" ;}
+        virtual void drawMiddleCellTitle(){ std::cout << "|     |" ; }
+        virtual void highlightTopCell(){ std::cout << "*******" ;}
+        virtual void highlightMiddleCell(){std::cout << "*     *" ;}
+        virtual void highlightMiddleCellTitle(){std::cout << "*     *" ;}
+        virtual void highlightBottomCell(){std::cout << "*******" ;}
 };
 
 #endif //__EMPTY_CELL_HPP__
