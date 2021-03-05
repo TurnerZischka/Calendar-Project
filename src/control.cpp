@@ -121,6 +121,8 @@ void Control::loadCalendar(std::string fileName) {
 
 void Control::eventLoop() {
     int ch;
+    this->myDisplay->redraw(this->taskList, this);
+
 
     //std::cout << "Welcome to the calendar application. Please select an option." << std::endl;
     //std::cout << "c - Create new Calendar" << std::endl;
