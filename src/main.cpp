@@ -19,8 +19,9 @@ int main() {
     Control* myControl = new Control(taskList,myDisplay);
     myControl->eventLoop(); 
 
-    delete myControl;
     delete myDisplay;
+    delete myControl;
+    
 
 
     return 0;

@@ -22,10 +22,7 @@ using namespace std;
 
 
 WeekSpatial::WeekSpatial(){
-    cells = new Cell**[7];
-    for( int i = 0; i < 7; i++){
-        cells[i] = new Cell*[48];
-    }
+   
 
 }
 
@@ -48,38 +45,29 @@ void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
 }
 
 WeekSpatial::~WeekSpatial() {
-    delete this;
+    
     
     for (int i = 0; i < 7; ++i) {
         for (int j = 0; j < 48; ++j) {
-            delete cells[i][j];
+            Cell* temp = cells[i][j];
             cells[i][j] = nullptr;
+            delete temp; 
+            
         }
     }
+
+   // delete this;
 
 }
 
 void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
-    clearScreen();   
+    //clearScreen();   
 
     
 
     
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 48; j++) {
-                Cell* temp = cells[i][j];
-                    delete temp; 
-                    cells[i][j] = nullptr;
-                    
-            }
-        }
-        Cell*** tempArray = cells;
-        cells = new Cell**[7];
-        for( int i = 0; i < 7; i++){
-            cells[i] = new Cell*[48];
-        }
-        delete[] tempArray;
+        
     
 
 
@@ -169,6 +157,21 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
 
     }
+
+    delete weekStart;
+    delete currTimeStruct;
+
+    for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 48; j++) {
+                Cell* temp = cells[i][j];
+                cells[i][j] = nullptr;
+                delete temp; 
+                
+                
+                    
+            }
+        }
+
 
 
 }

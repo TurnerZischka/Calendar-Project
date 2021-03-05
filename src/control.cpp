@@ -12,7 +12,12 @@ Control::Control(std::list<Task*> task_list, Display* my_display) {
     this->myDisplay = my_display;
 }
 
-Control::~Control() {delete this;}
+Control::~Control() {
+
+    //for( auto it= taskList.begin(); it != taskList.end(); it++){ delete *it;}
+
+    //delete this;
+}
 
 void Control::AddTask() {
     std::string title;
@@ -167,6 +172,7 @@ void Control::eventLoop() {
 
             case '\n':
                 std::cout << "Enter" << std::endl;
+            break;
 
             case 'a': AddTask();
             break;
