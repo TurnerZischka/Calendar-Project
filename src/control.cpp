@@ -5,7 +5,7 @@
 #include <ctime>
 #include <list>
 //#include "../header/conio.h"
-#include <conio.h>
+#include "../header/conio.h"
 
 Control::Control(std::list<Task*> task_list, Display* my_display) {
     this->taskList = task_list;
