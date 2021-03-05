@@ -41,6 +41,8 @@ public:
         std::cout << "|";
     }
 
+    virtual ~SingleCell() {delete this;}
+
 
     /*void drawMilddleCellStartTime() {
             int taskTime = task->getStart();

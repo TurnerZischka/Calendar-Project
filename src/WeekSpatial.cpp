@@ -38,16 +38,26 @@ void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
 
 }
 
-void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
+WeekSpatial::~WeekSpatial() {
+    delete this;
+    
+    for (int i = 0; i < 7; ++i) {
+        for (int j = 0; j < 48; ++j) {
+            delete cells[i][j];
+            cells[i][j] = nullptr;
+        }
+    }
+
+}
+
+void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     clearScreen();    
 
     if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 48; j++) {
-                Cell* temp = cells[i][j];
-                cells[i][j] = nullptr;
-                delete temp;
+                delete cells[i][j];
             }
 
         }

@@ -27,6 +27,7 @@ class WeekSpatial: public Display {
         int mode = 1;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed
         int selectedMenuItem;
     public:
+        ~WeekSpatial();
         virtual void redraw(std::list<Task*>, Control* theControl);
         void drawVisual(std::list<Task*>, Control* theControl);
         void drawSubMenu();
