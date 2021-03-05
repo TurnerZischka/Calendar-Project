@@ -20,6 +20,11 @@
 
 using namespace std;
 
+void WeekSpatial::clearScreen() {
+    std::cout << std::endl;
+    std::cout << "\033c" << std::endl;
+}
+
 
 void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
     if (mode == 1) { //if mose is set to visual (1), then call respective function
@@ -35,6 +40,7 @@ void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
 
 void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
 
+    clearScreen();    
 
     if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
         for (int i = 0; i < 7; i++) {

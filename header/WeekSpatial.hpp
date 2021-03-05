@@ -33,6 +33,7 @@ class WeekSpatial: public Display {
         int getSelected();
         void recieveInput(int);
         void setMode(int);
+        void clearScreen();
 
 
 
