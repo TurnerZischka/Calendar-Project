@@ -14,7 +14,7 @@ Control::Control(std::list<Task*> task_list, Display* my_display) {
 
 Control::~Control() {
 
-    //for( auto it= taskList.begin(); it != taskList.end(); it++){ delete *it;}
+    for( auto it= taskList.begin(); it != taskList.end(); it++){ delete *it;}
 
     //delete this;
 }
