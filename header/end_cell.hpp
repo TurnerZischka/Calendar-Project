@@ -28,6 +28,7 @@ public:
         std::cout << "|";
     }
 
+    virtual ~EndCell() {delete this;}
 
     void drawTopCell() { std::cout << "-----+"; }
 

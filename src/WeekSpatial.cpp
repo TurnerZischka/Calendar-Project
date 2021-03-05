@@ -20,6 +20,12 @@
 
 using namespace std;
 
+
+WeekSpatial::WeekSpatial(){
+   
+
+}
+
 void WeekSpatial::clearScreen() {
     std::cout << std::endl;
     std::cout << "\033c" << std::endl;
@@ -38,20 +44,31 @@ void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
 
 }
 
-void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
-
-    clearScreen();    
-
-    if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 48; j++) {
-                Cell* temp = cells[i][j];
-                cells[i][j] = nullptr;
-                delete temp;
-            }
-
+WeekSpatial::~WeekSpatial() {
+    
+    
+    for (int i = 0; i < 7; ++i) {
+        for (int j = 0; j < 48; ++j) {
+            Cell* temp = cells[i][j];
+            cells[i][j] = nullptr;
+            delete temp; 
+            
         }
     }
+
+   // delete this;
+
+}
+
+void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
+
+    //clearScreen();   
+
+    
+
+    
+        
+    
 
 
     // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
@@ -141,6 +158,20 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
 
     }
 
+    
+
+    for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 48; j++) {
+                Cell* temp = cells[i][j];
+                cells[i][j] = nullptr;
+                delete temp; 
+                
+                
+                    
+            }
+        }
+
+
 
 }
 
@@ -189,8 +220,7 @@ void WeekSpatial::recieveInput(int inputSelection) {
         } else if (inputSelection == 3) {
             selectedMenuItem++;
             if (selectedMenuItem >= cells[selectedDay][selectedTime]->sizeOfMenu()) { selectedMenuItem =
-                                                                                              cells[selectedDay][selectedTime]->sizeOfMenu() -
-                                                                                              1;
+                    cells[selectedDay][selectedTime]->sizeOfMenu() - 1;     
             }
 
         } else if (inputSelection == 5) {
