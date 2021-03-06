@@ -103,7 +103,7 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
     for (int i = 0; i < 7; i++){
         for (int j = 0; j < 24; j++){
             if(cells[i][j] == nullptr){
-                cells[i][j] = new EmptyCell;
+                cells[i][j] = new EmptyCell();
             } else {
                 //do nothing
             }
@@ -146,10 +146,21 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
 		}
 		else { cout << "          "; }
 
-
+	int checkLength = 1;
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightTopCell();
+		if(cells[i][j]->cellType == 2) {
+			cells[i][j]->highlightTopCell();
+			while(cells[i][j+checkLength]->cellType == 3){
+				cells[i][j+checkLength]->highlightTopCell();
+				j++;
+			}
+			if(cells[i][j+checkLength]->cellType == 4) {
+				cells[i][j+checkLength]->highlightTopCell();
+				j++;
+			}
+		}
+		else { cells[i][j]->highlightTopCell(); }
             } else {
                 cells[i][j]->drawTopCell();
             }
@@ -158,7 +169,18 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
 	cout << "          ";
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightMiddleCellTitle();
+		if(cells[i][j]->cellType == 2) {
+			cells[i][j]->highlightMiddleCellTitle();
+			while(cells[i][j+checkLength]->cellType == 3) {
+				cells[i][j+checkLength]->highlightMiddleCellTitle();
+				j++;
+			}
+			if(cells[i][j+1]->cellType == 4) {
+				cells[i][j+1]->highlightMiddleCellTitle();
+				j++;
+			}
+		}
+		else { cells[i][j]->highlightMiddleCell(); }
             } else {
                 cells[i][j]->drawMiddleCellTitle();
             }
@@ -167,7 +189,19 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
 	cout << "          ";
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightMiddleCell();
+                if(cells[i][j]->cellType == 2) {
+                        cells[i][j]->highlightMiddleCell();
+                        while(cells[i][j+checkLength]->cellType == 3) {
+                                cells[i][j+checkLength]->highlightMiddleCell();
+                                j++;
+                        }
+                        if(cells[i][j+1]->cellType == 4) {
+                                cells[i][j+1]->highlightMiddleCell();
+                                j++;
+                        }
+                }
+
+                else { cells[i][j]->highlightMiddleCell(); }
             } else {
                 cells[i][j]->drawMiddleCell();
             }
@@ -176,7 +210,19 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
 	cout << "          ";
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightBottomCell();
+                if(cells[i][j]->cellType == 2) {
+                        cells[i][j]->highlightTopCell();
+                        while(cells[i][j+checkLength]->cellType == 3){
+                                cells[i][j+checkLength]->highlightTopCell();
+                                j++;
+                        }
+                        if(cells[i][j+checkLength]->cellType == 4) {
+                                cells[i][j+checkLength]->highlightTopCell();
+                                j++;
+                        }
+                }
+                else { cells[i][j]->highlightBottomCell(); }
+
             } else {
                 cells[i][j]->drawBottomCell();
             }

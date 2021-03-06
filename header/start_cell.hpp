@@ -10,6 +10,7 @@ class StartCell : public Cell {
 private:
 public:
     StartCell(Task *ftask, Control* theControl) {
+	cellType = 2;
         task = ftask;
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
@@ -20,13 +21,16 @@ public:
 
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
+	std::string returnString = "";
         std::cout << "|";
         for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
+		returnString += taskTitle.at(i);
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
+		returnString += " ";
             }
         }
     }
@@ -46,13 +50,16 @@ public:
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
+	std::string returnString = "";
         std::cout << "*";
         for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
+		returnString += taskTitle.at(i);
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
+		returnString +=  " ";
             }
         }
     }

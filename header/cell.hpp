@@ -22,6 +22,8 @@ class Cell {
 		std::vector<MenuItem*> menuItemVect;
 		int taskID;	
 		Task* task;
+		int cellType;
+		std::string remaining;
 
 
 
