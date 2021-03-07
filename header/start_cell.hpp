@@ -10,6 +10,7 @@ class StartCell : public Cell {
 private:
 public:
     StartCell(Task *ftask, Control* theControl) {
+	cellType = 2;
         task = ftask;
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
@@ -20,42 +21,54 @@ public:
 
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
+	std::string returnString = "";
         std::cout << "|";
-        for (unsigned i = 0; i < 5; ++i) {
+        for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
+		returnString += taskTitle.at(i);
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
+		returnString += " ";
             }
         }
     }
 
+
+	void drawMiddleCellTitle(int) {}
+
     ~StartCell() {}
-    void drawTopCell() { std::cout << "+-----"; }
 
-    void drawMiddleCell() { std::cout << "|     "; }
+    void drawTopCell() { std::cout << "+------"; }
 
-    void drawBottomCell() { std::cout << "+-----"; }
+    void drawMiddleCell() { std::cout << "|      "; }
 
-    void highlightTopCell() { std::cout << "******"; }
+    void drawBottomCell() { std::cout << "+------"; }
 
-    void highlightMiddleCell() { std::cout << "*     "; }
+    void highlightTopCell() { std::cout << "*******"; }
 
-    void highlightBottomCell() { std::cout << "******"; }
+    void highlightMiddleCell() { std::cout << "*      "; }
+
+    void highlightBottomCell() { std::cout << "*******"; }
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
+	std::string returnString = "";
         std::cout << "*";
-        for (unsigned i = 0; i < 5; ++i) {
+        for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
+		returnString += taskTitle.at(i);
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
+		returnString +=  " ";
             }
         }
     }
+
+	void highlightMiddleCellTitle(int) {}
 
 };
 

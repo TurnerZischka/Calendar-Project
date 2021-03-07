@@ -41,6 +41,10 @@ public:
         std::cout << "|";
     }
 
+
+	void drawMiddleCellTitle(int) {}
+
+
     ~SingleCell() {}
 
 
@@ -82,6 +86,7 @@ public:
         }
         std::cout << "*";
     }
+	void highlightMiddleCellTitle(int){}
 
 };
 

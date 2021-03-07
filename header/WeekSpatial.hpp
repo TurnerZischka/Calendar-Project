@@ -21,7 +21,8 @@ class Cell;
 class WeekSpatial: public Display {
     private:
         double currTime;
-        Cell* cells[7][48] = {nullptr};
+        Cell* cells[7][24] = {nullptr);
+
         int selectedDay = 0;
         int selectedTime = 0;
         int mode = 1;  // either 1 or 2,  representing 1: visual and   2: submenu is being displayed

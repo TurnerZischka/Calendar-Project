@@ -56,9 +56,27 @@ WeekSpatial::~WeekSpatial() {
         }
     }
 
-   // delete this;
+
+  //  clearScreen();    
+	bool monday = false;
+	bool tuesday = false;
+	bool wednesday = false;
+	bool thursday = false;
+	bool friday = false;
+	bool saturday = false;
+	bool sunday = false;
+
+    if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 24; j++) {
+                Cell* temp = cells[i][j];
+                cells[i][j] = nullptr;
+                delete temp;
+            }
+
 
 }
+
 
 void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
@@ -104,7 +122,7 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     //fills null cells with empty_cell
     for (int i = 0; i < 7; i++){
-        for (int j = 0; j < 48; j++){
+        for (int j = 0; j < 24; j++){
             if(cells[i][j] == nullptr){
                 cells[i][j] = new EmptyCell();
             } else {
@@ -114,34 +132,135 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     }
 
+cout << "          " <<  "hour1  " << "hour2  " << "hour3  " << "hour4  " << "hour5  " << "hour6  " << "hour7  " << "hour8  " << "hour9  " << "hour10 " << "hour11 " << "hour12 " << "hour13 " << "hour14 " << "hour15 " << "hour16 ";
+cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
+
     for (int i = 0; i < 7; i++) {
-        for (int j = 0; j < 48; j++) {
+
+		if(monday == false) {
+			cout << "Monday    ";
+			monday = true;
+		}
+		else if(tuesday == false) {
+			cout << "Tuesday   ";
+			tuesday = true;
+		}
+		else if(wednesday == false) {
+			cout << "Wednesday ";
+			wednesday = true;
+		}
+		else if(thursday == false) {
+			cout << "Thursday  ";
+			thursday = true;
+		}
+		else if(friday == false) {
+			cout << "Friday    ";
+			friday = true;
+		}
+		else if(saturday ==false) {
+			cout << "Saturday  ";
+			saturday = true;
+		}
+		else if(sunday == false) {
+			cout << "Sunday    ";
+			sunday = true;
+		}
+		else { cout << "          "; }
+
+	int checkLength = 1;
+        for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightTopCell();
+		if(cells[i][j]->cellType == 2) {
+			cells[i][j]->highlightTopCell();
+			while(cells[i][j+checkLength]->cellType == 3){
+				cells[i][j+checkLength]->highlightTopCell();
+				j++;
+			}
+			if(cells[i][j+checkLength]->cellType == 4) {
+				cells[i][j+checkLength]->highlightTopCell();
+				j++;
+			}
+		}
+		else { cells[i][j]->highlightTopCell(); }
             } else {
                 cells[i][j]->drawTopCell();
             }
         }
         cout << endl;
-        for (int j = 0; j < 48; j++) {
+	cout << "          ";
+	int place = 1;
+        for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightMiddleCellTitle();
+		if(cells[i][j]->cellType == 2) {
+			cells[i][j]->highlightMiddleCellTitle();
+			place = 1;
+			while(cells[i][j+checkLength]->cellType == 3) {
+				cells[i][j+checkLength]->highlightMiddleCellTitle(place);
+				j++;
+				place++;
+			}
+			if(cells[i][j+1]->cellType == 4) {
+				cells[i][j+1]->highlightMiddleCellTitle();
+				j++;
+			}
+		}
+		else { cells[i][j]->highlightMiddleCell(); }
             } else {
-                cells[i][j]->drawMiddleCellTitle();
+		if(cells[i][j]->cellType == 2) {
+	                cells[i][j]->drawMiddleCellTitle();
+			place = 1;
+			while(cells[i][j+1]->cellType == 3) {
+				cells[i][j+1]->drawMiddleCellTitle(place);
+				j++;
+				place++;
+			}
+			if(cells[i][j+1]->cellType == 4) {
+				cells[i][j+1]->drawMiddleCellTitle();
+				j++;
+			}
+		}
+		else { cells[i][j]->drawMiddleCellTitle(); }
+
             }
         }
         cout << endl;
-        for (int j = 0; j < 48; j++) {
+	cout << "          ";
+        for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightMiddleCell();
+                if(cells[i][j]->cellType == 2) {
+                        cells[i][j]->highlightMiddleCell();
+                        while(cells[i][j+checkLength]->cellType == 3) {
+                                cells[i][j+checkLength]->highlightMiddleCell();
+                                j++;
+                        }
+                        if(cells[i][j+1]->cellType == 4) {
+                                cells[i][j+1]->highlightMiddleCell();
+                                j++;
+                        }
+                }
+
+                else { cells[i][j]->highlightMiddleCell(); }
             } else {
                 cells[i][j]->drawMiddleCell();
             }
         }
         cout << endl;
-        for (int j = 0; j < 48; j++) {
+	cout << "          ";
+        for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-                cells[i][j]->highlightBottomCell();
+                if(cells[i][j]->cellType == 2) {
+                        cells[i][j]->highlightBottomCell();
+                        while(cells[i][j+checkLength]->cellType == 3){
+                                cells[i][j+checkLength]->highlightBottomCell();
+                                j++;
+                        }
+                        if(cells[i][j+checkLength]->cellType == 4) {
+                                cells[i][j+checkLength]->highlightBottomCell();
+                                j++;
+                        }
+                }
+                else { cells[i][j]->highlightBottomCell(); }
+
             } else {
                 cells[i][j]->drawBottomCell();
             }
@@ -188,7 +307,7 @@ void WeekSpatial::recieveInput(int inputSelection) {
             if (selectedDay < 0) { selectedDay = 0; } //out of boudn corrector
         } else if (inputSelection == 2) { //goes right
             selectedTime++;
-            if (selectedTime > 47) { selectedTime = 47; }
+            if (selectedTime > 23) { selectedTime = 23; }
 
         } else if (inputSelection == 3) {
             selectedDay++;

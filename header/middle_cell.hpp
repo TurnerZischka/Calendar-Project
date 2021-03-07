@@ -6,7 +6,11 @@
 class MiddleCell : public Cell {
 private:
 public:
+
+
+
     MiddleCell(Task *ftask, Control* theControl) {
+	cellType = 3;
         task = ftask;
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
@@ -17,34 +21,93 @@ public:
 
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
-        std::cout << "|";
-        for (unsigned i = 5; i < 11; ++i) {
+        for (unsigned i = 6; i < 13; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
+
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
+
             }
         }
     }
     ~MiddleCell() {}
 
-    void drawTopCell() { std::cout << "------"; }
+	void drawMiddleCellTitle(int x) {
+		std::string taskTitle = task->getTitle();	
+		int place = x;
+		int j;
+		if(place <= 1) {
+			for(unsigned i = 6; i < 13; ++i) {
+				if(i < taskTitle.size()) {
+					std::cout << taskTitle.at(i);
+				}
+				if(i >= taskTitle.size()) {
+					std::cout << " ";
+				}
+			}
+		}
+		if(place > 1) {
+			j = (place * 7) - 1;
+			for(int i = j; i < j + 7; ++i) {
+				if(i < taskTitle.size()) {
+					std::cout << taskTitle.at(i);
+				}
+				if(i >= taskTitle.size()) {
+					std::cout << " ";
+				}
+			}
+		}
+	}
+		
 
-    void drawMiddleCell() { std::cout << "      "; }
+        void highlightMiddleCellTitle(int x) {
+                std::string taskTitle = task->getTitle();
+                int place = x;
+                int j;
+                if(place <= 1) {
+                        for(unsigned i = 6; i < 13; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= taskTitle.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                }
+                if(place > 1) {
+                        j = (place * 7) - 1;
+                        for(int i = j; i < j + 7; ++i) {
+                                if(i < taskTitle.size()) {
+                                        std::cout << taskTitle.at(i);
+                                }
+                                if(i >= taskTitle.size()) {
+                                        std::cout << " ";
+                                }
+                        }
+                }
+        }
 
-    void drawBottomCell() { std::cout << "------"; }
 
-    void highlightTopCell() { std::cout << "******"; }
 
-    void highlightMiddleCell() { std::cout << "      "; }
+    void drawTopCell() { std::cout << "-------"; }
 
-    void highlightBottomCell() { std::cout << "******"; }
+    void drawMiddleCell() { std::cout << "       "; }
+
+    void drawBottomCell() { std::cout << "-------"; }
+
+    void highlightTopCell() { std::cout << "*******"; }
+
+    void highlightMiddleCell() { std::cout << "       "; }
+
+    void highlightBottomCell() { std::cout << "*******"; }
+
+	
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
-        std::cout << "*";
-        for (unsigned i = 5; i < 11; ++i) {
+        for (unsigned i = 6; i < 13; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
             }
@@ -53,6 +116,8 @@ public:
             }
         }
     }
+
+				
 
 };
 
