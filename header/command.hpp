@@ -13,7 +13,7 @@ class Command {
     public:
         Control* myControl ;
         Command(Control* theControl){ myControl = theControl;}
-        ~Command() {delete this;}
+        virtual ~Command() {}
         virtual void execute() = 0;
 };
 

@@ -68,7 +68,11 @@ public:
         std::cout << "|";
     }
 
+
 	void drawMiddleCellTitle(int) {}
+
+    ~EndCell() {}
+
 
 
     void drawTopCell() { std::cout << "------+"; }

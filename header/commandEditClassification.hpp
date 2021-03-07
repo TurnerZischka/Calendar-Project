@@ -9,6 +9,7 @@ class CommandEditClassification: public Command {
 
     public:
         CommandEditClassification(Control* theControl):Command(theControl){}
+        ~CommandEditClassification(){}
         virtual void execute() {
 
             std::string newClassification;

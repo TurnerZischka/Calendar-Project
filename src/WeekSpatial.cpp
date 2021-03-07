@@ -20,6 +20,12 @@
 
 using namespace std;
 
+
+WeekSpatial::WeekSpatial(){
+   
+
+}
+
 void WeekSpatial::clearScreen() {
     std::cout << std::endl;
     std::cout << "\033c" << std::endl;
@@ -38,9 +44,20 @@ void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
 
 }
 
-void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
+WeekSpatial::~WeekSpatial() {
+    
+    
+    for (int i = 0; i < 7; ++i) {
+        for (int j = 0; j < 48; ++j) {
+            Cell* temp = cells[i][j];
+            cells[i][j] = nullptr;
+            delete temp; 
+            
+        }
+    }
 
-    clearScreen();    
+
+  //  clearScreen();    
 	bool monday = false;
 	bool tuesday = false;
 	bool wednesday = false;
@@ -57,8 +74,19 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
                 delete temp;
             }
 
-        }
-    }
+
+}
+
+
+void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
+
+    clearScreen();   
+
+    
+
+    
+        
+    
 
 
     // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
@@ -73,28 +101,21 @@ void WeekSpatial::drawVisual(std::list<Task *> taskList, Control* theControl) {
     time_t intermediary = mktime(currTimeStruct) - static_cast<time_t>( 86400* currTimeStruct->tm_wday); //this
     std::tm *weekStart = localtime(&intermediary);
 
-
-    //does this work? will earasing an element screw with for loop iterator?
-    //the point of this loop is to remove all events out of the list that do not fall within the range
-    for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(mktime(&(*it)->tmStruct) < mktime(weekStart) || mktime(&(*it)->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
-            taskList.erase(it);
-        }
-    }
-
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
     //if the "span" is only one spot, it just allocates a single then
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
-        if (span > 1) {
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it, theControl);
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+            int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
+            if (span > 1) {
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it, theControl);
 
-            for( int i = 1; i < span-1; i++){
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it, theControl);
+                for( int i = 1; i < span-1; i++){
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it, theControl);
+                }
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it, theControl);
+            } else {
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it, theControl);
             }
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it, theControl);
-        } else {
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it, theControl);
         }
     }
 
@@ -249,6 +270,19 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
 
     }
 
+    
+
+    for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 48; j++) {
+                Cell* temp = cells[i][j];
+                cells[i][j] = nullptr;
+                delete temp; 
+                
+                
+                    
+            }
+        }
+
 
 }
 
@@ -297,8 +331,7 @@ void WeekSpatial::recieveInput(int inputSelection) {
         } else if (inputSelection == 3) {
             selectedMenuItem++;
             if (selectedMenuItem >= cells[selectedDay][selectedTime]->sizeOfMenu()) { selectedMenuItem =
-                                                                                              cells[selectedDay][selectedTime]->sizeOfMenu() -
-                                                                                              1;
+                    cells[selectedDay][selectedTime]->sizeOfMenu() - 1;     
             }
 
         } else if (inputSelection == 5) {

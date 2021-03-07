@@ -11,11 +11,13 @@ class EmptyCell : public Cell {
 		}
 
 
+
 	virtual void drawTopCell() { std::cout << "+-----+"; }
 	virtual void drawMiddleCell() { std::cout << "|     |"; }
 	virtual void drawBottomCell() { std::cout << "+-----+"; }
         virtual void drawMiddleCellTitle(){ std::cout << "|     |";}
 	void drawMiddleCellTitle(int) {}
+      ~EmptyCell() {}
 	
 
 
@@ -24,6 +26,7 @@ class EmptyCell : public Cell {
         virtual void highlightMiddleCellTitle(){std::cout << "*     *" ;}
 	void highlightMiddleCellTitle(int) {}
         virtual void highlightBottomCell(){std::cout << "*******" ;}
+
 };
 
 #endif //__EMPTY_CELL_HPP__

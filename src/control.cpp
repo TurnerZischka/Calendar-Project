@@ -12,7 +12,12 @@ Control::Control(std::list<Task*> task_list, Display* my_display) {
     this->myDisplay = my_display;
 }
 
-Control::~Control() {delete this;}
+Control::~Control() {
+
+    for( auto it= taskList.begin(); it != taskList.end(); it++){ delete *it;}
+
+    //delete this;
+}
 
 void Control::AddTask() {
     std::string title;
@@ -121,6 +126,8 @@ void Control::loadCalendar(std::string fileName) {
 
 void Control::eventLoop() {
     int ch;
+    this->myDisplay->redraw(this->taskList, this);
+
 
     //std::cout << "Welcome to the calendar application. Please select an option." << std::endl;
     //std::cout << "c - Create new Calendar" << std::endl;
@@ -165,6 +172,7 @@ void Control::eventLoop() {
 
             case '\n':
                 std::cout << "Enter" << std::endl;
+            break;
 
             case 'a': AddTask();
             break;

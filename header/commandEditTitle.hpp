@@ -10,6 +10,8 @@ class CommandEditTitle: public Command {
 
     public:
         CommandEditTitle(Control* theControl):Command(theControl){ }
+        ~CommandEditTitle(){}
+
         virtual void execute() {
 
             std::string newTitle;

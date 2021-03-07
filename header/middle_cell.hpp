@@ -32,6 +32,7 @@ public:
             }
         }
     }
+    ~MiddleCell() {}
 
 	void drawMiddleCellTitle(int x) {
 		std::string taskTitle = task->getTitle();	

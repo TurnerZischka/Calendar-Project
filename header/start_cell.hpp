@@ -35,8 +35,10 @@ public:
         }
     }
 
+
 	void drawMiddleCellTitle(int) {}
 
+    ~StartCell() {}
 
     void drawTopCell() { std::cout << "+------"; }
 

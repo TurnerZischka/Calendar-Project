@@ -1,3 +1,9 @@
 .idea/
 cmake-build-debug/
 lib/
+.vscode/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+calendar
+cmake_install.cmake

@@ -41,7 +41,9 @@ public:
         std::cout << "|";
     }
 
+
 	void drawMiddleCellTitle(int) {}
+
 
     ~SingleCell() {}
 
