@@ -13,10 +13,10 @@ Control::Control(std::list<Task*> task_list, Display* my_display) {
 }
 
 Control::~Control() {
-
-    for( auto it= taskList.begin(); it != taskList.end(); it++){ delete *it;}
-
-    //delete this;
+    while(!this->taskList.empty())  {
+        delete this->taskList.back();
+        this->taskList.pop_back();
+    }   
 }
 
 void Control::AddTask() {
@@ -126,7 +126,6 @@ void Control::loadCalendar(std::string fileName) {
 
 void Control::eventLoop() {
     int ch;
-    this->myDisplay->redraw(this->taskList, this);
 
 
     //std::cout << "Welcome to the calendar application. Please select an option." << std::endl;
@@ -135,44 +134,43 @@ void Control::eventLoop() {
     //std::cout << "c - Create new Calendar" << std::endl;
     //std::cout << "l - Load existing Calendar" << std::endl;
     std::cout << "Welcome to the calendar application. Please select an option. \n";
-    //printw("c - Create new Calendar\n");
-    //printw("l - Load existing Calendar\n");
-    std::cout << "Press 'a' to add a task\n";
+    std::cout << "a - Add task" << std::endl;
+    std::cout << "d - Remove task" << std::endl;
+    std::cout << "c - Display Calendar" << std::endl;
+    
 
     while ((ch = getch()) != 'q') {
 
         switch(ch) {
 
-            case '/033':                
-                case 'A':
-                std::cout << "UpArrow\n";
-                this->myDisplay->recieveInput(1);
-                this->myDisplay->redraw(this->taskList, this);
-                break;
+            case 'c':
+                case '/033':                
+                    case 'A':
+                        this->myDisplay->recieveInput(1);
+                        this->myDisplay->redraw(this->taskList, this);
+                        break;
 
-                case 'B':
-                std::cout << "DownArrow\n";
-                this->myDisplay->recieveInput(3);
-                this->myDisplay->redraw(this->taskList, this);
-                break;
+                    case 'B':
+                        this->myDisplay->recieveInput(3);
+                        this->myDisplay->redraw(this->taskList, this);
+                        break;
 
-                case 'C':
-                std::cout << "RightArrow\n";
-                this->myDisplay->recieveInput(2);
-                this->myDisplay->redraw(this->taskList, this);
-                break;
+                    case 'C':
+                        this->myDisplay->recieveInput(2);
+                        this->myDisplay->redraw(this->taskList, this);
+                        break;
 
-                case 'D':
-                std::cout << "LeftArrow\n";
-                this->myDisplay->recieveInput(4);
-                this->myDisplay->redraw(this->taskList, this);
+                    case 'D':
+                        this->myDisplay->recieveInput(4);
+                        this->myDisplay->redraw(this->taskList, this);
+                        break;
+                    case '\n':
+                        std::cout << "Enter" << std::endl;
+                        break;
                 break;
-
             break;
 
-            case '\n':
-                std::cout << "Enter" << std::endl;
-            break;
+           
 
             case 'a': AddTask();
             break;

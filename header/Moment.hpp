@@ -31,6 +31,8 @@ class Moment {
 	endTime = endIn;
 	priority = priIn;
 	}
+	
+	virtual ~Moment() {}
 
 
 

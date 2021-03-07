@@ -48,7 +48,7 @@ WeekSpatial::~WeekSpatial() {
     
     
     for (int i = 0; i < 7; ++i) {
-        for (int j = 0; j < 48; ++j) {
+        for (int j = 0; j < 24; ++j) {
             Cell* temp = cells[i][j];
             cells[i][j] = nullptr;
             delete temp; 
@@ -90,16 +90,16 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
     //if the "span" is only one spot, it just allocates a single then
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
         if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
-            int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
+            int span = (((*it)->getEndTime()/100) - ((*it)->getStartTime()/100));
             if (span > 1) {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it, theControl);
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
 
                 for( int i = 1; i < span-1; i++){
-                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it, theControl);
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
                 }
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it, theControl);
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
             } else {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it, theControl);
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
             }
         }
     }
@@ -107,7 +107,7 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     //fills null cells with empty_cell
     for (int i = 0; i < 7; i++){
-        for (int j = 0; j < 48; j++){
+        for (int j = 0; j < 24; j++){
             if(cells[i][j] == nullptr){
                 cells[i][j] = new EmptyCell();
             } else {
@@ -117,12 +117,17 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     }
 
-cout << "          " <<  "0100   " << "0200   " << "0300   " << "0400   " << "0500   " << "0600   " << "0700   " << "0800   " << "0900   " << "1000   " << "1100   " << "1200   " << "1300   " << "1400   " << "1500   " << "1600   ";
-cout << "1700   " << "1800   1900   2000   2100   2200   2300   2400" << endl;
+cout << "          " << "0000   " << "0100   " << "0200   " << "0300   " << "0400   " << "0500   " << "0600   " << "0700   " << "0800   " << "0900   " << "1000   " << "1100   " << "1200   " << "1300   " << "1400   " << "1500   " << "1600   ";
+cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
 
     for (int i = 0; i < 7; i++) {
 
-		if(monday == false) {
+        if(sunday == false) {
+			cout << "Sunday    ";
+			sunday = true;
+		}
+
+		else if(monday == false) {
 			cout << "Monday    ";
 			monday = true;
 		}
@@ -146,10 +151,7 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300   2400" << endl;
 			cout << "Saturday  ";
 			saturday = true;
 		}
-		else if(sunday == false) {
-			cout << "Sunday    ";
-			sunday = true;
-		}
+		
 		else { cout << "          "; }
 
 	int checkLength = 1;
@@ -262,9 +264,6 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300   2400" << endl;
                 Cell* temp = cells[i][j];
                 cells[i][j] = nullptr;
                 delete temp; 
-                
-                
-                    
             }
         }
 

@@ -24,6 +24,8 @@ class Task: public Moment {
 	    }
 	    void AddSubtask(std::string, std::string, std::string, int, int, int, int, int);
 
+		~Task(){}
+
 	    int getEndTime(){
 	        return getEnd();
 	    }
