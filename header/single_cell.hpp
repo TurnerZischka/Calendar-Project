@@ -14,7 +14,8 @@ public:
 
     SingleCell(Task *ftask, Control* theControl) {
         task = ftask;
-	cellType = 1;
+
+
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
         createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));
@@ -22,14 +23,14 @@ public:
         createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime(theControl)));
     }
 
-    void drawTopCell() { std::cout << "+-----+"; }
+    void drawTopCell() { std::cout << "+----+"; }
 
-    void drawMiddleCell() { std::cout << "|     |"; }
+    void drawMiddleCell() { std::cout << "|    |"; }
 
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
         std::cout << "|";
-        for (unsigned i = 0; i < 5; ++i) {
+        for (unsigned i = 0; i < 4; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
             }
@@ -38,8 +39,11 @@ public:
             }
         }
         std::cout << "|";
-
     }
+
+	void drawMiddleCellTitle(int) {}
+
+    ~SingleCell() {}
 
 
     /*void drawMilddleCellStartTime() {
@@ -59,18 +63,18 @@ public:
 
 
 
-    void drawBottomCell() { std::cout << "+-----+"; }
+    void drawBottomCell() { std::cout << "+----+"; }
 
-    void highlightTopCell() { std::cout << "*******"; }
+    void highlightTopCell() { std::cout << "******"; }
 
-    void highlightMiddleCell() { std::cout << "*     *"; }
+    void highlightMiddleCell() { std::cout << "*    *"; }
 
-    void highlightBottomCell() { std::cout << "*******"; }
+    void highlightBottomCell() { std::cout << "******"; }
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
         std::cout << "*";
-        for (unsigned i = 0; i < 5; ++i) {
+        for (unsigned i = 0; i < 4; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
             }
@@ -79,8 +83,8 @@ public:
             }
         }
         std::cout << "*";
-
     }
+	void highlightMiddleCellTitle(int){}
 
 };
 

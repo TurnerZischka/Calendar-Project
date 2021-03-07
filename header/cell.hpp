@@ -41,11 +41,13 @@ class Cell {
 		virtual void drawTopCell() = 0;
 		virtual void drawMiddleCell() = 0;
 		virtual void drawMiddleCellTitle() = 0;
+		virtual void drawMiddleCellTitle(int) = 0;
 		virtual void drawBottomCell() = 0;
 
 		virtual void highlightTopCell() = 0;
 		virtual void highlightMiddleCell() = 0;
 		virtual void highlightMiddleCellTitle() = 0;
+		virtual void highlightMiddleCellTitle(int) = 0;
 		virtual void highlightBottomCell() = 0;
 };
 

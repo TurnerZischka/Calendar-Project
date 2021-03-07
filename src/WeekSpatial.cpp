@@ -167,13 +167,16 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
         }
         cout << endl;
 	cout << "          ";
+	int place = 1;
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
 		if(cells[i][j]->cellType == 2) {
 			cells[i][j]->highlightMiddleCellTitle();
+			place = 1;
 			while(cells[i][j+checkLength]->cellType == 3) {
-				cells[i][j+checkLength]->highlightMiddleCellTitle();
+				cells[i][j+checkLength]->highlightMiddleCellTitle(place);
 				j++;
+				place++;
 			}
 			if(cells[i][j+1]->cellType == 4) {
 				cells[i][j+1]->highlightMiddleCellTitle();
@@ -182,7 +185,21 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
 		}
 		else { cells[i][j]->highlightMiddleCell(); }
             } else {
-                cells[i][j]->drawMiddleCellTitle();
+		if(cells[i][j]->cellType == 2) {
+	                cells[i][j]->drawMiddleCellTitle();
+			place = 1;
+			while(cells[i][j+1]->cellType == 3) {
+				cells[i][j+1]->drawMiddleCellTitle(place);
+				j++;
+				place++;
+			}
+			if(cells[i][j+1]->cellType == 4) {
+				cells[i][j+1]->drawMiddleCellTitle();
+				j++;
+			}
+		}
+		else { cells[i][j]->drawMiddleCellTitle(); }
+
             }
         }
         cout << endl;
@@ -211,13 +228,13 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
                 if(cells[i][j]->cellType == 2) {
-                        cells[i][j]->highlightTopCell();
+                        cells[i][j]->highlightBottomCell();
                         while(cells[i][j+checkLength]->cellType == 3){
-                                cells[i][j+checkLength]->highlightTopCell();
+                                cells[i][j+checkLength]->highlightBottomCell();
                                 j++;
                         }
                         if(cells[i][j+checkLength]->cellType == 4) {
-                                cells[i][j+checkLength]->highlightTopCell();
+                                cells[i][j+checkLength]->highlightBottomCell();
                                 j++;
                         }
                 }
