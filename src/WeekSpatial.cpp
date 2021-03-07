@@ -107,7 +107,7 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     //fills null cells with empty_cell
     for (int i = 0; i < 7; i++){
-        for (int j = 0; j < 24; j++){
+        for (int j = 0; j < 48; j++){
             if(cells[i][j] == nullptr){
                 cells[i][j] = new EmptyCell();
             } else {
@@ -117,8 +117,8 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     }
 
-cout << "          " <<  "hour1  " << "hour2  " << "hour3  " << "hour4  " << "hour5  " << "hour6  " << "hour7  " << "hour8  " << "hour9  " << "hour10 " << "hour11 " << "hour12 " << "hour13 " << "hour14 " << "hour15 " << "hour16 ";
-cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
+cout << "          " <<  "0100   " << "0200   " << "0300   " << "0400   " << "0500   " << "0600   " << "0700   " << "0800   " << "0900   " << "1000   " << "1100   " << "1200   " << "1300   " << "1400   " << "1500   " << "1600   ";
+cout << "1700   " << "1800   1900   2000   2100   2200   2300   2400" << endl;
 
     for (int i = 0; i < 7; i++) {
 
