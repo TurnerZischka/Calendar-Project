@@ -21,11 +21,11 @@ class EmptyCell : public Cell {
 	
 
 
-        virtual void highlightTopCell(){ std::cout << "*******" ;}
-        virtual void highlightMiddleCell(){std::cout << "*     *" ;}
-        virtual void highlightMiddleCellTitle(){std::cout << "*     *" ;}
+        virtual void highlightTopCell(){ std::cout << "\033[;32m*******\033[0m" ;}
+        virtual void highlightMiddleCell(){std::cout << "\033[;32m*     *\033[0m" ;}
+        virtual void highlightMiddleCellTitle(){std::cout << "\033[;32m*     *\033[0m" ;}
 	void highlightMiddleCellTitle(int) {}
-        virtual void highlightBottomCell(){std::cout << "*******" ;}
+        virtual void highlightBottomCell(){std::cout << "\033[;32m*******\033[0m" ;}
 
 };
 

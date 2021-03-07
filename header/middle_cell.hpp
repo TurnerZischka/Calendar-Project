@@ -91,17 +91,17 @@ public:
 
 
 
-    void drawTopCell() { std::cout << "-------"; }
+    void drawTopCell() { std::cout << "\033[;34m-------\033[0m"; }
 
     void drawMiddleCell() { std::cout << "       "; }
 
-    void drawBottomCell() { std::cout << "-------"; }
+    void drawBottomCell() { std::cout << "\033[;34m-------\033[0m"; }
 
-    void highlightTopCell() { std::cout << "*******"; }
+    void highlightTopCell() { std::cout << "\033[;32m*******\033[0m"; }
 
     void highlightMiddleCell() { std::cout << "       "; }
 
-    void highlightBottomCell() { std::cout << "*******"; }
+    void highlightBottomCell() { std::cout << "\033[;32m*******\033[0m"; }
 
 	
 
@@ -122,4 +122,3 @@ public:
 };
 
 #endif //__MIDDLE_CELL_HPP__
-

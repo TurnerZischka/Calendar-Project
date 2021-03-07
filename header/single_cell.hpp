@@ -23,14 +23,14 @@ public:
         createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime(theControl)));
     }
 
-    void drawTopCell() { std::cout << "+----+"; }
+    void drawTopCell() { std::cout << "\033[;34m+-----+\033[0m"; }
 
-    void drawMiddleCell() { std::cout << "|    |"; }
+    void drawMiddleCell() { std::cout << "\033[;34m|     |\033[0m"; }
 
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
-        std::cout << "|";
-        for (unsigned i = 0; i < 4; ++i) {
+        std::cout << "\033[;34m|\033[0m";
+        for (unsigned i = 0; i < 5; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
             }
@@ -38,7 +38,7 @@ public:
                 std::cout << " ";
             }
         }
-        std::cout << "|";
+        std::cout << "\033[;34m|\033[0m";
     }
 
 
@@ -49,33 +49,33 @@ public:
 
 
     /*void drawMilddleCellStartTime() {
-            int taskTime = task->getStart();
-            std::cout << "|";
-            for(unsigned i = 0; i < 4; ++i) {
-                    if(i < taskTitle.size()) {
-                            std::cout << taskTitle.at(i);
-                    }
-                    if(i >= x.size()) {
-                            std::cout << " ";
-                    }
-            }
-            std::cout << "|";
-    }*/
+ *             int taskTime = task->getStart();
+ *                         std::cout << "|";
+ *                                     for(unsigned i = 0; i < 4; ++i) {
+ *                                                         if(i < taskTitle.size()) {
+ *                                                                                     std::cout << taskTitle.at(i);
+ *                                                                                                         }
+ *                                                                                                                             if(i >= x.size()) {
+ *                                                                                                                                                         std::cout << " ";
+ *                                                                                                                                                                             }
+ *                                                                                                                                                                                         }
+ *                                                                                                                                                                                                     std::cout << "|";
+ *                                                                                                                                                                                                         }*/
 
 
 
 
-    void drawBottomCell() { std::cout << "+----+"; }
+    void drawBottomCell() { std::cout << "\033[;34m+-----+\033[0m"; }
 
-    void highlightTopCell() { std::cout << "******"; }
+    void highlightTopCell() { std::cout << "\033[;32m*******\033[0m"; }
 
-    void highlightMiddleCell() { std::cout << "*    *"; }
+    void highlightMiddleCell() { std::cout << "\033[;32m*     *\033[0m"; }
 
-    void highlightBottomCell() { std::cout << "******"; }
+    void highlightBottomCell() { std::cout << "\033[;32m*******\033[0m"; }
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
-        std::cout << "*";
+        std::cout << "\033[;32m*\033[0m";
         for (unsigned i = 0; i < 4; ++i) {
             if (i < taskTitle.size()) {
                 std::cout << taskTitle.at(i);
@@ -84,7 +84,7 @@ public:
                 std::cout << " ";
             }
         }
-        std::cout << "*";
+        std::cout << "\033[;32m*\033[0m";
     }
 	void highlightMiddleCellTitle(int){}
 
