@@ -35,6 +35,13 @@ class Cell {
 		void actMenu(int x) {
 			menuItemVect.at(x)->selected();
 		}
+
+		virtual ~Cell(){
+			while(!menuItemVect.empty()) {
+				delete menuItemVect.back();
+				menuItemVect.pop_back();
+			}
+		}
 			
 		virtual void drawTopCell() = 0;
 		virtual void drawMiddleCell() = 0;

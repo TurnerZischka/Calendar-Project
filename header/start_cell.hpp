@@ -31,7 +31,7 @@ public:
         }
     }
 
-    virtual ~StartCell() {delete this;}
+    ~StartCell() {}
     void drawTopCell() { std::cout << "+-----"; }
 
     void drawMiddleCell() { std::cout << "|     "; }

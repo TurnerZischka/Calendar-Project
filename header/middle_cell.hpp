@@ -27,7 +27,7 @@ public:
             }
         }
     }
-    virtual ~MiddleCell() {delete this;}
+    ~MiddleCell() {}
 
     void drawTopCell() { std::cout << "------"; }
 

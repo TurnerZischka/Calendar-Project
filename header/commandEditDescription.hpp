@@ -8,6 +8,8 @@ class CommandEditDescription: public Command {
 
     public:
         CommandEditDescription(Control* theControl):Command(theControl){}
+        ~CommandEditDescription(){}
+
         virtual void execute() {
 
             std::string newDescription;

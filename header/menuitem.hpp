@@ -9,7 +9,7 @@ class MenuItem {
         Command* specificCommand;
         std::string itemName;
 
-        ~MenuItem() {delete this;}
+        ~MenuItem() {delete this->specificCommand;}
 
 
         MenuItem(std::string name, Command* myCommand) {

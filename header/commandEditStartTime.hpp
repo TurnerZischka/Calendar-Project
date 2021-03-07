@@ -9,6 +9,8 @@ class CommandEditStartTime: public Command {
 
     public:
         CommandEditStartTime(Control* theControl):Command(theControl){}
+        ~CommandEditStartTime(){}
+
         virtual void execute() {
 
             double newStartTime;

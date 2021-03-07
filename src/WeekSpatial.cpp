@@ -62,7 +62,7 @@ WeekSpatial::~WeekSpatial() {
 
 void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
-    //clearScreen();   
+    clearScreen();   
 
     
 
@@ -83,28 +83,21 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
     time_t intermediary = mktime(currTimeStruct) - static_cast<time_t>( 86400* currTimeStruct->tm_wday); //this
     std::tm *weekStart = localtime(&intermediary);
 
-
-    //does this work? will earasing an element screw with for loop iterator?
-    //the point of this loop is to remove all events out of the list that do not fall within the range
-    for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(mktime(&(*it)->tmStruct) < mktime(weekStart) || mktime(&(*it)->tmStruct) > mktime(weekStart)+ static_cast<time_t>(604800)){
-            taskList.erase(it);
-        }
-    }
-
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
     //if the "span" is only one spot, it just allocates a single then
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
-        if (span > 1) {
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it, theControl);
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+            int span = (((((*it)->getEndTime()/100) - ((*it)->getStartTime()/100))*60) + ((*it)->getEndTime()%100) - ((*it)->getStartTime()%100) )/30;
+            if (span > 1) {
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new StartCell(*it, theControl);
 
-            for( int i = 1; i < span-1; i++){
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it, theControl);
+                for( int i = 1; i < span-1; i++){
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (i)] = new MiddleCell(*it, theControl);
+                }
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it, theControl);
+            } else {
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it, theControl);
             }
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30) + (span-1)] = new EndCell(*it, theControl);
-        } else {
-            cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour*2) + ((*it)->tmStruct.tm_min/30)] = new SingleCell(*it, theControl);
         }
     }
 
@@ -170,7 +163,6 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
                     
             }
         }
-
 
 
 }

@@ -8,6 +8,7 @@ class CommandEditEndTime: public Command {
 
 public:
     CommandEditEndTime(Control* theControl):Command(theControl){}
+    ~CommandEditEndTime() {}
     virtual void execute() {
 
         double newEndTime;

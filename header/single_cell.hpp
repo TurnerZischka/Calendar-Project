@@ -41,7 +41,7 @@ public:
         std::cout << "|";
     }
 
-    virtual ~SingleCell() {delete this;}
+    ~SingleCell() {}
 
 
     /*void drawMilddleCellStartTime() {
