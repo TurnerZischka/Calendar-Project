@@ -21,7 +21,7 @@ class Cell;
 class WeekSpatial: public Display {
     private:
         double currTime;
-        Cell* cells[7][24] = {nullptr);
+        Cell* cells[7][24] = {nullptr};
 
         int selectedDay = 0;
         int selectedTime = 0;

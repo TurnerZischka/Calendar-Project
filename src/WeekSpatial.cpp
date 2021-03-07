@@ -58,23 +58,6 @@ WeekSpatial::~WeekSpatial() {
 
 
   //  clearScreen();    
-	bool monday = false;
-	bool tuesday = false;
-	bool wednesday = false;
-	bool thursday = false;
-	bool friday = false;
-	bool saturday = false;
-	bool sunday = false;
-
-    if( cells[1][1] != nullptr) { // this check is first because upon first draw, the cells will all be null. After first draw, non will be null
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 24; j++) {
-                Cell* temp = cells[i][j];
-                cells[i][j] = nullptr;
-                delete temp;
-            }
-
-
 }
 
 
@@ -82,11 +65,13 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     clearScreen();   
 
-    
-
-    
-        
-    
+        bool monday = false;
+        bool tuesday = false;
+        bool wednesday = false;
+        bool thursday = false;
+        bool friday = false;
+        bool saturday = false;
+        bool sunday = false;
 
 
     // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
@@ -273,7 +258,7 @@ cout << "hour17 " << "hour18 hour19 hour20 hour21 hour22 hour23 hour24" << endl;
     
 
     for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 48; j++) {
+            for (int j = 0; j < 24; j++) {
                 Cell* temp = cells[i][j];
                 cells[i][j] = nullptr;
                 delete temp; 
@@ -350,3 +335,4 @@ void WeekSpatial::recieveInput(int inputSelection) {
 
 
 }
+
