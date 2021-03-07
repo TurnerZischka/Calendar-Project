@@ -19,7 +19,7 @@ class Display{
 
     public:
 	virtual void redraw(std::list<Task*>, Control* theControl)= 0;
-    virtual void recieveInput(int) = 0;
+    virtual void recieveInput(int, std::list<Task*>, Control*) = 0;
     virtual int getSelected() = 0;
 
 };

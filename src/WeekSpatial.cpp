@@ -33,15 +33,8 @@ void WeekSpatial::clearScreen() {
 
 
 void WeekSpatial::redraw(list<Task *> passingList, Control* theControl) {
-    if (mode == 1) { //if mose is set to visual (1), then call respective function
-        drawVisual(passingList, theControl);
-    } else if (mode == 2) {
-        drawSubMenu();
-    } else {
-        cout << "mode error in redraw" << endl;
-    }
-
-
+    drawVisual(passingList, theControl);
+    
 }
 
 WeekSpatial::~WeekSpatial() {
@@ -117,7 +110,10 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
     }
 
-cout << "          " << "0000   " << "0100   " << "0200   " << "0300   " << "0400   " << "0500   " << "0600   " << "0700   " << "0800   " << "0900   " << "1000   " << "1100   " << "1200   " << "1300   " << "1400   " << "1500   " << "1600   ";
+
+
+    if (mode == 1) { //if mose is set to visual (1), then call respective function
+       cout << "          " << "0000   " << "0100   " << "0200   " << "0300   " << "0400   " << "0500   " << "0600   " << "0700   " << "0800   " << "0900   " << "1000   " << "1100   " << "1200   " << "1300   " << "1400   " << "1500   " << "1600   ";
 cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
 
     for (int i = 0; i < 7; i++) {
@@ -255,7 +251,20 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
         cout << endl;
 
 
+    } 
+    } else if (mode == 2) {
+       int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
+        cout << "Please choose one" << endl;
+        for (int i = 0; i < menuSize; i++) {
+            if (i == selectedMenuItem) { cout << " > ";
+        }
+        cout << i + 1 << cells[selectedDay][selectedTime]->printMenuItem(i) << endl;
     }
+    } else {
+
+    }
+
+
 
     
 
@@ -265,7 +274,7 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
                 cells[i][j] = nullptr;
                 delete temp; 
             }
-        }
+    }
 
 
 }
@@ -284,7 +293,55 @@ int WeekSpatial::getSelected() {
     return cells[selectedDay][selectedTime]->getAssociatedID();
 }
 
-void WeekSpatial::recieveInput(int inputSelection) {
+void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Control* theControl) {
+        // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
+    time_t currTime = time(0);
+    std::tm *currTimeStruct = localtime(&currTime);
+    currTimeStruct->tm_sec = 0;
+    currTimeStruct->tm_min = 0;
+    currTimeStruct->tm_hour = 0;
+
+    //86400 represents seconds in a day
+    //this conversion subtracts from the time_t of the very begginig of the day, the days from previous sunday. This means that intermediary is time of sunday at newday
+    time_t intermediary = mktime(currTimeStruct) - static_cast<time_t>( 86400* currTimeStruct->tm_wday); //this
+    std::tm *weekStart = localtime(&intermediary);
+
+    //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
+    //if the "span" is only one spot, it just allocates a single then
+    for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+            int span = (((*it)->getEndTime()/100) - ((*it)->getStartTime()/100));
+            if (span > 1) {
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+
+                for( int i = 1; i < span-1; i++){
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                }
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+            } else {
+                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+            }
+        }
+    }
+
+
+    //fills null cells with empty_cell
+    for (int i = 0; i < 7; i++){
+        for (int j = 0; j < 24; j++){
+            if(cells[i][j] == nullptr){
+                cells[i][j] = new EmptyCell();
+            } else {
+                //do nothing
+            }
+        }
+
+    }
+
+
+
+
+
+
     if (mode == 1) {
         if (inputSelection == 1) { //goes up
             selectedDay--;
@@ -332,6 +389,14 @@ void WeekSpatial::recieveInput(int inputSelection) {
         cout << "Mode error" << endl;
     }
 
+
+    for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 24; j++) {
+                Cell* temp = cells[i][j];
+                cells[i][j] = nullptr;
+                delete temp; 
+            }
+    }
 
 }
 
