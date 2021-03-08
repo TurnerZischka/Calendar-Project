@@ -34,7 +34,7 @@ class WeekSpatial: public Display {
         void drawVisual(std::list<Task*>, Control* theControl);
         void drawSubMenu();
         int getSelected();
-        void recieveInput(int);
+        void recieveInput(int, std::list<Task*>, Control*);
         void setMode(int);
         void clearScreen();
 

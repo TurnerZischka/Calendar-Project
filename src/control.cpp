@@ -146,22 +146,22 @@ void Control::eventLoop() {
             case 'c':
                 case '/033':                
                     case 'A':
-                        this->myDisplay->recieveInput(1);
+                        this->myDisplay->recieveInput(1, this->taskList, this);
                         this->myDisplay->redraw(this->taskList, this);
                         break;
 
                     case 'B':
-                        this->myDisplay->recieveInput(3);
+                        this->myDisplay->recieveInput(3, this->taskList, this);
                         this->myDisplay->redraw(this->taskList, this);
                         break;
 
                     case 'C':
-                        this->myDisplay->recieveInput(2);
+                        this->myDisplay->recieveInput(2, this->taskList, this);
                         this->myDisplay->redraw(this->taskList, this);
                         break;
 
                     case 'D':
-                        this->myDisplay->recieveInput(4);
+                        this->myDisplay->recieveInput(4, this->taskList, this);
                         this->myDisplay->redraw(this->taskList, this);
                         break;
                     case '\n':
