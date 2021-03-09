@@ -18,7 +18,6 @@ class Control {
         Control(std::list<Task*>, Display*);
         ~Control();
         void AddTask();
-        void removeTask(int);
         void saveCalendar();
         void loadCalendar(std::string);
         void eventLoop();

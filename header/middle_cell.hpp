@@ -7,16 +7,16 @@ class MiddleCell : public Cell {
 private:
 public:
 
-
-
     MiddleCell(Task *ftask, Control* theControl) {
-	cellType = 3;
+	    cellType = 3;
         task = ftask;
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
         createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));
         createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime(theControl)));
         createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime(theControl)));
+        createMenuItem(new MenuItem("Delete this task", new CommandDeleteTask(theControl)));
+        createMenuItem(new MenuItem("Add Subtask", new CommandAddSubtask(theControl)));
     }
 
     void drawMiddleCellTitle() {

@@ -13,6 +13,8 @@
 #include "../header/commandEditEndTime.hpp"
 #include "../header/commandEditStartTime.hpp"
 #include "../header/commandEditTitle.hpp"
+#include "../header/commandDeleteTask.hpp"
+#include "../header/commandAddSubtask.hpp"
 
 
 

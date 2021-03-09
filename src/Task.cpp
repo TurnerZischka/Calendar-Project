@@ -1,11 +1,13 @@
 #include "../header/Task.hpp"
 #include "../header/Subtask.hpp"
+#include <iostream>
 
 
 #include <vector>
 #include <string>
 
-void Task::AddSubtask(std::string titIn, std::string descIn, std::string catIn, int month, int date, int startIn, int endIn, int priIn) {
-    Subtask tempSubTask(titIn, descIn, catIn, month, date, startIn, endIn,  priIn);
+void Task::AddSubtask(std::string titIn) {
+    Subtask tempSubTask(titIn);
     sub_tasks.push_back(tempSubTask);
+    std::cout << "Subtask added." << std::endl;
 }
