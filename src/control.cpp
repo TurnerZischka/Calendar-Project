@@ -56,7 +56,7 @@ void Control::AddTask() {
     }
 
     while( startTime < 0 || startTime > 2359) {
-        std::cout << "Enter a start time as a double (0000 - 2359)" << std::endl;
+        std::cout << "Enter a start time as military time (0000 - 2359)" << std::endl;
         std::cin >> startTime;
         std::cin.clear();
         std::cin.ignore(INT_MAX, '\n');
@@ -70,7 +70,7 @@ void Control::AddTask() {
     }*/
 
     while( endTime < 0 || endTime > 2359) {
-        std::cout << "Enter an end time as a double (0 - 2359)" << std::endl;
+        std::cout << "Enter an end time as military time (0000 - 2359)" << std::endl;
         std::cin >> endTime;
         std::cin.clear();
         std::cin.ignore(INT_MAX, '\n');
@@ -88,9 +88,10 @@ void Control::AddTask() {
     Task* myTask = new Task(title,description,classification, month, date, startTime, endTime, 0, taskID);
     this->taskList.push_back(myTask);
     std::cout << "Task successfully added.\n";
+    this->myDisplay->redraw(this->taskList, this);
 }
 
-void Control::removeTask(int taskID) {
+/*void Control::removeTask(int taskID) {
     std::list<Task*>::iterator iter;
 
     for (iter = this->taskList.begin(); iter != this->taskList.end(); ++iter) {
@@ -98,7 +99,7 @@ void Control::removeTask(int taskID) {
             this->taskList.erase(iter);
         }
     }
-}
+}*/
 
 void Control::saveCalendar() {
     std::ofstream outFS;

@@ -22,7 +22,7 @@ class Task: public Moment {
 	        tmStruct = {0, startIn%100, startIn/100, date, month, 2021-1900};
 
 	    }
-	    void AddSubtask(std::string, std::string, std::string, int, int, int, int, int);
+	    void AddSubtask(std::string);
 
 		~Task(){}
 
