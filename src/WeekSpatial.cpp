@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <stdio.h>
+#include <iomanip>
 
 #include "../header/Moment.hpp"
 #include "../header/Subtask.hpp"
@@ -170,7 +171,11 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
         }
         cout << endl;
-	cout << "          ";
+	//cout << "          ";
+    cout << left << weekStart->tm_mon+1 << left << "/" << left << setw(8) << weekStart->tm_mday;
+    intermediary = mktime(weekStart)+ static_cast<time_t>(86400);
+    weekStart = localtime(&intermediary);
+    
 	int place = 1;
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
@@ -231,7 +236,13 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
         }
         cout << endl;
+
 	cout << "          ";
+
+ 
+
+
+
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
                 if(cells[i][j]->cellType == 2) {
@@ -397,6 +408,7 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
         } else if (inputSelection == 2) { //goes right
             int revert = selectedTime;
             selectedTime++;
+            if (selectedTime > 23) { selectedTime = 23; }
             if (cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){ 
                 while((cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4)){
                     selectedTime++; 
@@ -409,10 +421,11 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
                 
                   
             }
-            if (selectedTime > 23) { selectedTime = 23; }
+            
 
         } else if (inputSelection == 3) {
             selectedDay++;
+            if (selectedDay > 6) { selectedDay = 6; }
             while(cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){
                 selectedTime--;
                 if(selectedTime < 0){
@@ -420,11 +433,12 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
                     break;
                 }
             }
-            if (selectedDay > 6) { selectedDay = 6; }
+            
 
         } else if (inputSelection == 4) {
             int revert = selectedTime;
             selectedTime--;
+            if (selectedTime < 0) { selectedTime = 0; }
             if (cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){ 
                 while((cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4)){
                     selectedTime--; 
@@ -436,7 +450,7 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
                 }
             }
                 
-            if (selectedTime < 0) { selectedTime = 0; }
+            
         } else if (inputSelection == 5) {
             if (cells[selectedDay][selectedTime]->cellType != 0) {
                 mode = 2;  //will switch modes, the drawing will be done once the event loop in control calls redraw
