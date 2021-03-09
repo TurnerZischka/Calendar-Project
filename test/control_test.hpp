@@ -3,5 +3,6 @@
 
 #include "gtest/gtest.h"
 
+#include "../header/control.hpp"
 
 #endif
