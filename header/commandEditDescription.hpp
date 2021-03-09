@@ -14,7 +14,7 @@ class CommandEditDescription: public Command {
 
             std::string newDescription;
             std::cout << "Enter a new description for the task:" << std::endl;
-            std::cin >> newDescription;
+            getline(std::cin, newDescription);
 
             std::list<Task*>::iterator iter;
             for(iter = myControl->taskList.begin(); iter != myControl->taskList.end(); ++iter) {
