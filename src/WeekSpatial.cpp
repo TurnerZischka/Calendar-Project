@@ -174,7 +174,10 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
 	int place = 1;
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
-		if(cells[i][j]->cellType == 2) {
+		if(cells[i][j]->cellType == 1) {
+			cells[i][j]->highlightMiddleCellTitle();
+		}
+		else if(cells[i][j]->cellType == 2) {
 			cells[i][j]->highlightMiddleCellTitle();
 			place = 1;
 			while(cells[i][j+checkLength]->cellType == 3) {

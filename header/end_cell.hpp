@@ -20,8 +20,8 @@ public:
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
 	int size = task->getEnd() - task->getStart();
-	int soFar = ((((size - 1) / 50)*7)-1) ;
-	if(size <= 100) {
+	int soFar = ((((size - 1) / 100)*7)-1) ;
+	if(size <= 200) {
                 for (unsigned i = 6; i < 12; ++i) {
                     if (i < taskTitle.size()) {
                                         std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
@@ -80,8 +80,8 @@ public:
 	    void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
         int size = task->getEnd() - task->getStart();
-        int soFar = ((((size - 1) / 50)*7)-1) ;
-        if(size <= 100) {
+        int soFar = ((((size - 1) / 100)*7)-1) ;
+        if(size <= 200) {
                 for (unsigned i = 6; i < 12; ++i) {
                     if (i < taskTitle.size()) {
                         std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
