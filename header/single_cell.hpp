@@ -21,6 +21,7 @@ public:
         createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));
         createMenuItem(new MenuItem("Edit Start Time", new CommandEditStartTime(theControl)));
         createMenuItem(new MenuItem("Edit End Time", new CommandEditEndTime(theControl)));
+        createMenuItem(new MenuItem("Delete this task", new CommandDeleteTask(theControl)));
     }
 
     void drawTopCell() { std::cout << "\033[;34m+-----+\033[0m"; }
