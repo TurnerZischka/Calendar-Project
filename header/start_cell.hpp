@@ -10,8 +10,9 @@ class StartCell : public Cell {
 private:
 public:
     StartCell(Task *ftask, Control* theControl) {
-	cellType = 2;
+	    cellType = 2;
         task = ftask;
+        taskID = ftask->getID();
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
         createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));

@@ -14,7 +14,8 @@ public:
 
     SingleCell(Task *ftask, Control* theControl) {
         task = ftask;
-	cellType = 1;
+        taskID = ftask->getID();
+	    cellType = 1;
 
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));

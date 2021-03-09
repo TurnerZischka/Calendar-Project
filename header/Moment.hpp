@@ -20,7 +20,7 @@ class Moment {
 	Moment(){}; // default constructor
 	
 	// the most common constructor
-	Moment(std::string titIn, std::string descIn, std::string catIn, int monIn, int dateIn, int startIn, int endIn, int priIn) {
+	Moment(std::string titIn, std::string descIn, std::string catIn, int monIn, int dateIn, int startIn, int endIn, int priIn, int inID) {
 
 	title = titIn;
 	description = descIn;
@@ -30,6 +30,7 @@ class Moment {
 	startTime = startIn;
 	endTime = endIn;
 	priority = priIn;
+	ID = inID;
 	}
 	
 	virtual ~Moment() {}
