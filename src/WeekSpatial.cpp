@@ -387,16 +387,55 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
         if (inputSelection == 1) { //goes up
             selectedDay--;
             if (selectedDay < 0) { selectedDay = 0; } //out of boudn corrector
+            while(cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){
+                selectedTime--;
+                if(selectedTime < 0){
+                    selectedTime = 0;
+                    break;
+                }
+            }
         } else if (inputSelection == 2) { //goes right
+            int revert = selectedTime;
             selectedTime++;
+            if (cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){ 
+                while((cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4)){
+                    selectedTime++; 
+                    if(selectedTime > 23){
+                        selectedTime = revert;
+                        break;
+                    }
+
+                }
+                
+                  
+            }
             if (selectedTime > 23) { selectedTime = 23; }
 
         } else if (inputSelection == 3) {
             selectedDay++;
+            while(cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){
+                selectedTime--;
+                if(selectedTime < 0){
+                    selectedTime = 0;
+                    break;
+                }
+            }
             if (selectedDay > 6) { selectedDay = 6; }
 
         } else if (inputSelection == 4) {
+            int revert = selectedTime;
             selectedTime--;
+            if (cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){ 
+                while((cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4)){
+                    selectedTime--; 
+                    if(selectedTime > 23){
+                        selectedTime = revert;
+                        break;
+                    }
+
+                }
+            }
+                
             if (selectedTime < 0) { selectedTime = 0; }
         } else if (inputSelection == 5) {
             if (cells[selectedDay][selectedTime]->cellType != 0) {
