@@ -253,14 +253,18 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
 
     } 
     } else if (mode == 2) {
-       int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
-        cout << "Please choose one" << endl;
-        for (int i = 0; i < menuSize; i++) {
-            if (i == selectedMenuItem) { cout << " > ";
+            
+        if (cells[selectedDay][selectedTime]->cellType != 0) {
+            int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
+            cout << "Please choose one" << endl;
+            for (int i = 0; i < menuSize; i++) {
+                if (i == selectedMenuItem) { cout << " > ";
+            }
+            cout << cells[selectedDay][selectedTime]->printMenuItem(i) << endl;
         }
-        cout << i + 1 << cells[selectedDay][selectedTime]->printMenuItem(i) << endl;
+        }
     }
-    } else {
+     else {
 
     }
 
@@ -281,6 +285,7 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
 
 void WeekSpatial::drawSubMenu() {
     int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
+    
     cout << "Please choose one" << endl;
     for (int i = 0; i < menuSize; i++) {
         if (i == selectedMenuItem) { cout << " > "; }
@@ -358,9 +363,16 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
             selectedTime--;
             if (selectedTime < 0) { selectedTime = 0; }
         } else if (inputSelection == 5) {
-            mode = 2;  //will switch modes, the drawing will be done once the event loop in control calls redraw
-            selectedMenuItem = 0;
+            if (cells[selectedDay][selectedTime]->cellType != 0) {
+                mode = 2;  //will switch modes, the drawing will be done once the event loop in control calls redraw
+                selectedMenuItem = 0;
+            }
         }
+        else {
+            std::cout << "ERROR" << std::endl;
+        }
+
+
     } else if (mode == 2) {
 
 
@@ -383,6 +395,9 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
         } else if (inputSelection == 6) {
             mode = 1;
             selectedMenuItem = 0;
+        }
+        else {
+            std::cout << "ERROR" << std::endl;
         }
 
     } else {

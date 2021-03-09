@@ -142,7 +142,6 @@ void Control::eventLoop() {
     while ((ch = getch()) != 'q') {
 
         switch(ch) {
-
             case 'c':
                 case '/033':                
                     case 'A':
@@ -164,20 +163,25 @@ void Control::eventLoop() {
                         this->myDisplay->recieveInput(4, this->taskList, this);
                         this->myDisplay->redraw(this->taskList, this);
                         break;
+
                     case '\n':
-                        std::cout << "Enter" << std::endl;
+                        this->myDisplay->recieveInput(5, this->taskList, this);
+                        this->myDisplay->redraw(this->taskList, this);
+                        break;        
+                    
+                    case 'b':
+                        this->myDisplay->recieveInput(6, this->taskList, this);
+                        this->myDisplay->redraw(this->taskList, this);
                         break;
-                break;
-            break;
-
-           
-
+                        
             case 'a': AddTask();
+                break;
+            
             break;
-
         }
     }
 }
+
 
 int Control::getSelected() {
     return myDisplay->getSelected();
