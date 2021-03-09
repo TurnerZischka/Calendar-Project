@@ -32,7 +32,7 @@ public:
         std::cout << "\033[;34m|\033[0m";
         for (unsigned i = 0; i < 5; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                std::cout << "\033{;34m" <<  taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
@@ -46,21 +46,6 @@ public:
 
 
     ~SingleCell() {}
-
-
-    /*void drawMilddleCellStartTime() {
- *             int taskTime = task->getStart();
- *                         std::cout << "|";
- *                                     for(unsigned i = 0; i < 4; ++i) {
- *                                                         if(i < taskTitle.size()) {
- *                                                                                     std::cout << taskTitle.at(i);
- *                                                                                                         }
- *                                                                                                                             if(i >= x.size()) {
- *                                                                                                                                                         std::cout << " ";
- *                                                                                                                                                                             }
- *                                                                                                                                                                                         }
- *                                                                                                                                                                                                     std::cout << "|";
- *                                                                                                                                                                                                         }*/
 
 
 
@@ -78,7 +63,7 @@ public:
         std::cout << "\033[;32m*\033[0m";
         for (unsigned i = 0; i < 4; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                std::cout << "\033[;32m" <<  taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";

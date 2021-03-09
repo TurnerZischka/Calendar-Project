@@ -23,7 +23,8 @@ public:
         std::string taskTitle = task->getTitle();
         for (unsigned i = 6; i < 13; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
+
 
             }
             if (i >= taskTitle.size()) {
@@ -41,7 +42,7 @@ public:
 		if(place <= 1) {
 			for(unsigned i = 6; i < 13; ++i) {
 				if(i < taskTitle.size()) {
-					std::cout << taskTitle.at(i);
+					std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
 				}
 				if(i >= taskTitle.size()) {
 					std::cout << " ";
@@ -52,7 +53,7 @@ public:
 			j = (place * 7) - 1;
 			for(int i = j; i < j + 7; ++i) {
 				if(i < taskTitle.size()) {
-					std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
 				}
 				if(i >= taskTitle.size()) {
 					std::cout << " ";
@@ -69,7 +70,7 @@ public:
                 if(place <= 1) {
                         for(unsigned i = 6; i < 13; ++i) {
                                 if(i < taskTitle.size()) {
-                                        std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
                                 }
                                 if(i >= taskTitle.size()) {
                                         std::cout << " ";
@@ -80,7 +81,7 @@ public:
                         j = (place * 7) - 1;
                         for(int i = j; i < j + 7; ++i) {
                                 if(i < taskTitle.size()) {
-                                        std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
                                 }
                                 if(i >= taskTitle.size()) {
                                         std::cout << " ";
@@ -109,7 +110,7 @@ public:
         std::string taskTitle = task->getTitle();
         for (unsigned i = 6; i < 13; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";

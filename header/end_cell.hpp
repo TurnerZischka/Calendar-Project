@@ -20,20 +20,10 @@ public:
         std::string taskTitle = task->getTitle();
 	int size = task->getEnd() - task->getStart();
 	int soFar = ((((size - 1) / 50)*7)-1) ;
-	if(taskTitle.size() < 14) { 
-		for (unsigned i = 6; i < 12; ++i) {
-	            if (i < taskTitle.size()) {
-        	        std::cout << taskTitle.at(i);
-        	    }
-        	    if (i >= taskTitle.size()) {
-        	        std::cout << " ";
-        	    }
-		}
-	}
-	else if(size <= 100) {
+	if(size <= 100) {
                 for (unsigned i = 6; i < 12; ++i) {
                     if (i < taskTitle.size()) {
-                        std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
                     }
                     if (i >= taskTitle.size()) {
                         std::cout << " ";
@@ -48,7 +38,7 @@ public:
         else if ( soFar < taskTitle.size()) {
 		for (unsigned i = soFar; i < soFar + 6; ++i) {
 			if (i < taskTitle.size()) {
-				std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
 			}
 			if (i >= taskTitle.size()) {
 				std::cout << " ";
@@ -58,7 +48,7 @@ public:
 	else{
         for (unsigned i = 13; i < 19; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
@@ -90,20 +80,10 @@ public:
         std::string taskTitle = task->getTitle();
         int size = task->getEnd() - task->getStart();
         int soFar = ((((size - 1) / 50)*7)-1) ;
-        if(taskTitle.size() < 14) {
+        if(size <= 100) {
                 for (unsigned i = 6; i < 12; ++i) {
                     if (i < taskTitle.size()) {
-                        std::cout << taskTitle.at(i);
-                    }
-                    if (i >= taskTitle.size()) {
-                        std::cout << " ";
-                    }
-                }
-        }
-        else if(size <= 100) {
-                for (unsigned i = 6; i < 12; ++i) {
-                    if (i < taskTitle.size()) {
-                        std::cout << taskTitle.at(i);
+                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
                     }
                     if (i >= taskTitle.size()) {
                         std::cout << " ";
@@ -118,7 +98,7 @@ public:
         else if ( soFar < taskTitle.size()) {
                 for (unsigned i = soFar; i < soFar + 6; ++i) {
                         if (i < taskTitle.size()) {
-                                std::cout << taskTitle.at(i);
+                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
                         }
                         if (i >= taskTitle.size()) {
                                 std::cout << " ";
@@ -128,7 +108,7 @@ public:
         else{
         for (unsigned i = 13; i < 19; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
