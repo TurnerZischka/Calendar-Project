@@ -12,11 +12,11 @@ class CommandEditTitle: public Command {
         CommandEditTitle(Control* theControl):Command(theControl){ }
         ~CommandEditTitle(){}
 
-        virtual void execute() {
+        void execute() {
 
             std::string newTitle;
             std::cout << "Enter a new title for the task:" << std::endl;
-            std::cin >> newTitle;
+            getline(std::cin, newTitle);
 
             std::list<Task*>::iterator iter;
             for(iter = myControl->taskList.begin(); iter != myControl->taskList.end(); ++iter) {

@@ -11,9 +11,11 @@ public:
     ~CommandEditEndTime() {}
     virtual void execute() {
 
-        double newEndTime;
+        int newEndTime;
         std::cout << "Enter a new end time for the task:" << std::endl;
         std::cin >> newEndTime;
+        std::cin.clear();
+        std::cin.ignore(100000,'\n'); 
 
         if (newEndTime < 0 || newEndTime > 2359) {
             std::cout << "Invalid Time. Try again." << std::endl;
