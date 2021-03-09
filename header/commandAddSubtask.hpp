@@ -14,6 +14,7 @@ class CommandAddSubtask: public Command {
             std::string title;
             std::cout << "Enter a title for the subtask: " << std::endl;
             getline(std::cin, title);
+         
 
             std::list<Task*>::iterator iter;
             for(iter = this->myControl->taskList.begin(); iter != this->myControl->taskList.end(); ++iter) {

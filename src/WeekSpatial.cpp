@@ -256,8 +256,41 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
 
     } 
     } else if (mode == 2) {
-            
         if (cells[selectedDay][selectedTime]->cellType != 0) {
+            cout << " ----- ~ " << cells[selectedDay][selectedTime]->task->getTitle() << " ~ -----"<< endl;
+
+            string splitDescription = cells[selectedDay][selectedTime]->task->getDescription() ;
+            int splitPosition = 0;
+            int spaceCounter = 0;
+            while(splitPosition < splitDescription.size() && splitDescription.find(" ", splitPosition) != string::npos){
+                splitPosition = splitDescription.find(' ', splitPosition);
+                if(spaceCounter < 4){
+                    spaceCounter++;
+                    splitPosition++;
+                } else {
+                    spaceCounter = 0;
+                    splitDescription.insert( splitPosition,"\n   ");
+                    splitPosition += 5;
+                }
+            }
+            
+            cout << "   ~" << splitDescription << endl << endl;
+            cout << "Classification   : " << cells[selectedDay][selectedTime]->task->getClass() << endl;
+            cout << "Date             : " << cells[selectedDay][selectedTime]->task->getMonth() << "/" << cells[selectedDay][selectedTime]->task->getDate() << endl;
+            cout << "Start            : " << cells[selectedDay][selectedTime]->task->getStart() << endl;
+            cout << "End              : " << cells[selectedDay][selectedTime]->task->getEnd() << endl;
+            cout << "Subtask -- " << endl;
+            if(cells[selectedDay][selectedTime]->task->getSubtaskSize() != 0) {
+                for( int i = 0 ; i < cells[selectedDay][selectedTime]->task->getSubtaskSize(); i++ ){
+                    cout << "\t- " << cells[selectedDay][selectedTime]->task->getSubtaskNum(i) << endl;;
+                }
+            } else {
+                cout << "\t no subtasks" << endl;
+            }
+
+
+            cout << "_______________________________" << endl;
+
             int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
             cout << "Please choose one" << endl;
             for (int i = 0; i < menuSize; i++) {

@@ -9,7 +9,6 @@
 
 class Subtask: public Moment {
    private:
-    std::string title;
 
    public:
 
@@ -17,7 +16,7 @@ class Subtask: public Moment {
 	}
 
     Subtask(std::string titIn) {
-        this->title = titIn;
+        setTitle(titIn);
     }
 
 	Subtask(std::string titIn, std::string descIn, std::string catIn, int month, int date, int startIn, int endIn, int priIn ):Moment(titIn,descIn, catIn, month, date, startIn, endIn, priIn ){

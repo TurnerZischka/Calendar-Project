@@ -44,6 +44,8 @@ class Moment {
 	int getTotal() {return (((endTime/100 - startTime/100)*60) + (endTime%100)-(startTime%100));}
 	int getID() {return ID;}
 	int getPriority() { return priority; }
+	int getMonth() {return month;}
+	int getDate() {return date;}
 
 	void setTitle(std::string newTit) { title = newTit; }
 	void setDescription(std::string newTit) { description = newTit; }

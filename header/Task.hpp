@@ -34,6 +34,9 @@ class Task: public Moment {
             return getStart();
 	    }
 
+		int getSubtaskSize() { return sub_tasks.size();}
+		std::string getSubtaskNum(int position) { return sub_tasks.at(position).getTitle();}
+
 
 
 };
