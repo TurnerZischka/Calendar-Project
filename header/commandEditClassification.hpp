@@ -11,7 +11,7 @@ class CommandEditClassification: public Command {
         CommandEditClassification(Control* theControl):Command(theControl){}
         ~CommandEditClassification(){}
 
-        void execute() {
+        virtual void execute() {
 
             std::string newClassification;
             std::cout << "Enter a new classification for the task:" << std::endl;

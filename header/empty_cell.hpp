@@ -8,7 +8,6 @@ class EmptyCell : public Cell {
 	public:
 		EmptyCell() {
 			cellType = 0;
-			this->taskID = -1;
 		}
 
 

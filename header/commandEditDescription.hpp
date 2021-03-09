@@ -10,7 +10,7 @@ class CommandEditDescription: public Command {
         CommandEditDescription(Control* theControl):Command(theControl){}
         ~CommandEditDescription(){}
 
-        void execute() {
+        virtual void execute() {
 
             std::string newDescription;
             std::cout << "Enter a new description for the task:" << std::endl;

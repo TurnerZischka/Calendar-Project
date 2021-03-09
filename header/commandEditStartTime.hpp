@@ -11,7 +11,7 @@ class CommandEditStartTime: public Command {
         CommandEditStartTime(Control* theControl):Command(theControl){}
         ~CommandEditStartTime(){}
 
-        void execute() {
+        virtual void execute() {
 
             int newStartTime;
             std::cout << "Enter a new start time for the task:" << std::endl;

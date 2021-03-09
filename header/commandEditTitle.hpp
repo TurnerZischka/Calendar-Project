@@ -12,7 +12,7 @@ class CommandEditTitle: public Command {
         CommandEditTitle(Control* theControl):Command(theControl){ }
         ~CommandEditTitle(){}
 
-        void execute() {
+        virtual void execute() {
 
             std::string newTitle;
             std::cout << "Enter a new title for the task:" << std::endl;
