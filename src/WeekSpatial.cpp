@@ -57,6 +57,9 @@ WeekSpatial::~WeekSpatial() {
 
 void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
+    bool conflictFlag = false;
+    std::vector<int> bumpedByConflict;
+
     clearScreen();   
 
         bool monday = false;
@@ -83,17 +86,42 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
     //if the "span" is only one spot, it just allocates a single then
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800)))){
             int span = (((*it)->getEndTime()/100) - ((*it)->getStartTime()/100));
             if (span > 1) {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+                }
 
                 for( int i = 1; i < span-1; i++){
-                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + i] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    }
                 }
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (span-1)] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    }
             } else {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                }
             }
         }
     }
@@ -263,9 +291,15 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
         }
         cout << endl;
-
-
     } 
+
+        if(conflictFlag == true){
+            cout << "conlicts encounterd" << endl;
+            for(auto it = bumpedByConflict.begin(); it != bumpedByConflict.end(); it++){
+                cout << "   ID: " << *it << endl;
+            }
+        }
+        
     } else if (mode == 2) {
         if (cells[selectedDay][selectedTime]->cellType != 0) {
             cout << " ----- ~ " << cells[selectedDay][selectedTime]->task->getTitle() << " ~ -----"<< endl;
@@ -286,6 +320,7 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
             
             cout << "   ~" << splitDescription << endl << endl;
+            cout << "ID               : " << cells[selectedDay][selectedTime]->task->getID() << endl;
             cout << "Classification   : " << cells[selectedDay][selectedTime]->task->getClass() << endl;
             cout << "Date             : " << cells[selectedDay][selectedTime]->task->getMonth() << "/" << cells[selectedDay][selectedTime]->task->getDate() << endl;
             cout << "Start            : " << cells[selectedDay][selectedTime]->task->getStart() << endl;
@@ -346,6 +381,10 @@ int WeekSpatial::getSelected() {
 }
 
 void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Control* theControl) {
+
+    bool conflictFlag = false;
+    std::vector<int> bumpedByConflict;
+
         // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
     time_t currTime = time(0);
     std::tm *currTimeStruct = localtime(&currTime);
@@ -360,18 +399,45 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
 
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
     //if the "span" is only one spot, it just allocates a single then
+ 
+
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800)))){
             int span = (((*it)->getEndTime()/100) - ((*it)->getStartTime()/100));
             if (span > 1) {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+                }
 
                 for( int i = 1; i < span-1; i++){
-                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + i] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    }
                 }
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (span-1)] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    }
             } else {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                }
             }
         }
     }
