@@ -22,7 +22,7 @@
 class Cell {
 	public:
 		std::vector<MenuItem*> menuItemVect;
-		int taskID;	
+		int taskID = -1;	
 		Task* task;
 		int cellType;
 		std::string remaining;

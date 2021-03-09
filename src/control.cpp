@@ -55,12 +55,12 @@ void Control::AddTask() {
         if ( date < 1 || date > 31) { std::cout << "INVALID INPUT" << std::endl;}
     }
 
-    while( startTime < 0 || startTime > 2359) {
+    while( startTime < 0 || startTime > 2400) {
         std::cout << "Enter a start time as military time (0000 - 2359)" << std::endl;
         std::cin >> startTime;
         std::cin.clear();
         std::cin.ignore(INT_MAX, '\n');
-        if ( startTime < 0 || startTime > 2359) { std::cout << "INVALID INPUT" << std::endl;}
+        if ( startTime < 0 || startTime > 2400) { std::cout << "INVALID INPUT" << std::endl;}
     }
 
     //old implmentation of error checking
@@ -69,12 +69,12 @@ void Control::AddTask() {
         return;
     }*/
 
-    while( endTime < 0 || endTime > 2359) {
+    while( endTime < 0 || endTime > 2400) {
         std::cout << "Enter an end time as military time (0000 - 2359)" << std::endl;
         std::cin >> endTime;
         std::cin.clear();
         std::cin.ignore(INT_MAX, '\n');
-        if ( endTime < 0 || endTime > 2359) { std::cout << "INVALID INPUT" << std::endl;}
+        if ( endTime < 0 || endTime > 2400) { std::cout << "INVALID INPUT" << std::endl;}
     }
 
 

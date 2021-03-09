@@ -9,6 +9,7 @@ public:
     EndCell(Task *ftask, Control *theControl) {
 	cellType = 4;
         task = ftask;
+        taskID = ftask->getID();
         createMenuItem(new MenuItem("Edit Title", new CommandEditTitle(theControl)));
         createMenuItem(new MenuItem("Edit Description", new CommandEditDescription(theControl)));
         createMenuItem(new MenuItem("Edit Classification", new CommandEditClassification(theControl)));

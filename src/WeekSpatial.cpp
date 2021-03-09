@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <stdio.h>
+#include <iomanip>
 
 #include "../header/Moment.hpp"
 #include "../header/Subtask.hpp"
@@ -56,6 +57,9 @@ WeekSpatial::~WeekSpatial() {
 
 void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
 
+    bool conflictFlag = false;
+    std::vector<int> bumpedByConflict;
+
     clearScreen();   
 
         bool monday = false;
@@ -82,17 +86,42 @@ void WeekSpatial::drawVisual(std::list<Task*> taskList, Control* theControl) {
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
     //if the "span" is only one spot, it just allocates a single then
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800)))){
             int span = (((*it)->getEndTime()/100) - ((*it)->getStartTime()/100));
             if (span > 1) {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+                }
 
                 for( int i = 1; i < span-1; i++){
-                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + i] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    }
                 }
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (span-1)] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    }
             } else {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                }
             }
         }
     }
@@ -170,7 +199,11 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
         }
         cout << endl;
-	cout << "          ";
+	//cout << "          ";
+    cout << left << weekStart->tm_mon+1 << left << "/" << left << setw(8) << weekStart->tm_mday;
+    intermediary = mktime(weekStart)+ static_cast<time_t>(86400);
+    weekStart = localtime(&intermediary);
+    
 	int place = 1;
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
@@ -231,7 +264,13 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
         }
         cout << endl;
+
 	cout << "          ";
+
+ 
+
+
+
         for (int j = 0; j < 24; j++) {
             if (i == selectedDay && j == selectedTime) {
                 if(cells[i][j]->cellType == 2) {
@@ -252,12 +291,52 @@ cout << "1700   " << "1800   1900   2000   2100   2200   2300" << endl;
             }
         }
         cout << endl;
-
-
     } 
+
+        if(conflictFlag == true){
+            cout << "conlicts encounterd" << endl;
+            for(auto it = bumpedByConflict.begin(); it != bumpedByConflict.end(); it++){
+                cout << "   ID: " << *it << endl;
+            }
+        }
+        
     } else if (mode == 2) {
-            
         if (cells[selectedDay][selectedTime]->cellType != 0) {
+            cout << " ----- ~ " << cells[selectedDay][selectedTime]->task->getTitle() << " ~ -----"<< endl;
+
+            string splitDescription = cells[selectedDay][selectedTime]->task->getDescription() ;
+            int splitPosition = 0;
+            int spaceCounter = 0;
+            while(splitPosition < splitDescription.size() && splitDescription.find(" ", splitPosition) != string::npos){
+                splitPosition = splitDescription.find(' ', splitPosition);
+                if(spaceCounter < 4){
+                    spaceCounter++;
+                    splitPosition++;
+                } else {
+                    spaceCounter = 0;
+                    splitDescription.insert( splitPosition,"\n   ");
+                    splitPosition += 5;
+                }
+            }
+            
+            cout << "   ~" << splitDescription << endl << endl;
+            cout << "ID               : " << cells[selectedDay][selectedTime]->task->getID() << endl;
+            cout << "Classification   : " << cells[selectedDay][selectedTime]->task->getClass() << endl;
+            cout << "Date             : " << cells[selectedDay][selectedTime]->task->getMonth() << "/" << cells[selectedDay][selectedTime]->task->getDate() << endl;
+            cout << "Start            : " << cells[selectedDay][selectedTime]->task->getStart() << endl;
+            cout << "End              : " << cells[selectedDay][selectedTime]->task->getEnd() << endl;
+            cout << "Subtask -- " << endl;
+            if(cells[selectedDay][selectedTime]->task->getSubtaskSize() != 0) {
+                for( int i = 0 ; i < cells[selectedDay][selectedTime]->task->getSubtaskSize(); i++ ){
+                    cout << "\t- " << cells[selectedDay][selectedTime]->task->getSubtaskNum(i) << endl;;
+                }
+            } else {
+                cout << "\t no subtasks" << endl;
+            }
+
+
+            cout << "_______________________________" << endl;
+
             int menuSize = cells[selectedDay][selectedTime]->sizeOfMenu();
             cout << "Please choose one" << endl;
             for (int i = 0; i < menuSize; i++) {
@@ -302,6 +381,10 @@ int WeekSpatial::getSelected() {
 }
 
 void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Control* theControl) {
+
+    bool conflictFlag = false;
+    std::vector<int> bumpedByConflict;
+
         // gets the time of today, coverts it to the struct, then manipulates the struct to make it first moment of today
     time_t currTime = time(0);
     std::tm *currTimeStruct = localtime(&currTime);
@@ -316,18 +399,45 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
 
     //this goes through all items in the list within the data range and assigns it a start spot, any middle spots, and an end spot
     //if the "span" is only one spot, it just allocates a single then
+ 
+
     for(std::list<Task*>::iterator it = taskList.begin(); it != taskList.end(); ++it){
-        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800))) ){
+        if(((mktime(&(*it)->tmStruct) >= mktime(weekStart)) && (mktime(&(*it)->tmStruct) <= mktime(weekStart)+ static_cast<time_t>(604800)))){
             int span = (((*it)->getEndTime()/100) - ((*it)->getStartTime()/100));
             if (span > 1) {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new StartCell(*it, theControl);
+                }
 
                 for( int i = 1; i < span-1; i++){
-                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + i] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (i)] = new MiddleCell(*it, theControl);
+                    }
                 }
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour) + (span-1)] != nullptr){
+                        conflictFlag = true;
+                        bumpedByConflict.push_back((*it)->getID());
+                        continue;
+                    } else {
+                        cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)  + (span-1)] = new EndCell(*it, theControl);
+                    }
             } else {
-                cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                if(cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] != nullptr){
+                    conflictFlag = true;
+                    bumpedByConflict.push_back((*it)->getID());
+                    continue;
+                } else {
+                    cells[(*it)->tmStruct.tm_wday][((*it)->tmStruct.tm_hour)] = new SingleCell(*it, theControl);
+                }
             }
         }
     }
@@ -354,17 +464,59 @@ void WeekSpatial::recieveInput(int inputSelection, std::list<Task*> taskList, Co
         if (inputSelection == 1) { //goes up
             selectedDay--;
             if (selectedDay < 0) { selectedDay = 0; } //out of boudn corrector
+            while(cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){
+                selectedTime--;
+                if(selectedTime < 0){
+                    selectedTime = 0;
+                    break;
+                }
+            }
         } else if (inputSelection == 2) { //goes right
+            int revert = selectedTime;
             selectedTime++;
             if (selectedTime > 23) { selectedTime = 23; }
+            if (cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){ 
+                while((cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4)){
+                    selectedTime++; 
+                    if(selectedTime > 23){
+                        selectedTime = revert;
+                        break;
+                    }
+
+                }
+                
+                  
+            }
+            
 
         } else if (inputSelection == 3) {
             selectedDay++;
             if (selectedDay > 6) { selectedDay = 6; }
+            while(cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){
+                selectedTime--;
+                if(selectedTime < 0){
+                    selectedTime = 0;
+                    break;
+                }
+            }
+            
 
         } else if (inputSelection == 4) {
+            int revert = selectedTime;
             selectedTime--;
             if (selectedTime < 0) { selectedTime = 0; }
+            if (cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4){ 
+                while((cells[selectedDay][selectedTime]->cellType == 3 || cells[selectedDay][selectedTime]->cellType == 4)){
+                    selectedTime--; 
+                    if(selectedTime > 23){
+                        selectedTime = revert;
+                        break;
+                    }
+
+                }
+            }
+                
+            
         } else if (inputSelection == 5) {
             if (cells[selectedDay][selectedTime]->cellType != 0) {
                 mode = 2;  //will switch modes, the drawing will be done once the event loop in control calls redraw
