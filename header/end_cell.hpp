@@ -20,20 +20,10 @@ public:
         std::string taskTitle = task->getTitle();
 	int size = task->getEnd() - task->getStart();
 	int soFar = ((((size - 1) / 50)*7)-1) ;
-	if(taskTitle.size() < 14) { 
-		for (unsigned i = 6; i < 12; ++i) {
-	            if (i < taskTitle.size()) {
-        	        std::cout << taskTitle.at(i);
-        	    }
-        	    if (i >= taskTitle.size()) {
-        	        std::cout << " ";
-        	    }
-		}
-	}
-	else if(size <= 100) {
+	if(size <= 100) {
                 for (unsigned i = 6; i < 12; ++i) {
                     if (i < taskTitle.size()) {
-                        std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
                     }
                     if (i >= taskTitle.size()) {
                         std::cout << " ";
@@ -48,7 +38,7 @@ public:
         else if ( soFar < taskTitle.size()) {
 		for (unsigned i = soFar; i < soFar + 6; ++i) {
 			if (i < taskTitle.size()) {
-				std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
 			}
 			if (i >= taskTitle.size()) {
 				std::cout << " ";
@@ -58,14 +48,14 @@ public:
 	else{
         for (unsigned i = 13; i < 19; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                                        std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
             }
         }
 	}
-        std::cout << "|";
+        std::cout << "\033[;34m|\033[0m";
     }
 
 
@@ -75,35 +65,25 @@ public:
 
 
 
-    void drawTopCell() { std::cout << "------+"; }
+    void drawTopCell() { std::cout << "\033[;34m------+\033[0m"; }
 
-    void drawMiddleCell() { std::cout << "      |"; }
+    void drawMiddleCell() { std::cout << "\033[;34m      |\033[0m"; }
 
-    void drawBottomCell() { std::cout << "------+"; }
+    void drawBottomCell() { std::cout << "\033[;34m------+\033[0m"; }
 
-    void highlightTopCell() { std::cout << "*******"; }
+    void highlightTopCell() { std::cout << "\033[;32m*******\033[0m"; }
 
-    void highlightMiddleCell() { std::cout << "      *"; }
+    void highlightMiddleCell() { std::cout << "\033[;32m      *\033[0m"; }
 
-    void highlightBottomCell() { std::cout << "*******"; }
+    void highlightBottomCell() { std::cout << "\033[;32m*******\033[0m"; }
 	    void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
         int size = task->getEnd() - task->getStart();
         int soFar = ((((size - 1) / 50)*7)-1) ;
-        if(taskTitle.size() < 14) {
+        if(size <= 100) {
                 for (unsigned i = 6; i < 12; ++i) {
                     if (i < taskTitle.size()) {
-                        std::cout << taskTitle.at(i);
-                    }
-                    if (i >= taskTitle.size()) {
-                        std::cout << " ";
-                    }
-                }
-        }
-        else if(size <= 100) {
-                for (unsigned i = 6; i < 12; ++i) {
-                    if (i < taskTitle.size()) {
-                        std::cout << taskTitle.at(i);
+                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
                     }
                     if (i >= taskTitle.size()) {
                         std::cout << " ";
@@ -118,7 +98,7 @@ public:
         else if ( soFar < taskTitle.size()) {
                 for (unsigned i = soFar; i < soFar + 6; ++i) {
                         if (i < taskTitle.size()) {
-                                std::cout << taskTitle.at(i);
+                        std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
                         }
                         if (i >= taskTitle.size()) {
                                 std::cout << " ";
@@ -128,14 +108,14 @@ public:
         else{
         for (unsigned i = 13; i < 19; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
+                std::cout << "\033[;32m" << taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
             }
         }
         }
-        std::cout << "*";
+        std::cout << "\033[;32m*\033[0m";
     }
 
 

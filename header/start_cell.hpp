@@ -21,16 +21,13 @@ public:
 
     void drawMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
-	std::string returnString = "";
-        std::cout << "|";
+        std::cout << "\033[;34m|\033[0m";
         for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
-		returnString += taskTitle.at(i);
+                std::cout << "\033[;34m" << taskTitle.at(i) << "\033[0m";
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
-		returnString += " ";
             }
         }
     }
@@ -40,30 +37,30 @@ public:
 
     ~StartCell() {}
 
-    void drawTopCell() { std::cout << "+------"; }
+    void drawTopCell() { std::cout << "\033[;34m+------\033[0m"; }
 
-    void drawMiddleCell() { std::cout << "|      "; }
+    void drawMiddleCell() { std::cout << "\033[;34m|      \033[0m"; }
 
-    void drawBottomCell() { std::cout << "+------"; }
+    void drawBottomCell() { std::cout << "\033[;34m+------\033[0m"; }
 
-    void highlightTopCell() { std::cout << "*******"; }
+    void highlightTopCell() { std::cout << "\033[;32m*******\033[0m"; }
 
-    void highlightMiddleCell() { std::cout << "*      "; }
+    void highlightMiddleCell() { std::cout << "\033[;32m*      \033[0m"; }
 
-    void highlightBottomCell() { std::cout << "*******"; }
+    void highlightBottomCell() { std::cout << "\033[;32m*******\033[0m"; }
 
     void highlightMiddleCellTitle() {
         std::string taskTitle = task->getTitle();
-	std::string returnString = "";
-        std::cout << "*";
+
+        std::cout << "\033[;32m*\033[0m";
         for (unsigned i = 0; i < 6; ++i) {
             if (i < taskTitle.size()) {
-                std::cout << taskTitle.at(i);
-		returnString += taskTitle.at(i);
+                std::cout << "\033[;32m" <<  taskTitle.at(i) << "\033[0m";
+
             }
             if (i >= taskTitle.size()) {
                 std::cout << " ";
-		returnString +=  " ";
+
             }
         }
     }
