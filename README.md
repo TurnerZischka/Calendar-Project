@@ -49,18 +49,7 @@ undo these operations.
 
   ![alt text](https://github.com/cs100/final-project-alee235-arefa001-tzisc001/blob/master/Calendar%20Class%20Diagram%20-%20Strategy.png)
   The base of this pattern is the Control. The control class will be used for many other purposes. Specific to the strategy pattern is reference to a Display class. Since week special is the only implementation of the Abstract Display, control will have reference to a Week Spatial. Control will be able to call the Display redraw function, which will then decide how to print the events insight of a list of composite classes, and then utilize the strategy itself to ensure that there will be proper printing of the cells as the calendar is printed to the screen. To better understand our use of Cell, imagine a typical weekly calendar. The days are represented as separate rows, and different events occur down each row. A cell will represent a 60 minute interval within a day. There will be 24 total cells for a day and 168 cells for a week. Each cell will be accounted for within the display class. To accommodate the different ways a cell will be one of the different implementations which will have all cells printed with a different look. This is the basis of the strategy pattern. When the redraw function is called. The fixed number of cells will be all assigned a cell type, and some information, and then as it is printed, will be printed according to its own print function drawCell().
-
- 
-
- 
- > ## Phase III
- > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
- > * Before the meeting you should perform a sprint plan like you did in Phase II
- > * In the meeting with your TA you will discuss: 
- >   - How effective your last sprint was (each member should talk about what they did)
- >   - Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- >   - Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- >   - What tasks you are planning for this next sprint.
+  
  
 
 
