@@ -24,7 +24,9 @@ class Display{
 
     virtual void setSelectedDay(int) = 0;
     virtual void setSelectedTime(int) = 0;
-
+    virtual void setModus(int) = 0;
+    virtual int getSelDay() = 0;
+    virtual int getSelTime() = 0;
 };
 
 
