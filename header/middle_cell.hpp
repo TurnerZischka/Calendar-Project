@@ -7,6 +7,10 @@ class MiddleCell : public Cell {
 private:
 public:
 
+
+	MiddleCell() {}	
+	MiddleCell(Task* ftask) { task = ftask; }
+
     MiddleCell(Task *ftask, Control* theControl) {
 	    cellType = 3;
         task = ftask;
