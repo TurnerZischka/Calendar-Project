@@ -6,6 +6,12 @@
 class EndCell : public Cell {
 private:
 public:
+
+	EndCell() {}
+	EndCell(Task* ftask) { task = ftask; }
+
+
+
     EndCell(Task *ftask, Control *theControl) {
 	cellType = 4;
         task = ftask;

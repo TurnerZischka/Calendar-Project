@@ -9,6 +9,13 @@
 class StartCell : public Cell {
 private:
 public:
+
+
+	StartCell() {}
+	StartCell(Task* ftask) {
+		task = ftask;
+	}
+
     StartCell(Task *ftask, Control* theControl) {
 	    cellType = 2;
         task = ftask;

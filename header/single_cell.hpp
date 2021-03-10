@@ -12,6 +12,9 @@ class SingleCell : public Cell {
 private:
 public:
 
+	SingleCell() {}
+	SingleCell(Task* ftask) { task = ftask; }
+
     SingleCell(Task *ftask, Control* theControl) {
         task = ftask;
         taskID = ftask->getID();
