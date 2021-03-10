@@ -4,6 +4,7 @@
 #include "control_test.hpp"
 #include "composite_test.hpp"
 #include "strategy_test.hpp"
+#include "display_test.hpp"
 
 
 

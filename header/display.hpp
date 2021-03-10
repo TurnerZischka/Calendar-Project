@@ -22,6 +22,11 @@ class Display{
     virtual void recieveInput(int, std::list<Task*>, Control*) = 0;
     virtual int getSelected() = 0;
 
+    virtual void setSelectedDay(int) = 0;
+    virtual void setSelectedTime(int) = 0;
+    virtual void setModus(int) = 0;
+    virtual int getSelDay() = 0;
+    virtual int getSelTime() = 0;
 };
 
 
