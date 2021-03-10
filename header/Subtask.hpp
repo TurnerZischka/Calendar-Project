@@ -17,6 +17,7 @@ class Subtask: public Moment {
 
     Subtask(std::string titIn) {
         setTitle(titIn);
+        setClass("null");
     }
 
 	Subtask(std::string titIn, std::string descIn, std::string catIn, int month, int date, int startIn, int endIn, int priIn, int inID ):Moment(titIn,descIn, catIn, month, date, startIn, endIn, priIn, inID ){
