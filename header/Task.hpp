@@ -1,4 +1,4 @@
-#ifndef __TASK_HPP__
+  #ifndef __TASK_HPP__
 #define __TASK_HPP__
 
 #include <string>
@@ -34,6 +34,7 @@ class Task: public Moment {
 
 		int getSubtaskSize() { return sub_tasks.size();}
 		std::string getSubtaskNum(int position) { return sub_tasks.at(position).getTitle();}
+		Subtask getSubtask(int position) { return sub_tasks.at(position);}
 
 
 
