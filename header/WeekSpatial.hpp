@@ -39,6 +39,10 @@ class WeekSpatial: public Display {
         void setMode(int);
         void clearScreen();
 
+        void setSelectedDay(int x){ selectedDay = x;}
+        void setSelectedTime(int x){ selectedTime = x;}
+        
+
 
 
 
