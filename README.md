@@ -34,7 +34,6 @@ undo these operations.
     * User data - from menu
     * User data - from textual inputs
   * Outputs
-    * Save file data, in order to save user data and dates across boots (using input/output file streams to/from txt files).
     * Graphical Display
        * Can be changed with menu options which affect terminal display
  
