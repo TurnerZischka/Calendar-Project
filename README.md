@@ -66,9 +66,13 @@ undo these operations.
 <details>
   <summary>Click to see tests</summary>
   ![cs100 test 1](https://user-images.githubusercontent.com/55814421/110999865-e7c6c180-8335-11eb-94d2-0f9435622b7f.png)
+  
 ![cs100 test2](https://user-images.githubusercontent.com/55814421/110999872-e9908500-8335-11eb-9afe-429277e82aa1.png)
+
 ![cs100 test3](https://user-images.githubusercontent.com/55814421/110999875-eac1b200-8335-11eb-8d0e-2f216b42a436.png)
+
 ![cs100 test4](https://user-images.githubusercontent.com/55814421/110999878-ebf2df00-8335-11eb-9de3-2cf9275fa07c.png)
+
 ![cs100 test5](https://user-images.githubusercontent.com/55814421/110999884-ed240c00-8335-11eb-941d-d320af887577.png)
 
 </details>
