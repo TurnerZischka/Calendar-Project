@@ -71,7 +71,12 @@ If you are done using the program, press 'q' to quit.
 
 
  ## Installation/Usage
- > Instructions on installing and running your application
+ This program is intended for use on Linux operating systems. To install it, clone the repository. Once this is done, enter the following command to generate the executable file:
+ ``` cmake . && make ```
+ To run the program, enter:
+ ``` clear && ./calendar ```
+ Once this is done, the program will run and it can be used accordingly.
+  
  ## Testing
  For testing our program, we used googletests. We created unit tests for most of the functions in each of the major parts to make sure that they were fully functional and worked as intended. In total, we have 91 unit tests. 40 for the cell classes, 25 for the display classes, 5 for the composite hierarchy, 17 for the command classes, and 4 for the control classes.
 
