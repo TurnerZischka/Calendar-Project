@@ -53,11 +53,7 @@ undo these operations.
  
 
 
- > ## Final deliverable
- > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
+
  
  ## Screenshots
  > Screenshots of the input/output after running your application
@@ -67,7 +63,14 @@ undo these operations.
  For testing our program, we used googletests. We created unit tests for most of the functions in each of the major parts to make sure that they were fully functional and worked as intended. In total, we have 91 unit tests. 40 for the cell classes, 25 for the display classes, 5 for the composite hierarchy, 17 for the command classes, and 4 for the control classes.
 
 
-![CS100 test check](https://user-images.githubusercontent.com/55814421/110999131-bf8a9300-8334-11eb-999a-5f50c15b0853.png)
+<testPictures>
+  <summary>Click to see test pictures</summary>
+  ![cs100 test 1](https://user-images.githubusercontent.com/55814421/110999704-a3d3bc80-8335-11eb-93e8-2420ca7ccd41.png)
+![cs100 test2](https://user-images.githubusercontent.com/55814421/110999712-a6361680-8335-11eb-9074-fb926dca1b82.png)
+![cs100 test3](https://user-images.githubusercontent.com/55814421/110999716-a7674380-8335-11eb-8385-f5f57d274806.png)
+![cs100 test4](https://user-images.githubusercontent.com/55814421/110999721-a9310700-8335-11eb-9eed-4d56cdefcff9.png)
+![cs100 test5](https://user-images.githubusercontent.com/55814421/110999726-aa623400-8335-11eb-93df-379903a3cdce.png)
+</testPictures>
 
 
 We also used Valgrind to make sure there were no memory leaks or errors in the program. Running valgrind --leak-check=full --track-origins=yes ./calendar will give us All heap blocks were freed -- no leaks are possible and ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
