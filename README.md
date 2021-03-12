@@ -66,7 +66,7 @@ undo these operations.
  ## Testing
  For testing our program, we used googletests. We created unit tests for most of the functions in each of the major parts to make sure that they were fully functional and worked as intended before integrating them with one another. In total, we have ___ unit tests. 40 for the cell classes, 25 for the display classes, 5 for the composite hierarchy, __ for the command classes, and __ for the control classes.
 
-We also used Valgrind to make sure there were no memory leaks or errors in the program. Running valgrind --leak-check=full --track-origins=yes ./calendar will give us All heap blocks were freed -- no leaks are possible and ERROR SUMMARY: 0 errors from 0 contexts (suprressed: 0 from 0)
+We also used Valgrind to make sure there were no memory leaks or errors in the program. Running valgrind --leak-check=full --track-origins=yes ./calendar will give us All heap blocks were freed -- no leaks are possible and ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
 
 ![CS100 project valgrind check](https://user-images.githubusercontent.com/55814421/110886687-e5188d80-829d-11eb-9421-93c4e89e75ed.png)
