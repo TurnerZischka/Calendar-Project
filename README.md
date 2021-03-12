@@ -56,7 +56,20 @@ undo these operations.
 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+  After running the program, you will be presented with two options. Press 'a' to add a task, or press 'c' to display the calendar. Once the calendar is displayed, you are free to add tasks as you wish by pressing a. Shown below is an empty calendar with no added tasks.
+  ![image](https://user-images.githubusercontent.com/67076046/111001292-5e64be80-8338-11eb-9d7a-f72ea61e1cb1.png)
+  When you add a task, you will be prompted to enter information regarding this task, such as a title, description, start time, and end time. Once the task is added, you will immediately see it reflected in the calendar as a blue cell. 
+  ![image](https://user-images.githubusercontent.com/67076046/111001570-e64ac880-8338-11eb-8911-160ad6063897.png)
+  You can navigate the calendar's cells using the arrow keys. To edit a task, use the arrow keys to select it, and press enter.
+  ![image](https://user-images.githubusercontent.com/67076046/111001649-0b3f3b80-8339-11eb-9258-a6419cab359f.png)
+  Once enter is pressed, a sub menu will open which allows you to edit information about the task, or delete the task entirely. You can navigate through these options with arrow keys, and select them with enter. Any changes made to the title, start time, or end time, will immediately reflect in the calendar display. Deleting the task will remove it from the display entirely. If you wish to exit the menu without making changes, press 'b' to navigate back to the calendar.
+  ![image](https://user-images.githubusercontent.com/67076046/111001890-6d983c00-8339-11eb-94dd-a491b388ddb2.png)
+![image](https://user-images.githubusercontent.com/67076046/111001994-8143a280-8339-11eb-9d01-e8b28d8260aa.png)
+If you are done using the program, press 'q' to quit.
+
+
+
+
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
