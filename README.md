@@ -64,7 +64,11 @@ undo these operations.
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
- For testing our program, we used googletests. We created unit tests for most of the functions in each of the major parts to make sure that they were fully functional and worked as intended. In total, we have ___ unit tests. 40 for the cell classes, 25 for the display classes, 5 for the composite hierarchy, __ for the command classes, and __ for the control classes.
+ For testing our program, we used googletests. We created unit tests for most of the functions in each of the major parts to make sure that they were fully functional and worked as intended. In total, we have 91 unit tests. 40 for the cell classes, 25 for the display classes, 5 for the composite hierarchy, 17 for the command classes, and 4 for the control classes.
+
+
+![CS100 test check](https://user-images.githubusercontent.com/55814421/110999131-bf8a9300-8334-11eb-999a-5f50c15b0853.png)
+
 
 We also used Valgrind to make sure there were no memory leaks or errors in the program. Running valgrind --leak-check=full --track-origins=yes ./calendar will give us All heap blocks were freed -- no leaks are possible and ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
