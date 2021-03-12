@@ -63,14 +63,15 @@ undo these operations.
  For testing our program, we used googletests. We created unit tests for most of the functions in each of the major parts to make sure that they were fully functional and worked as intended. In total, we have 91 unit tests. 40 for the cell classes, 25 for the display classes, 5 for the composite hierarchy, 17 for the command classes, and 4 for the control classes.
 
 
-<testPictures>
-  <summary>Click to see test pictures</summary>
-  ![cs100 test 1](https://user-images.githubusercontent.com/55814421/110999704-a3d3bc80-8335-11eb-93e8-2420ca7ccd41.png)
-![cs100 test2](https://user-images.githubusercontent.com/55814421/110999712-a6361680-8335-11eb-9074-fb926dca1b82.png)
-![cs100 test3](https://user-images.githubusercontent.com/55814421/110999716-a7674380-8335-11eb-8385-f5f57d274806.png)
-![cs100 test4](https://user-images.githubusercontent.com/55814421/110999721-a9310700-8335-11eb-9eed-4d56cdefcff9.png)
-![cs100 test5](https://user-images.githubusercontent.com/55814421/110999726-aa623400-8335-11eb-93df-379903a3cdce.png)
-</testPictures>
+<details>
+  <summary>Click to see tests</summary>
+  ![cs100 test 1](https://user-images.githubusercontent.com/55814421/110999865-e7c6c180-8335-11eb-94d2-0f9435622b7f.png)
+![cs100 test2](https://user-images.githubusercontent.com/55814421/110999872-e9908500-8335-11eb-9afe-429277e82aa1.png)
+![cs100 test3](https://user-images.githubusercontent.com/55814421/110999875-eac1b200-8335-11eb-8d0e-2f216b42a436.png)
+![cs100 test4](https://user-images.githubusercontent.com/55814421/110999878-ebf2df00-8335-11eb-9de3-2cf9275fa07c.png)
+![cs100 test5](https://user-images.githubusercontent.com/55814421/110999884-ed240c00-8335-11eb-941d-d320af887577.png)
+
+</details>
 
 
 We also used Valgrind to make sure there were no memory leaks or errors in the program. Running valgrind --leak-check=full --track-origins=yes ./calendar will give us All heap blocks were freed -- no leaks are possible and ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
